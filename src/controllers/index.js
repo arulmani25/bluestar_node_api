@@ -1,8 +1,11 @@
 const { Router } = require("express");
-const adminController = require("./admin");
 
 const apiRouter = Router();
 
-apiRouter.use("/admin", adminController);
+const adminController = require("./admin");
+const userController = require("./user")
 
-module.exports = { apiRouter };
+apiRouter.use("/admin", adminController);
+apiRouter.use("/user", userController);
+
+module.exports = apiRouter;

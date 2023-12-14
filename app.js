@@ -3,7 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const responseMiddleware = require("./src/middlewares/response.middleware");
-const { apiRouter } = require("./src/controllers/index");
+const apiRouter = require("./src/controllers");
 
 // Other required dependencies
 const dotenv = require("dotenv");

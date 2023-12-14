@@ -1,27 +1,26 @@
 const { adminServiceController } = require("../../../service/index");
 
-const createAdmin = async (req, res) => {
+const adminLogin = async (req, res) => {
   try {
     const payload = req.body;
 
-    const user = await adminServiceController.createAdmin(payload);
+    const adminLoggedIn = await adminServiceController.adminLogin(payload);
 
-    if (user) {
+    if (adminLoggedIn) {
       return res.json({
         Status: "Success",
-        Message: "Added successfully",
-        Data: user,
+        Message: "Admin login Success",
         Code: 200,
       });
     } else {
       return res.json({
-        Status: "Failure",
-        Message: "User Already Exist",
-        Data: user,
-        Code: 400,
+        Status: "Failed",
+        Message: "Account Not Found",
+        Data: {},
+        Code: 404,
       });
     }
-  } catch (e) {
+  } catch (error) {
     return res.json({
       Status: "Failed",
       Message: "Internal Server Error",
@@ -30,4 +29,5 @@ const createAdmin = async (req, res) => {
     });
   }
 };
-module.exports = { createAdmin };
+
+module.exports = { adminLogin };

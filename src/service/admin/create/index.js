@@ -19,8 +19,6 @@ const createAdmin = async (payload) => {
       last_login: new Date(),
     });
     return createRecord;
-  } else {
-    throw new Error("User Already Exist");
   }
 };
 
