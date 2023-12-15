@@ -1,8 +1,11 @@
 const userServiceController = require("../../../service/user");
 
-const createUser = async (req, res) => {
+const { successMsg, errorMsg } = require("../../../utils/index");
+
+const createUser = async (req, res, next) => {
   try {
     const payload = req.body;
+
     (payload.last_login_time = new Date().toLocaleString("en-US", {
       timeZone: "Asia/Calcutta",
     })),
@@ -10,29 +13,20 @@ const createUser = async (req, res) => {
         timeZone: "Asia/Calcutta",
       }));
 
+    //** service call */
+
     const record = await userServiceController.createUser(payload);
-    if (record) {
-      return res.json({
-        Status: "Success",
-        Message: "User Added successfully",
-        Data: record,
-        Code: 200,
-      });
-    } else {
-      return res.json({
-        Status: "Failure",
-        Message: "User Already Exist",
-        Data: [],
-        Code: 400,
-      });
-    }
-  } catch (error) {
+
+    if (!record) throw new Error(errorMsg.USER_ALREADY_EXIST);
+
     return res.json({
-      Status: "Failure",
-      Message: "Internal Server Error",
-      Data: [],
-      Code: 500,
+      Status: "Success",
+      Message: successMsg.USER_CREATED_SUCCESSFULLY,
+      Data: record,
+      Code: 200,
     });
+  } catch (error) {
+    next(error);
   }
 };
 

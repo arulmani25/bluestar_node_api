@@ -1,0 +1,44 @@
+const { errorMsg } = require("./message");
+
+const errorResponse = (msg) => {
+  let response = {
+    statusCode: 500,
+    errorMessage: "Internal Server Error",
+    errors: [],
+  };
+
+  switch (msg) {
+    case errorMsg.USER_NOT_FOUND:
+      response = {
+        errorMessage: errorMsg.USER_NOT_FOUND,
+        statusCode: 404,
+      };
+      break;
+    case errorMsg.USER_ALREADY_EXIST:
+      response = {
+        errorMessage: errorMsg.USER_ALREADY_EXIST,
+        statusCode: 400,
+      };
+      break;
+    case errorMsg.RECORD_NOT_FOUND_TO_DELETE:
+      response = {
+        errorMessage: errorMsg.RECORD_NOT_FOUND_TO_DELETE,
+        statusCode: 404,
+      };
+      break;
+    case errorMsg.RECORD_NOT_FOUND_TO_UPDATE:
+      response = {
+        errorMessage: errorMsg.RECORD_NOT_FOUND_TO_UPDATE,
+        statusCode: 404,
+      };
+      break;
+    case errorMsg.LOGIN_FAILED:
+      response = {
+        errorMessage: errorMsg.LOGIN_FAILED,
+        statusCode: 404,
+      };
+  }
+  return response;
+};
+
+module.exports = { errorResponse };

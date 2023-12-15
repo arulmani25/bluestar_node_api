@@ -8,6 +8,7 @@ const apiRouter = require("./src/controllers");
 // Other required dependencies
 const dotenv = require("dotenv");
 const connectToMongoDB = require("./src/config/mongodb");
+const { errorHandler } = require("./src/middlewares/errorhandler");
 
 const app = express();
 // Load environment variables
@@ -53,6 +54,9 @@ app.use((req, res, next) => {
 
 // Routes setup (Add your routes here)
 app.use("/api", apiRouter);
+
+//error handler
+app.use(errorHandler);
 
 // 404 handler
 app.use((req, res) => {

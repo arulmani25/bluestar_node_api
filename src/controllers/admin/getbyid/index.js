@@ -1,24 +1,25 @@
 const { adminServiceController } = require("../../../service/index");
 
+const { errorMsg, successMsg } = require("../../../utils/index");
+
 const getAdminById = async (req, res) => {
   try {
     const id = req.params.id;
 
+    //** service call */
+
     const data = await adminServiceController.getById(id);
+
+    if (!data) throw new Error(errorMsg.USER_NOT_FOUND);
 
     return res.json({
       Status: "Success",
-      Message: "Data Retrived Successfully",
+      Message: successMsg.DATA_RETRIVED_SUCCESSFULLY,
       Data: data,
       Code: 200,
     });
   } catch (error) {
-    return res.json({
-      Status: "Failure",
-      Message: "Internal Server Error",
-      Data: adminList,
-      Code: 500,
-    });
+    next(error);
   }
 };
 

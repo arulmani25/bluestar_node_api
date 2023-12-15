@@ -1,32 +1,23 @@
 const { adminServiceController } = require("../../../service/index");
+const { errorMsg, successMsg } = require("../../../utils");
 
 const adminLogin = async (req, res) => {
   try {
     const payload = req.body;
 
+    //** service call */
+
     const adminLoggedIn = await adminServiceController.adminLogin(payload);
 
-    if (adminLoggedIn) {
-      return res.json({
-        Status: "Success",
-        Message: "Admin login Success",
-        Code: 200,
-      });
-    } else {
-      return res.json({
-        Status: "Failed",
-        Message: "Account Not Found",
-        Data: {},
-        Code: 404,
-      });
-    }
-  } catch (error) {
+    if (!adminLoggedIn) throw new Error(errorMsg.USER_NOT_FOUND);
+
     return res.json({
-      Status: "Failed",
-      Message: "Internal Server Error",
-      Data: {},
-      Code: 500,
+      Status: "Success",
+      Message: successMsg.ADMIN_LOGGEDIN_SUCCESSFULLY,
+      Code: 200,
     });
+  } catch (error) {
+    next(error);
   }
 };
 
