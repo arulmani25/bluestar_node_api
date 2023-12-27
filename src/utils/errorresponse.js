@@ -37,6 +37,21 @@ const errorResponse = (msg) => {
         errorMessage: errorMsg.LOGIN_FAILED,
         statusCode: 404,
       };
+    case errorMsg.GROUP_ALREADY_EXIST:
+      response = {
+        errorMessage: errorMsg.GROUP_ALREADY_EXIST,
+        statusCode: 400,
+      };
+    case errorMsg.GROUP_NOT_FOUND:
+      response = {
+        errorMessage: errorMsg.GROUP_NOT_FOUND,
+        statusCode: 404,
+      };
+    case errorMsg.FAILED_TO_CREATE_SUB_ACTIVITY:
+      response = {
+        errorMessage: errorMsg.FAILED_TO_CREATE_SUB_ACTIVITY,
+        statusCode: 400,
+      };
   }
   return response;
 };

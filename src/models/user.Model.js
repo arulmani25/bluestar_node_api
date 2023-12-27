@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const timestamps = require("mongoose-timestamp");
 const userSchema = new mongoose.Schema({
-  user_mobile_no: String,
+  user_mobile_no: Number,
   user_id: String,
   user_password: String,
-  user_per_mob: String,
+  user_per_mob: Number,
   user_name: String,
   user_email: String,
   user_introduced_by: String,
