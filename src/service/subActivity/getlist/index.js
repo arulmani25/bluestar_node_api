@@ -10,6 +10,25 @@ const subActivityList = async (query) => {
   const recordList = await model.subactivityModel.aggregate([
     { $match: { delete_status: false } },
     {
+      $lookup: {
+        from: "mainactivities",
+        localField: "main_activity",
+        foreignField: "_id",
+        as: "activity",
+      },
+    },
+    {
+      $unwind: {
+        path: "$activity",
+        preserveNullAndEmptyArrays: true,
+      },
+    },
+    {
+      $addFields: {
+        main_activity_name: "$activity.activity_name",
+      },
+    },
+    {
       $match: searchKey
         ? {
             $or: [{ activity_name: searchRegex }],
@@ -18,6 +37,7 @@ const subActivityList = async (query) => {
     },
     {
       $project: {
+        activity: 0,
         __v: 0,
       },
     },

@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 const responseMiddleware = require("./src/middlewares/response.middleware");
 const apiRouter = require("./src/controllers");
 
@@ -24,9 +25,14 @@ connectToMongoDB()
     process.exit(1);
   });
 
+const corsOption = {
+  origin: "*",
+};
+
 // Middleware
 app.use(fileUpload());
 app.use(responseMiddleware());
+app.use(cors(corsOption));
 
 // View engine setup
 app.set("views", path.join(__dirname, "views"));

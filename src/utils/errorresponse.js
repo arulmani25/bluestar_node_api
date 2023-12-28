@@ -52,6 +52,11 @@ const errorResponse = (msg) => {
         errorMessage: errorMsg.FAILED_TO_CREATE_SUB_ACTIVITY,
         statusCode: 400,
       };
+    case errorMsg.SUB_ACTIVITY_ALREADY_EXIST:
+      response = {
+        errorMessage: errorMsg.SUB_ACTIVITY_ALREADY_EXIST,
+        statusCode: 400,
+      };
   }
   return response;
 };
