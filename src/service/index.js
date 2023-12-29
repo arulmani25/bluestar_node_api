@@ -3,6 +3,7 @@ const userServiceController = require("./user");
 const mainActivityServiceController = require("./mainActivity");
 const subActivityServiceController = require("./subActivity");
 const checkListServiceController = require("./checklist");
+const mobileServiceController = require("./mobile");
 
 module.exports = {
   adminServiceController,
@@ -10,4 +11,5 @@ module.exports = {
   mainActivityServiceController,
   subActivityServiceController,
   checkListServiceController,
+  mobileServiceController,
 };

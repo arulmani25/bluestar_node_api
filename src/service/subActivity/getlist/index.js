@@ -1,14 +1,23 @@
+const mongoose = require("mongoose");
 const model = require("../../../models/index");
+const objectId = mongoose.Types.ObjectId;
 
 const subActivityList = async (query) => {
-  const { searchKey, skip, limit, sortkey, sortOrder } = query;
+  const { searchKey, skip, limit, sortkey, sortOrder, activityId } = query;
 
   const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
 
   const searchRegex = new RegExp(["^.*", searchKey, ".*$"].join(""), "i");
 
   const recordList = await model.subactivityModel.aggregate([
-    { $match: { delete_status: false } },
+    {
+      $match: activityId
+        ? {
+            main_activity: new objectId(activityId),
+            delete_status: false,
+          }
+        : { delete_status: false },
+    },
     {
       $lookup: {
         from: "mainactivities",

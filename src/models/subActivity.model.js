@@ -7,7 +7,7 @@ const subActivitySchema = new mongoose.Schema({
   sub_activity_code: { type: String },
   main_activity: { type: objectId },
   activity_name: { type: String },
-  activity_type: { type: String },
+  activity_type: { type: objectId },
   description: { type: String },
   delete_status: { type: Boolean, default: false },
   created_by: { type: objectId },

@@ -3,6 +3,7 @@ const mainactivityModel = require("./mainActivity.model");
 const subactivityModel = require("./subActivity.model");
 const userModel = require("../models/user.model");
 const checkListModel = require("./checklist.model");
+const activityType = require("./activityType.model");
 
 module.exports = {
   adminModel,
@@ -10,4 +11,5 @@ module.exports = {
   subactivityModel,
   userModel,
   checkListModel,
+  activityType,
 };

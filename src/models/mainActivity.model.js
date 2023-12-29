@@ -6,7 +6,7 @@ const mainActivitySchema = new mongoose.Schema({
   master_location: { type: String },
   activity_code: { type: String },
   activity_name: { type: String },
-  activity_type: { type: String },
+  activity_type: { type: objectId },
   description: { type: String },
   delete_status: { type: Boolean, default: false },
   created_by: { type: objectId },

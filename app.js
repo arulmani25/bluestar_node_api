@@ -5,6 +5,7 @@ const fileUpload = require("express-fileupload");
 const cors = require("cors");
 const responseMiddleware = require("./src/middlewares/response.middleware");
 const apiRouter = require("./src/controllers");
+const mobileRouter = require("./src/controllers/mobile");
 
 // Other required dependencies
 const dotenv = require("dotenv");
@@ -60,6 +61,7 @@ app.use((req, res, next) => {
 
 // Routes setup (Add your routes here)
 app.use("/api", apiRouter);
+app.use("/api/mobile", mobileRouter);
 
 //error handler
 app.use(errorHandler);

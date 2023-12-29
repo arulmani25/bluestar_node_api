@@ -20,8 +20,8 @@ const checkListSchema = new mongoose.Schema({
   sub_activity_id: { type: objectId },
   delete_status: { type: Boolean, default: false },
   field_required: { type: Boolean },
+  activity_type: { type: objectId },
 });
 mongoose.model("checklist", checkListSchema);
 checkListSchema.plugin(timestamps);
 module.exports = mongoose.model("checklist");
-

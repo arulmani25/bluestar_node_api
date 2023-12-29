@@ -13,13 +13,16 @@ const errorMsg = {
   SUB_ACTIVITY_ALREADY_EXIST: "Sub Activity Already Exist",
   FAILED_TO_CREATE_CHECK_LIST: "Failed To Create Check List",
   CHECK_LIST_NOT_FOUND: "Check List Not Found",
+  INCORRECT_PASSWORD: "Incorrect Password",
+  ACTIVITY_TYPE_ALREADY_EXIST: "Activity Type Already Exist",
 };
 
 const successMsg = {
   ADMIN_CREATED_SUCCESSFULLY: "Admin Created SuccessFully",
   RECORD_DELETED_SUCCESSFULLY: "Record Deleted Successfully",
   RECORD_UPDATED_SUCCESSFULLY: "Record Updated Successfully",
-  ADMIN_LOGGEDIN_SUCCESSFULLY: "Admin Login Success",
+  ADMIN_LOGGEDIN_SUCCESSFULLY: "Admin Logged In Successfully",
+  ADMIN_LOGGEDOUT_SUCCESSFULLY: "Admin Logged Out Successfully",
   USER_CREATED_SUCCESSFULLY: "User Created SuccessFully",
   DATA_RETRIVED_SUCCESSFULLY: "Data Retrived Successfully",
   USER_LOGGEDIN_SUCCESSFULLY: "User Login Success",
@@ -31,6 +34,7 @@ const successMsg = {
   SUB_ACTIVITY_LIST_VIEWED_SUCCESSFULLY:
     "Sub Activity List Viewed Successfully",
   CHECK_LIST_CREATED_SUCCESSFULLY: "Check List Created Successfully",
+  ACTIVITY_TYPE_CREATED_SUCCESSFULLY: "Activity Type Created Successfully",
 };
 
 module.exports = { errorMsg, successMsg };
