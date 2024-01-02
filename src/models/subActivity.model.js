@@ -12,6 +12,8 @@ const subActivitySchema = new mongoose.Schema({
   delete_status: { type: Boolean, default: false },
   created_by: { type: objectId },
 });
-mongoose.model("subactivity", subActivitySchema);
 subActivitySchema.plugin(timestamps);
+
+mongoose.model("subactivity", subActivitySchema);
+
 module.exports = mongoose.model("subactivity");

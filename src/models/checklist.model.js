@@ -22,6 +22,8 @@ const checkListSchema = new mongoose.Schema({
   field_required: { type: Boolean },
   activity_type: { type: objectId },
 });
-mongoose.model("checklist", checkListSchema);
 checkListSchema.plugin(timestamps);
+
+mongoose.model("checklist", checkListSchema);
+
 module.exports = mongoose.model("checklist");

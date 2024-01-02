@@ -11,6 +11,9 @@ const mainActivitySchema = new mongoose.Schema({
   delete_status: { type: Boolean, default: false },
   created_by: { type: objectId },
 });
-mongoose.model("mainactivity", mainActivitySchema);
+
 mainActivitySchema.plugin(timestamps);
+
+mongoose.model("mainactivity", mainActivitySchema);
+
 module.exports = mongoose.model("mainactivity");

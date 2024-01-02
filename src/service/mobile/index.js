@@ -1,4 +1,5 @@
-const auth = require("./auth");
+const admin = require("./admin");
 const checklist = require("./checklist");
+const user = require("./user");
 
-module.exports = { auth, checklist };
+module.exports = { admin, checklist, user };

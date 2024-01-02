@@ -1,22 +1,24 @@
 const { activityTypeController } = require("../../../service/index");
+
 const { errorMsg, successMsg } = require("../../../utils/index");
 
-const createActivityType = async (req, res, next) => {
+const getActivityTypeList = async (req, res, next) => {
   try {
-    const payload = req.body;
-
     //** service call */
 
-    const user = await activityTypeController.createActivityType(payload);
+    const activityTypeList = await activityTypeController.activityTypeList(
+      req.query
+    );
 
     return res.json({
       Status: "Success",
-      Message: successMsg.ACTIVITY_TYPE_CREATED_SUCCESSFULLY,
-      Data: user,
+      Message: successMsg.DATA_RETRIVED_SUCCESSFULLY,
+      Data: activityTypeList,
       Code: 200,
     });
   } catch (error) {
     next(error);
   }
 };
-module.exports = { createActivityType };
+
+module.exports = { getActivityTypeList };

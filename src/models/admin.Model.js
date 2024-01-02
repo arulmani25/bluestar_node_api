@@ -15,6 +15,8 @@ const adminSchema = new mongoose.Schema({
   role: { type: String },
   employee_detail: { type: Array },
 });
-mongoose.model("admin", adminSchema);
 adminSchema.plugin(timestamps);
+
+mongoose.model("admin", adminSchema);
+
 module.exports = mongoose.model("admin");

@@ -2,10 +2,12 @@ const { Router } = require("express");
 
 const mobileRouter = Router();
 
-const authController = require("./auth");
+const adminController = require("./admin");
 const checkListController = require("./checklist");
+const userContoller = require("./user");
 
-mobileRouter.use("/auth", authController);
+mobileRouter.use("/admin", adminController);
 mobileRouter.use("/checklist", checkListController);
+mobileRouter.use("/user", userContoller);
 
 module.exports = mobileRouter;

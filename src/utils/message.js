@@ -15,6 +15,7 @@ const errorMsg = {
   CHECK_LIST_NOT_FOUND: "Check List Not Found",
   INCORRECT_PASSWORD: "Incorrect Password",
   ACTIVITY_TYPE_ALREADY_EXIST: "Activity Type Already Exist",
+  ROLE_ALREADY_EXIST: "Role Type Already Exist",
 };
 
 const successMsg = {
@@ -35,6 +36,8 @@ const successMsg = {
     "Sub Activity List Viewed Successfully",
   CHECK_LIST_CREATED_SUCCESSFULLY: "Check List Created Successfully",
   ACTIVITY_TYPE_CREATED_SUCCESSFULLY: "Activity Type Created Successfully",
+  ROLE_CREATED_SUCCESSFULLY: "Role Created Successfully",
+  USER_CHECKEDIN_SUCCESSFULLY: "User Checked In Successfully",
 };
 
 module.exports = { errorMsg, successMsg };
