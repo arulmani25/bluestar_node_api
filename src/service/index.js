@@ -6,6 +6,7 @@ const checkListServiceController = require("./checklist");
 const mobileServiceController = require("./mobile");
 const activityTypeController = require("./activityType");
 const roleServiceController = require("./role");
+const equipmentServiceController = require("./equipments");
 
 module.exports = {
   adminServiceController,
@@ -16,4 +17,5 @@ module.exports = {
   mobileServiceController,
   activityTypeController,
   roleServiceController,
+  equipmentServiceController,
 };

@@ -1,6 +1,6 @@
-const { userServiceController } = require("../../../service/index");
+const { mobileServiceController } = require("../../../../service/index");
 
-const { errorMsg, successMsg } = require("../../../utils/index");
+const { errorMsg, successMsg } = require("../../../../utils");
 
 const getUserById = async (req, res, next) => {
   try {
@@ -8,7 +8,7 @@ const getUserById = async (req, res, next) => {
 
     //** service call */
 
-    const data = await userServiceController.getById(id);
+    const data = await mobileServiceController.user.getById(id);
 
     if (!data) throw new Error(errorMsg.USER_NOT_FOUND);
 

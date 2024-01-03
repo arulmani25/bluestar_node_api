@@ -29,7 +29,7 @@ const activityTypeList = async (payload) => {
     {
       $facet: {
         pagination: [{ $count: "totalCount" }],
-        data: [{ $skip: Number(skip) || 0 }, { $limit: Number(limit) || 10 }],
+        data: [{ $skip: Number(skip) || 0 }, { $limit: Number(limit) || 100 }],
       },
     },
   ]);

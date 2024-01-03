@@ -6,11 +6,13 @@ const { userLoginUsingMobile } = require("./login");
 const { userList } = require("./listuser");
 const { userLoginStatusMobile } = require("./loginstatus");
 const { createAttendance } = require("./attendancecreate");
+const { getUserById } = require("./getbyid");
 
 router.post("/create", createUser);
 router.post("/login", userLoginUsingMobile);
 router.get("/list", userList);
 router.post("/loginstatus", userLoginStatusMobile);
 router.post("/attendance", createAttendance);
+router.get("/:user_mobile_no", getUserById);
 
 module.exports = router;
