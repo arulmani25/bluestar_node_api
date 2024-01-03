@@ -11,10 +11,10 @@ const mongodbConfig = {
 async function connectToMongoDB() {
   try {
     await mongoose.connect(
-      "mongodb://0.0.0.0:27017/blueStar",
+      process.env.MONGO_CONNECTION_STRING,
       mongodbConfig.options
     );
-    console.log("Connected to MongoDB!");
+        console.log("Connected to MongoDB!");
   } catch (err) {
     console.log("err================== MongoDB!", err);
     console.error("Error connecting to MongoDB:", err);

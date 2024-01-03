@@ -1,5 +1,11 @@
-const express = require("express");
+const dotenv = require("dotenv");
 const path = require("path");
+// Load environment variables
+dotenv.config({
+  path: path.resolve(__dirname, `.env.${process.env.NODE_ENV || "production"}`),
+});
+const express = require("express");
+
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
@@ -8,15 +14,10 @@ const apiRouter = require("./src/controllers");
 const mobileRouter = require("./src/controllers/mobile");
 
 // Other required dependencies
-const dotenv = require("dotenv");
 const connectToMongoDB = require("./src/config/mongodb");
 const { errorHandler } = require("./src/middlewares/errorhandler");
 
 const app = express();
-// Load environment variables
-dotenv.config({
-  path: path.resolve(__dirname, `.env.${process.env.NODE_ENV || "production"}`),
-});
 
 // Database connectivity
 connectToMongoDB()
