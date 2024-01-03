@@ -14,7 +14,7 @@ async function connectToMongoDB() {
       "mongodb://localhost:27017/blueStar",
       mongodbConfig.options
     );
-    console.log("Connected to MongoDB!");
+        console.log("Connected to MongoDB!");
   } catch (err) {
     console.log("err================== MongoDB!", err);
     console.error("Error connecting to MongoDB:", err);
