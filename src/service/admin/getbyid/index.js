@@ -1,4 +1,4 @@
-const adminModel = require("../../../models/admin.model");
+const adminModel = require("../../../models/admin.Model");
 
 const getById = async (adminId) => {
   const data = await adminModel.findOne(

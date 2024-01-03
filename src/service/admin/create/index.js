@@ -1,4 +1,4 @@
-const adminModel = require("../../../models/admin.model");
+const adminModel = require("../../../models/admin.Model");
 
 const createAdmin = async (payload) => {
   const checkUserExist = await adminModel.findOne({

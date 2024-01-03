@@ -1,4 +1,4 @@
-const adminModel = require("../../../models/admin.model");
+const adminModel = require("../../../models/admin.Model");
 
 const adminList = async (payload) => {
   const { searchKey, skip, limit, sortkey, sortOrder, role } = payload;

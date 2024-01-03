@@ -1,4 +1,4 @@
-const userModel = require("../../../models/user.model");
+const userModel = require("../../../models/user.Model");
 
 const updateUserRecord = async (id, payload) => {
   const data = await userModel.findOneAndUpdate({ _id: id }, { ...payload });

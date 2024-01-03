@@ -1,4 +1,4 @@
-const userModel = require("../../../models/user.model");
+const userModel = require("../../../models/user.Model");
 
 const listUser = async (query) => {
   const { searchKey, skip, limit, sortkey, sortOrder, role } = query;

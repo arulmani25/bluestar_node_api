@@ -1,4 +1,4 @@
-const adminModel = require("../../../models/admin.model");
+const adminModel = require("../../../models/admin.Model");
 
 const updateRecord = async (adminId, payload) => {
   const isExist = await adminModel.findOne({ _id: adminId });

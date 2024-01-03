@@ -1,4 +1,4 @@
-const adminModel = require("../../../models/admin.model");
+const adminModel = require("../../../models/admin.Model");
 
 const adminLogin = async (payload) => {
   const data = await adminModel.findOne({

@@ -1,4 +1,4 @@
-const userModel = require("../../../models/user.model");
+const userModel = require("../../../models/user.Model");
 
 const deleteUserRecord = async (id) => {
   const record = await userModel.findOneAndDelete({ _id: id });
