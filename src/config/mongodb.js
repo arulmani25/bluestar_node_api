@@ -11,7 +11,7 @@ const mongodbConfig = {
 async function connectToMongoDB() {
   try {
     await mongoose.connect(
-      "mongodb://0.0.0.0:27017/blueStar",
+      "mongodb://localhost:27017/blueStar",
       mongodbConfig.options
     );
     console.log("Connected to MongoDB!");
