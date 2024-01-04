@@ -1,13 +1,13 @@
 const model = require("../../../models");
 
-const activityTypeList = async (payload) => {
+const userTypeList = async (payload) => {
   const { searchKey, skip, limit, sortkey, sortOrder, role } = payload;
 
   const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
 
   const searchRegex = new RegExp(["^.*", searchKey, ".*$"].join(""), "i");
 
-  const recordList = await model.activityType.aggregate([
+  const recordList = await model.userType.aggregate([
     {
       $match: {},
     },
@@ -36,4 +36,4 @@ const activityTypeList = async (payload) => {
   return recordList;
 };
 
-module.exports = { activityTypeList };
+module.exports = { userTypeList };

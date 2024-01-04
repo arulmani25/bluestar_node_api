@@ -7,10 +7,12 @@ const { userList } = require("./listuser");
 const { userLoginStatusMobile } = require("./loginstatus");
 const { createAttendance } = require("./attendancecreate");
 const { getUserById } = require("./getbyid");
+const { logoutReasonList } = require("./logoutreason");
 
 router.post("/create", createUser);
 router.post("/login", userLoginUsingMobile);
 router.get("/list", userList);
+router.get("/logoutreason", logoutReasonList);
 router.post("/loginstatus", userLoginStatusMobile);
 router.post("/attendance", createAttendance);
 router.get("/:user_mobile_no", getUserById);

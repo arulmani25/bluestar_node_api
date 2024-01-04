@@ -5,11 +5,11 @@ const shortUniqueId = require("short-unique-id");
 const createMainGroup = async (req, res, next) => {
   try {
     const uuid = new shortUniqueId({ length: 5 });
-    const activity_code = `BTR-${uuid.randomUUID()}`;
+    // const activity_code = `BTR-${uuid.randomUUID()}`;
 
     //! need to add created_by in payload once added jwt
 
-    req.body.activity_code = activity_code;
+    // req.body.activity_code = activity_code;
     const payload = req.body;
     const data = await mainActivityServiceController.createGroup(payload);
     if (!data) throw new Error(errorMsg.FAILED_TO_CREATE_MAIN_GROUP);

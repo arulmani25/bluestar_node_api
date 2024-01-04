@@ -5,7 +5,7 @@ const shortUniqueId = require("short-unique-id");
 const createSubActivity = async (req, res, next) => {
   try {
     const uuid = new shortUniqueId({ length: 5 });
-    req.body.sub_activity_code = `BTR-${uuid.randomUUID()}`;
+    // req.body.sub_activity_code = `BTR-${uuid.randomUUID()}`;
 
     //! need to add created_by in payload once added jwt
 

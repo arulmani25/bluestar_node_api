@@ -4,6 +4,7 @@ const { userListMobile } = require("./list");
 const { userMobileLoginStatus } = require("./loginstatus");
 const { createUserAttendance } = require("./attendancecreate");
 const { getById } = require("./getbyid");
+const { logoutListMobile } = require("./logoutreason");
 
 module.exports = {
   createMobileUser,
@@ -12,4 +13,5 @@ module.exports = {
   userMobileLoginStatus,
   createUserAttendance,
   getById,
+  logoutListMobile,
 };

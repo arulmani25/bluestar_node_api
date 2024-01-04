@@ -1,14 +1,12 @@
-const { activityTypeController } = require("../../../service/index");
+const { userTypeController } = require("../../../service/index");
 
 const { errorMsg, successMsg } = require("../../../utils/index");
 
-const getActivityTypeList = async (req, res, next) => {
+const getUserTypeList = async (req, res, next) => {
   try {
     //** service call */
 
-    const activityTypeList = await activityTypeController.activityTypeList(
-      req.query
-    );
+    const activityTypeList = await userTypeController.userTypeList(req.query);
 
     return res.json({
       Status: "Success",
@@ -21,4 +19,4 @@ const getActivityTypeList = async (req, res, next) => {
   }
 };
 
-module.exports = { getActivityTypeList };
+module.exports = { getUserTypeList };

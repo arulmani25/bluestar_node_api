@@ -2,9 +2,9 @@ const model = require("../models/index");
 const seedData = require("../seed/index");
 
 const modelArray = [
-  model.activitiesModel,
-  model.activityType,
+  model.userType,
   model.equipmentsModel,
+  model.logoutReasonListModel,
 ];
 
 const seedRecordToDB = async () => {
@@ -20,6 +20,9 @@ const seedRecordToDB = async () => {
           break;
         case "equipments":
           await mod.insertMany(seedData.equipmentsSeedData);
+          break;
+        case "logoutreasons":
+          await mod.insertMany(seedData.logoutReasonSeedData);
           break;
       }
 

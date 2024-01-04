@@ -10,7 +10,7 @@ const getCheckList = async (query) => {
     sortkey,
     sortOrder,
     activityId,
-    subActivityId,
+    equipmentTagId,
   } = query;
 
   const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
@@ -19,14 +19,14 @@ const getCheckList = async (query) => {
 
   let filter;
 
-  if (activityId && !subActivityId) {
+  if (activityId && !equipmentTagId) {
     filter = {
       $match: { activity_id: new objectId(activityId), delete_status: false },
     };
-  } else if (subActivityId && !activityId) {
+  } else if (equipmentTagId && !activityId) {
     filter = {
       $match: {
-        sub_activity_id: new objectId(subActivityId),
+        equipment_tag: new objectId(equipmentTagId),
         delete_status: false,
       },
     };

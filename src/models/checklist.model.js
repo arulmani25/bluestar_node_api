@@ -16,11 +16,12 @@ const checkListSchema = new mongoose.Schema({
   date_of_update: { type: Date },
   created_by: { type: objectId },
   updated_by: { type: objectId },
-  activity_id: { type: objectId },
+  main_activity_id: { type: objectId },
   sub_activity_id: { type: objectId },
   delete_status: { type: Boolean, default: false },
   field_required: { type: Boolean },
   activity_type: { type: objectId },
+  equipment_tag: { type: objectId },
 });
 checkListSchema.plugin(timestamps);
 

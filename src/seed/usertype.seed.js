@@ -1,4 +1,4 @@
-const activityTypeSeedData = [
+const userTypeSeedData = [
   {
     user_type: "BIAL",
     is_active: true,
@@ -9,4 +9,4 @@ const activityTypeSeedData = [
   },
 ];
 
-module.exports = { activityTypeSeedData };
+module.exports = { userTypeSeedData };

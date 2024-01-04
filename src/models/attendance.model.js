@@ -6,6 +6,7 @@ const attendanceSchema = new mongoose.Schema({
   user_id: { type: objectId },
   user_mobile_no: { type: Number },
   att_status: { type: String },
+  att_reason: { type: String },
   att_date: { type: Date },
   att_start_lat: { type: String },
   att_start_long: { type: String },
