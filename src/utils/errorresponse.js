@@ -57,6 +57,16 @@ const errorResponse = (msg) => {
         errorMessage: errorMsg.SUB_ACTIVITY_ALREADY_EXIST,
         statusCode: 400,
       };
+    case errorMsg.PLEASE_CHECKIN_BEFORE_UPDATING_LOGOUT_TIME:
+      response = {
+        errorMessage: errorMsg.PLEASE_CHECKIN_BEFORE_UPDATING_LOGOUT_TIME,
+        statusCode: 400,
+      };
+    case errorMsg.CHECK_USER_MOBILE_NUMBER_AND_ATT_DATE:
+      response = {
+        errorMessage: errorMsg.CHECK_USER_MOBILE_NUMBER_AND_ATT_DATE,
+        statusCode: 400,
+      };
   }
   return response;
 };

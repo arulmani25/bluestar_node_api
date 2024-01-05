@@ -35,6 +35,10 @@ const userMobileLogin = async (payload) => {
     {
       $project: {
         role_type: "$role_name.role_type",
+        user_mobile_no: 1,
+        user_name: 1,
+        user_email: 1,
+        emp_type: 1,
         role_id: "$emp_type",
       },
     },

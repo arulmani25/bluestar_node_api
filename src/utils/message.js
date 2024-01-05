@@ -16,6 +16,10 @@ const errorMsg = {
   INCORRECT_PASSWORD: "Incorrect Password",
   USER_TYPE_ALREADY_EXIST: "User Type Already Exist",
   ROLE_ALREADY_EXIST: "Role Type Already Exist",
+  PLEASE_CHECKIN_BEFORE_UPDATING_LOGOUT_TIME:
+    "Please Checkin Before Updating Logout Time",
+  CHECK_USER_MOBILE_NUMBER_AND_ATT_DATE:
+    "Check User Mobile Number and Attendance Date",
 };
 
 const successMsg = {
