@@ -20,6 +20,8 @@ const errorMsg = {
     "Please Checkin Before Updating Logout Time",
   CHECK_USER_MOBILE_NUMBER_AND_ATT_DATE:
     "Check User Mobile Number and Attendance Date",
+  FAILED_TO_CREATE_MAIN_LOCATION: "Failed To Create Main Location",
+  FAILED_TO_CREATE_SUB_LOCATION: "Failed To Create Sub Location",
 };
 
 const successMsg = {
@@ -43,6 +45,8 @@ const successMsg = {
   ROLE_CREATED_SUCCESSFULLY: "Role Created Successfully",
   USER_CHECKEDIN_SUCCESSFULLY: "User Checked In Successfully",
   JOB_MANAGEMENT_CREATED_SUCCESSFULLY: "Job Created Successfully",
+  MAIN_LOCATION_CREATED_SUCCESSFULLY: "Main Location Created Successfully",
+  SUB_LOCATION_CREATED_SUCCESSFULLY: "Sub Location Created Successfully",
 };
 
 module.exports = { errorMsg, successMsg };

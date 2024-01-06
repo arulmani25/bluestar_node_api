@@ -10,8 +10,9 @@ const checkListMobile = async (query) => {
     sortkey,
     sortOrder,
     activityId,
-    subActivityId,
+    equipmentTag,
     activityType,
+    filterType
   } = query;
 
   const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
@@ -20,41 +21,41 @@ const checkListMobile = async (query) => {
 
   let filter;
 
-  if (activityId && !subActivityId && !activityType) {
+  if (activityId && !equipmentTag && !activityType) {
     filter = {
       $match: { activity_id: new objectId(activityId), delete_status: false },
     };
-  } else if (!activityId && subActivityId && !activityType) {
+  } else if (!activityId && equipmentTag && !activityType) {
     filter = {
       $match: {
-        sub_activity_id: new objectId(subActivityId),
+        equipment_tag: new objectId(equipmentTag),
         delete_status: false,
       },
     };
-  } else if (!activityId && !subActivityId && activityType) {
+  } else if (!activityId && !equipmentTag && activityType) {
     filter = {
       $match: {
         activity_type: new objectId(activityType),
         delete_status: false,
       },
     };
-  } else if (activityId && subActivityId && !activityType) {
+  } else if (activityId && equipmentTag && !activityType) {
     filter = {
       $match: {
         activity_id: new objectId(activityId),
-        sub_activity_id: new objectId(subActivityId),
+        equipment_tag: new objectId(equipmentTag),
         delete_status: false,
       },
     };
-  } else if (!activityId && subActivityId && activityType) {
+  } else if (!activityId && equipmentTag && activityType) {
     filter = {
       $match: {
-        sub_activity_id: new objectId(subActivityId),
+        equipment_tag: new objectId(equipmentTag),
         activity_type: new objectId(activityType),
         delete_status: false,
       },
     };
-  } else if (activityId && !subActivityId && activityType) {
+  } else if (activityId && !equipmentTag && activityType) {
     filter = {
       $match: {
         activity_id: new objectId(activityId),
@@ -62,11 +63,11 @@ const checkListMobile = async (query) => {
         delete_status: false,
       },
     };
-  } else if (activityId && subActivityId && activityType) {
+  } else if (activityId && equipmentTag && activityType) {
     filter = {
       $match: {
         activity_id: new objectId(activityId),
-        sub_activity_id: new objectId(subActivityId),
+        equipment_tag: new objectId(equipmentTag),
         activity_type: new objectId(activityType),
         delete_status: false,
       },

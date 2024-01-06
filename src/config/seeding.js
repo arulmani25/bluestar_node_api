@@ -5,6 +5,7 @@ const modelArray = [
   model.userType,
   model.equipmentsModel,
   model.logoutReasonListModel,
+  model.subLocationModel,
 ];
 
 const seedRecordToDB = async () => {
@@ -15,14 +16,17 @@ const seedRecordToDB = async () => {
         case "activities":
           await mod.insertMany(seedData.mainActivitiesSeedData);
           break;
-        case "activitytypes":
-          await mod.insertMany(seedData.activityTypeSeedData);
+        case "usertypes":
+          await mod.insertMany(seedData.userTypeSeedData);
           break;
         case "equipments":
           await mod.insertMany(seedData.equipmentsSeedData);
           break;
         case "logoutreasons":
           await mod.insertMany(seedData.logoutReasonSeedData);
+          break;
+        case "sublocations":
+          await mod.insertMany(seedData.subLocationSeed);
           break;
       }
 

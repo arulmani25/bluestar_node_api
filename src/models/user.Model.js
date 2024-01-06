@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
   last_login_time: { type: Date },
   last_logout_time: { type: Date },
   user_token: { type: String },
-  user_type: { type: String },
+  user_type: { type: ObjectId },
   emp_type: { type: ObjectId },
   login_lat: { type: String },
   login_long: { type: String },

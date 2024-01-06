@@ -13,6 +13,8 @@ const roleTypeController = require("./role");
 const equipmentController = require("./equipments");
 const tempCheckListController = require("./tempchecklist");
 const jobController = require("./jobs");
+const locationController = require("./location");
+const subLocationController = require("./sublocation");
 
 apiRouter.use("/admin", adminController);
 apiRouter.use("/user", userController);
@@ -25,5 +27,7 @@ apiRouter.use("/role", roleTypeController);
 apiRouter.use("/equipment", equipmentController);
 apiRouter.use("/temp", tempCheckListController);
 apiRouter.use("/jobs", jobController);
+apiRouter.use("/location", locationController);
+apiRouter.use("/sublocation", subLocationController);
 
 module.exports = apiRouter;

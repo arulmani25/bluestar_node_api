@@ -9,6 +9,8 @@ const roleServiceController = require("./role");
 const equipmentServiceController = require("./equipments");
 const tempCheckListController = require("./tempchecklist");
 const jobServiceController = require("./job");
+const locationServiceController = require("./location");
+const subLocationServiceController = require("./sublocation");
 
 module.exports = {
   adminServiceController,
@@ -22,4 +24,6 @@ module.exports = {
   equipmentServiceController,
   tempCheckListController,
   jobServiceController,
+  locationServiceController,
+  subLocationServiceController,
 };
