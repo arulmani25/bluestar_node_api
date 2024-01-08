@@ -23,7 +23,7 @@ const errorHandler = (err, req, res, next) => {
       errors: err.errors || [],
     };
   }
-  res.status(errorResponse.statusCode).json(errorResponse);
+  res.status(errorResponse.Code).json(errorResponse);
 };
 
 module.exports = { errorHandler };

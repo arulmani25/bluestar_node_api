@@ -11,7 +11,7 @@ const userLoginStatusMobile = async (req, res, next) => {
 
     return res.json({
       Status: "Success",
-      Message: successMsg.USER_LOGGEDIN_SUCCESSFULLY,
+      Message: successMsg.LOGIN_STATUS_RETRIVED,
       Data: data,
       Code: 200,
     });

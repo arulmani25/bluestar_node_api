@@ -14,6 +14,12 @@ const errorResponse = (msg) => {
         Code: 404,
       };
       break;
+    case errorMsg.INCORRECT_PASSWORD:
+      response = {
+        Message: errorMsg.INCORRECT_PASSWORD,
+        Code: 400,
+      };
+      break;
     case errorMsg.USER_ALREADY_EXIST:
       response = {
         Message: errorMsg.USER_ALREADY_EXIST,
