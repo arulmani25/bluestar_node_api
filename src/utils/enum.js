@@ -3,4 +3,11 @@ const attd_status = {
   Abscent: "Abscent",
 };
 
-module.exports = { attd_status };
+const filterByOption = {
+  halfYearly: "halfYearly",
+  monthly: "monthly",
+  quarterly: "quarterly",
+  yearly: "yearly",
+};
+
+module.exports = { attd_status, filterByOption };

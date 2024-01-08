@@ -12,7 +12,7 @@ const groupList = async (query) => {
     {
       $match: searchKey
         ? {
-            $or: [{ activity_name: searchRegex }],
+            $or: [{ master_location: searchRegex }],
           }
         : {},
     },

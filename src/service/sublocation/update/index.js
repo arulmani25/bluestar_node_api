@@ -4,7 +4,7 @@ const { errorMsg } = require("../../../utils");
 const updateSubLocation = async (id, paylaod) => {
   const isExist = await model.subLocationModel.findOne({
     _id: id,
-    delete_status: false,
+    is_active: true,
   });
 
   if (!isExist) throw new Error(errorMsg.RECORD_NOT_FOUND_TO_UPDATE);

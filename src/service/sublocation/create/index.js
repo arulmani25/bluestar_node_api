@@ -2,7 +2,8 @@ const model = require("../../../models/index");
 
 const createSubLocation = async (payload) => {
   const checkLocationExist = await model.subLocationModel.findOne({
-    main_location: payload.main_location,
+    sub_location: payload.sub_location,
+    is_active: true,
   });
   if (!checkLocationExist) {
     const createRecord = await model.subLocationModel.create({ ...payload });

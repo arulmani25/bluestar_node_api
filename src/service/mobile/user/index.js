@@ -6,6 +6,7 @@ const { createUserAttendance } = require("./attendancecreate");
 const { getById } = require("./getbyid");
 const { logoutListMobile } = require("./logoutreason");
 const { updateLogoutTime } = require("./updatelogouttime");
+const { attendanceList } = require("./listattendance");
 
 module.exports = {
   createMobileUser,
@@ -16,4 +17,5 @@ module.exports = {
   getById,
   logoutListMobile,
   updateLogoutTime,
+  attendanceList,
 };
