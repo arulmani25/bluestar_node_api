@@ -1,6 +1,7 @@
 const userServiceController = require("../../../service/user");
 
 const { successMsg, errorMsg } = require("../../../utils/index");
+const { encryptPassword } = require("../../../utils/passwordencryption");
 
 const createUser = async (req, res, next) => {
   try {
@@ -12,6 +13,10 @@ const createUser = async (req, res, next) => {
       (payload.last_logout_time = new Date().toLocaleString("en-US", {
         timeZone: "Asia/Calcutta",
       }));
+
+    const password = await encryptPassword(payload.user_password);
+
+    payload.user_password = password;
 
     //** service call */
 
