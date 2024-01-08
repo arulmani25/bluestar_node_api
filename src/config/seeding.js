@@ -6,6 +6,7 @@ const modelArray = [
   model.equipmentsModel,
   model.logoutReasonListModel,
   model.subLocationModel,
+  model.mainactivityModel,
 ];
 
 const seedRecordToDB = async () => {
@@ -13,7 +14,7 @@ const seedRecordToDB = async () => {
     const count = await mod.find({}).count();
     if (count <= 0) {
       switch (mod.collection.collectionName) {
-        case "activities":
+        case "mainactivities":
           await mod.insertMany(seedData.mainActivitiesSeedData);
           break;
         case "usertypes":
