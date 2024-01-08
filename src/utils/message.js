@@ -47,6 +47,7 @@ const successMsg = {
   JOB_MANAGEMENT_CREATED_SUCCESSFULLY: "Job Created Successfully",
   MAIN_LOCATION_CREATED_SUCCESSFULLY: "Main Location Created Successfully",
   SUB_LOCATION_CREATED_SUCCESSFULLY: "Sub Location Created Successfully",
+  LOGIN_STATUS_RETRIVED: "Login Status Retrived",
 };
 
 module.exports = { errorMsg, successMsg };
