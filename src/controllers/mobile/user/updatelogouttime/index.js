@@ -9,7 +9,7 @@ const updateLogoutTime = async (req, res, next) => {
 
     return res.json({
       Status: "Success",
-      Message: successMsg.RECORD_UPDATED_SUCCESSFULLY,
+      Message: successMsg.LOGGED_OUT_SUCCESSFULLY,
       Data: [],
       Code: 200,
     });
