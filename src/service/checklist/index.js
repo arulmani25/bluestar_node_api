@@ -5,6 +5,7 @@ const { getActivityDropDown } = require("./activityDropdown");
 const { getSubActivityDropDown } = require("./subActivityDropdown");
 const { deleteCheckList } = require("./delete");
 const { updateCheckListRecord } = require("./update");
+const { filterOption } = require("./filteroption");
 
 module.exports = {
   createList,
@@ -14,4 +15,5 @@ module.exports = {
   getSubActivityDropDown,
   deleteCheckList,
   updateCheckListRecord,
+  filterOption,
 };

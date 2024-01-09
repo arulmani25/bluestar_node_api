@@ -13,7 +13,14 @@ const userMobileLoginStatus = async (payload) => {
       999
     );
   }
-  // const endDate = new Date(payload.att_date);
+
+  const checkAttd = await model.attendanceModel.find({
+    att_date: new Date(payload.att_date),
+    user_mobile_no: payload.user_mobile_no,
+  });
+
+  if (!checkAttd) return checkAttd;
+
   const isExist = await model.attendanceModel.aggregate([
     {
       $match: {

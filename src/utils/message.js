@@ -22,6 +22,7 @@ const errorMsg = {
     "Check User Mobile Number and Attendance Date",
   FAILED_TO_CREATE_MAIN_LOCATION: "Failed To Create Main Location",
   FAILED_TO_CREATE_SUB_LOCATION: "Failed To Create Sub Location",
+  FILTER_TYPE_ALREADY_EXIST: "Filter Type Already Exist",
 };
 
 const successMsg = {
@@ -48,6 +49,7 @@ const successMsg = {
   MAIN_LOCATION_CREATED_SUCCESSFULLY: "Main Location Created Successfully",
   SUB_LOCATION_CREATED_SUCCESSFULLY: "Sub Location Created Successfully",
   LOGIN_STATUS_RETRIVED: "Login Status Retrived",
+  LOGGED_OUT_SUCCESSFULLY: "Logged Out Successfully ",
 };
 
 module.exports = { errorMsg, successMsg };

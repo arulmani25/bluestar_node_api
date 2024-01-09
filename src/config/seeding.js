@@ -7,6 +7,7 @@ const modelArray = [
   model.logoutReasonListModel,
   model.subLocationModel,
   model.mainactivityModel,
+  model.filterModel,
 ];
 
 const seedRecordToDB = async () => {
@@ -28,6 +29,9 @@ const seedRecordToDB = async () => {
           break;
         case "sublocations":
           await mod.insertMany(seedData.subLocationSeed);
+          break;
+        case "filters":
+          await mod.insertMany(seedData.filterSeedData);
           break;
       }
 

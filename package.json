@@ -19,6 +19,7 @@
     "mongoose": "^8.0.3",
     "mongoose-timestamp": "^0.6.0",
     "nodemon": "^3.0.2",
+    "pug": "^3.0.2",
     "qrcode": "^1.5.3",
     "short-unique-id": "^5.0.3",
     "socket.io": "^4.7.2"

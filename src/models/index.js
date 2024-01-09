@@ -11,8 +11,10 @@ const equipmentsModel = require("./equipment.model");
 const tempCheckListModel = require("./tempchecklist.model");
 const jobManagementModel = require("./jobManagement.model");
 const logoutReasonListModel = require("./logoutreason.model");
-const mainLocationModel = require("./location.model")
-const subLocationModel = require("./sublocation.model")
+const mainLocationModel = require("./location.model");
+const subLocationModel = require("./sublocation.model");
+const logOutModel = require("./logout.model");
+const filterModel = require("./filter.model");
 
 module.exports = {
   adminModel,
@@ -29,5 +31,7 @@ module.exports = {
   jobManagementModel,
   logoutReasonListModel,
   mainLocationModel,
-  subLocationModel
+  subLocationModel,
+  logOutModel,
+  filterModel,
 };

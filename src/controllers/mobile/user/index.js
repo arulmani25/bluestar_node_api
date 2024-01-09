@@ -10,6 +10,7 @@ const { getUserById } = require("./getbyid");
 const { logoutReasonList } = require("./logoutreason");
 const { updateLogoutTime } = require("./updatelogouttime");
 const { userAttendanceList } = require("./listattendance");
+const { userLogout } = require("./logout");
 
 router.post("/create", createUser);
 router.post("/login", userLoginUsingMobile);
@@ -18,6 +19,7 @@ router.get("/logoutreason", logoutReasonList);
 router.get("/attdlist", userAttendanceList);
 router.post("/loginstatus", userLoginStatusMobile);
 router.post("/attendance", createAttendance);
+router.post("/logout", userLogout);
 router.get("/:user_mobile_no", getUserById);
 router.put("/logoutupdate", updateLogoutTime);
 
