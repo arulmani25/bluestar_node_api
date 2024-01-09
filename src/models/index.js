@@ -15,6 +15,7 @@ const mainLocationModel = require("./location.model");
 const subLocationModel = require("./sublocation.model");
 const logOutModel = require("./logout.model");
 const filterModel = require("./filter.model");
+const submitchecklistModel = require("./submitchecklist.model");
 
 module.exports = {
   adminModel,
@@ -34,4 +35,5 @@ module.exports = {
   subLocationModel,
   logOutModel,
   filterModel,
+  submitchecklistModel,
 };

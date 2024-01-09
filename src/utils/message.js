@@ -42,6 +42,7 @@ const successMsg = {
   SUB_ACTIVITY_LIST_VIEWED_SUCCESSFULLY:
     "Sub Activity List Viewed Successfully",
   CHECK_LIST_CREATED_SUCCESSFULLY: "Check List Created Successfully",
+  CHECK_LIST_SUBMITTED_SUCCESSFULLY: "Check List Submitted Successfully",
   USER_TYPE_CREATED_SUCCESSFULLY: "User Type Created Successfully",
   ROLE_CREATED_SUCCESSFULLY: "Role Created Successfully",
   USER_CHECKEDIN_SUCCESSFULLY: "User Checked In Successfully",

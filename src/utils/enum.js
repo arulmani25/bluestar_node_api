@@ -12,4 +12,10 @@ const filterByOption = {
   weekly: "weekly",
 };
 
-module.exports = { attd_status, filterByOption };
+const jobStatus = {
+  completed: "Completed",
+  pending: "Pending",
+  inProgress: "In Progress",
+};
+
+module.exports = { attd_status, filterByOption, jobStatus };
