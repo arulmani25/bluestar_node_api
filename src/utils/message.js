@@ -51,6 +51,7 @@ const successMsg = {
   SUB_LOCATION_CREATED_SUCCESSFULLY: "Sub Location Created Successfully",
   LOGIN_STATUS_RETRIVED: "Login Status Retrived",
   LOGGED_OUT_SUCCESSFULLY: "Logged Out Successfully ",
+  TICKET_RAISED_SUCCESSFULLY: "Ticket Raised Successfully",
 };
 
 module.exports = { errorMsg, successMsg };

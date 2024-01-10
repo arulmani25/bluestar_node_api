@@ -16,6 +16,15 @@ const jobStatus = {
   completed: "Completed",
   pending: "Pending",
   inProgress: "In Progress",
+  closed: "close",
+  Open: "open",
 };
 
-module.exports = { attd_status, filterByOption, jobStatus };
+const priority = {
+  low: "low",
+  medium: "medium",
+  high: "high",
+  critical: "critical",
+};
+
+module.exports = { attd_status, filterByOption, jobStatus, priority };
