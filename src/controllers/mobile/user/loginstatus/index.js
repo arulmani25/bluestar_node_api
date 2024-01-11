@@ -11,10 +11,16 @@ const userLoginStatusMobile = async (req, res, next) => {
       payload
     );
 
-    if (!data.length) {
-      record.push({ att_status: attd_status.Absent });
-    } else {
-      record.push({ att_status: attd_status.Present });
+    if (data[0]?.att_status === "checkIn" || data[0]?.att_status === "checkOut") {
+      record.push({
+        att_status: attd_status.Present,
+        checkIn_status: data[0].att_status,
+      });
+    } else if (!data.length) {
+      record.push({
+        att_status: attd_status.Absent,
+        checkIn_status: "Not Cheked In",
+      });
     }
 
     return res.json({
