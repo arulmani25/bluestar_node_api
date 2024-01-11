@@ -6,7 +6,7 @@ const ticketCount = async () => {
       $group: {
         _id: "$status",
         count: {
-          $count: {},
+          $sum: 1,
         },
       },
     },

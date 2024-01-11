@@ -8,6 +8,7 @@ const modelArray = [
   model.subLocationModel,
   model.mainactivityModel,
   model.filterModel,
+  model.filedTypeModel,
 ];
 
 const seedRecordToDB = async () => {
@@ -32,6 +33,9 @@ const seedRecordToDB = async () => {
           break;
         case "filters":
           await mod.insertMany(seedData.filterSeedData);
+          break;
+        case "fieldtypes":
+          await mod.insertMany(seedData.fieldTypeSeed);
           break;
       }
 

@@ -17,6 +17,7 @@ const logOutModel = require("./logout.model");
 const filterModel = require("./filter.model");
 const submitchecklistModel = require("./submitchecklist.model");
 const ticketModel = require("./ticket.model");
+const filedTypeModel = require("./filedtype.model");
 
 module.exports = {
   adminModel,
@@ -38,4 +39,5 @@ module.exports = {
   filterModel,
   submitchecklistModel,
   ticketModel,
+  filedTypeModel,
 };
