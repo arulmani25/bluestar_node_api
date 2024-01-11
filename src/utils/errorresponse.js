@@ -43,36 +43,43 @@ const errorResponse = (msg) => {
         Message: errorMsg.LOGIN_FAILED,
         Code: 404,
       };
+      break;
     case errorMsg.GROUP_ALREADY_EXIST:
       response = {
         Message: errorMsg.GROUP_ALREADY_EXIST,
         Code: 400,
       };
+      break;
     case errorMsg.GROUP_NOT_FOUND:
       response = {
         Message: errorMsg.GROUP_NOT_FOUND,
         Code: 404,
       };
+      break;
     case errorMsg.FAILED_TO_CREATE_SUB_ACTIVITY:
       response = {
         Message: errorMsg.FAILED_TO_CREATE_SUB_ACTIVITY,
         Code: 400,
       };
+      break;
     case errorMsg.SUB_ACTIVITY_ALREADY_EXIST:
       response = {
         Message: errorMsg.SUB_ACTIVITY_ALREADY_EXIST,
         Code: 400,
       };
+      break;
     case errorMsg.PLEASE_CHECKIN_BEFORE_UPDATING_LOGOUT_TIME:
       response = {
         Message: errorMsg.PLEASE_CHECKIN_BEFORE_UPDATING_LOGOUT_TIME,
         Code: 400,
       };
+      break;
     case errorMsg.CHECK_USER_MOBILE_NUMBER_AND_ATT_DATE:
       response = {
         Message: errorMsg.CHECK_USER_MOBILE_NUMBER_AND_ATT_DATE,
         Code: 400,
       };
+      break;
   }
   return response;
 };
