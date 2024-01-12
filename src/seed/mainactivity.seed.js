@@ -1,6 +1,6 @@
 const mainActivitiesSeedData = [
   {
-    activity_name: "AHU's",
+    activity_name: "AHU",
     master_location: "Terminal",
     is_active: true,
   },
@@ -30,7 +30,7 @@ const mainActivitiesSeedData = [
     is_active: true,
   },
   {
-    activity_name: "FCU's",
+    activity_name: "FCU",
     master_location: "Terminal",
     is_active: true,
   },

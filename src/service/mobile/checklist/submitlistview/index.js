@@ -15,6 +15,7 @@ const submitListView = async (query) => {
     equipmentTagId,
     activityType,
     filterBy,
+    user_mobile_no,
   } = query;
 
   const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
@@ -28,17 +29,12 @@ const submitListView = async (query) => {
     filter = {
       $match: { activity_id: new objectId(activityId), delete_status: false },
     };
-  } else if (!activityId && equipmentTagId && !activityType) {
+  } else if (activityId && user_mobile_no && equipmentTagId && !activityType) {
     filter = {
       $match: {
+        user_mobile_no: Number(user_mobile_no),
+        activity_id: new objectId(activityId),
         equipment_tag: new objectId(equipmentTagId),
-        delete_status: false,
-      },
-    };
-  } else if (!activityId && !equipmentTagId && activityType) {
-    filter = {
-      $match: {
-        activity_type: new objectId(activityType),
         delete_status: false,
       },
     };
@@ -85,14 +81,14 @@ const submitListView = async (query) => {
     filterByQuery = {
       $match: {
         check_list_type: filterByOption.quarterly,
-        date_of_create: { $lte: new Date(currentDate.toISOString()) },
+        createdAt: { $lte: new Date(currentDate.toISOString()) },
       },
     };
   } else if (filterBy === filterByOption.monthly) {
     filterByQuery = {
       $match: {
         check_list_type: filterByOption.monthly,
-        date_of_create: { $lte: new Date(currentDate.toISOString()) },
+        createdAt: { $lte: new Date(currentDate.toISOString()) },
       },
     };
   } else if (filterBy === filterByOption.halfYearly) {

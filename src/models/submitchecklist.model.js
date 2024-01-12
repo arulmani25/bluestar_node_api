@@ -3,7 +3,7 @@ const timestamps = require("mongoose-timestamp");
 const objectId = mongoose.Types.ObjectId;
 const submitChecklistSchema = new mongoose.Schema({
   user_mobile_no: { type: Number },
-
+  activity_id: { type: objectId },
   check_list_type: { type: String },
   description: [
     {
