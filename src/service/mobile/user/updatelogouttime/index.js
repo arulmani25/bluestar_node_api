@@ -32,8 +32,6 @@ const updateLogoutTime = async (payload) => {
       att_date: new Date(checkUserAtt[0].att_date),
     });
     return record;
-  } else {
-    throw new Error(errorMsg.PLEASE_CHECKIN_BEFORE_UPDATING_LOGOUT_TIME);
   }
 };
 

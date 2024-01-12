@@ -25,6 +25,7 @@ const priority = {
   medium: "medium",
   high: "high",
   critical: "critical",
+  inProgress: "In Progress"
 };
 
 module.exports = { attd_status, filterByOption, jobStatus, priority };

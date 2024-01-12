@@ -31,7 +31,7 @@ const checkListMobile = async (query) => {
   } else if (!activityId && equipmentTagId && !activityType) {
     filter = {
       $match: {
-        equipment_tag: new objectId(equipmentTagId),
+        equipment_tag_name: equipmentTagId,
         delete_status: false,
       },
     };
@@ -46,14 +46,14 @@ const checkListMobile = async (query) => {
     filter = {
       $match: {
         activity_id: new objectId(activityId),
-        equipment_tag: new objectId(equipmentTagId),
+        equipment_tag_name: equipmentTagId,
         delete_status: false,
       },
     };
   } else if (!activityId && equipmentTagId && activityType) {
     filter = {
       $match: {
-        equipment_tag: new objectId(equipmentTagId),
+        equipment_tag_name: equipmentTagId,
         activity_type: new objectId(activityType),
         delete_status: false,
       },
@@ -70,7 +70,7 @@ const checkListMobile = async (query) => {
     filter = {
       $match: {
         activity_id: new objectId(activityId),
-        equipment_tag: new objectId(equipmentTagId),
+        equipment_tag_name: equipmentTagId,
         activity_type: new objectId(activityType),
         delete_status: false,
       },

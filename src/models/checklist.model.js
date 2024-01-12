@@ -23,6 +23,7 @@ const checkListSchema = new mongoose.Schema({
   field_required: { type: Boolean },
   activity_type: { type: objectId },
   equipment_tag: { type: objectId },
+  equipment_tag_name: { type: String },
   check_list_type: {
     type: String,
     enum: [
