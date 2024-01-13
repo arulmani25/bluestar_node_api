@@ -10,6 +10,9 @@ const ticketSchema = new mongoose.Schema({
   sub_location: { type: String },
   ticket_heading: { type: String },
   ticket_description: { type: String },
+  phase:{type:String},
+  type:{type:String},
+  fault_description:{type:String},
   status: {
     type: String,
     enum: [

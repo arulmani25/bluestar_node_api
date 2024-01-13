@@ -1,7 +1,7 @@
 const model = require("../../../../models/index");
 
 const ticketList = async (payload) => {
-  const { searchKey, skip, limit, sortkey, sortOrder } = payload;
+  const { searchKey, skip, limit, sortkey, sortOrder, status } = payload;
 
   const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
 
@@ -9,7 +9,7 @@ const ticketList = async (payload) => {
 
   const recordList = await model.ticketModel.aggregate([
     {
-      $match: {},
+      $match: status ? { status: status } : {},
     },
     {
       $match: searchKey

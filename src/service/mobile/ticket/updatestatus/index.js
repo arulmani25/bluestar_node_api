@@ -10,7 +10,10 @@ const updateTicketStatusRecord = async (id, payload) => {
     const updatedRecord = await model.ticketModel.updateOne(
       { _id: isExist._id },
       {
-        $set: { status: payload.status },
+        $set: {
+          status: payload.status,
+          fault_description: payload.fault_description,
+        },
       }
     );
     return updatedRecord;
