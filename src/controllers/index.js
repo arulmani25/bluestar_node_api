@@ -15,6 +15,7 @@ const tempCheckListController = require("./tempchecklist");
 const jobController = require("./jobs");
 const locationController = require("./location");
 const subLocationController = require("./sublocation");
+const uploadController = require("./upload");
 
 apiRouter.use("/admin", adminController);
 apiRouter.use("/user", userController);
@@ -29,5 +30,6 @@ apiRouter.use("/temp", tempCheckListController);
 apiRouter.use("/jobs", jobController);
 apiRouter.use("/location", locationController);
 apiRouter.use("/sublocation", subLocationController);
+apiRouter.use("/upload", uploadController);
 
 module.exports = apiRouter;

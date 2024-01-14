@@ -52,6 +52,7 @@ const successMsg = {
   LOGIN_STATUS_RETRIVED: "Login Status Retrived",
   LOGGED_OUT_SUCCESSFULLY: "Logged Out Successfully ",
   TICKET_RAISED_SUCCESSFULLY: "Ticket Raised Successfully",
+  FILE_UPLOAD_SUCCESS:"Successfully Uploaded File"
 };
 
 module.exports = { errorMsg, successMsg };
