@@ -23,6 +23,7 @@ const errorMsg = {
   FAILED_TO_CREATE_MAIN_LOCATION: "Failed To Create Main Location",
   FAILED_TO_CREATE_SUB_LOCATION: "Failed To Create Sub Location",
   FILTER_TYPE_ALREADY_EXIST: "Filter Type Already Exist",
+  REPORT_NOT_FOUND: "Report Not Found",
 };
 
 const successMsg = {
@@ -52,7 +53,8 @@ const successMsg = {
   LOGIN_STATUS_RETRIVED: "Login Status Retrived",
   LOGGED_OUT_SUCCESSFULLY: "Logged Out Successfully ",
   TICKET_RAISED_SUCCESSFULLY: "Ticket Raised Successfully",
-  FILE_UPLOAD_SUCCESS:"Successfully Uploaded File"
+  FILE_UPLOAD_SUCCESS: "Successfully Uploaded File",
+  REPORTS_VIEWED_SUCCESSFULLY: "Reports Viewed Successfully",
 };
 
 module.exports = { errorMsg, successMsg };

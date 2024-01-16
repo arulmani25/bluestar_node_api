@@ -13,7 +13,6 @@ const activityListUsingMobile = async (req, res, next) => {
       Code: 200,
     });
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };

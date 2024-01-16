@@ -18,6 +18,10 @@ const jobStatus = {
   inProgress: "In Progress",
   closed: "close",
   Open: "open",
+  started: "Job Started",
+  notStarted: "Not Started",
+  paused: "Job Paused",
+  submitted: "Job Submitted",
 };
 
 const priority = {
@@ -25,7 +29,7 @@ const priority = {
   medium: "medium",
   high: "high",
   critical: "critical",
-  inProgress: "In Progress"
+  inProgress: "In Progress",
 };
 
 module.exports = { attd_status, filterByOption, jobStatus, priority };
