@@ -16,6 +16,7 @@ const jobController = require("./jobs");
 const locationController = require("./location");
 const subLocationController = require("./sublocation");
 const uploadController = require("./upload");
+const reportsController = require("./reports");
 
 apiRouter.use("/admin", adminController);
 apiRouter.use("/user", userController);
@@ -31,5 +32,6 @@ apiRouter.use("/jobs", jobController);
 apiRouter.use("/location", locationController);
 apiRouter.use("/sublocation", subLocationController);
 apiRouter.use("/upload", uploadController);
+apiRouter.use("/reports", reportsController);
 
 module.exports = apiRouter;
