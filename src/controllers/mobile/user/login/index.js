@@ -14,11 +14,6 @@ const userLoginUsingMobile = async (req, res, next) => {
 
     const data = await mobileServiceController.user.userMobileLogin(payload);
 
-    const updateLoginTime = await userServiceController.updateUserRecord(
-      data[0]._id,
-      { last_login_time: Date.now() }
-    );
-
     return res.json({
       Status: "Success",
       Message: successMsg.USER_LOGGEDIN_SUCCESSFULLY,
@@ -26,7 +21,6 @@ const userLoginUsingMobile = async (req, res, next) => {
       Code: 200,
     });
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };

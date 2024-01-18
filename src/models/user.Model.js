@@ -7,6 +7,8 @@ const userSchema = new mongoose.Schema({
   user_password: { type: String },
   user_per_mob: { type: Number },
   user_name: { type: String },
+  first_name: { type: String },
+  last_name: { type: String },
   user_email: { type: String },
   user_introduced_by: { type: String },
   user_location: { type: String },
@@ -25,17 +27,6 @@ const userSchema = new mongoose.Schema({
   user_token: { type: String },
   user_type: { type: ObjectId },
   emp_type: { type: ObjectId },
-  login_lat: { type: String },
-  login_long: { type: String },
-  login_address: { type: String },
-  logout_lat: { type: String },
-  logout_long: { type: String },
-  logout_address: { type: String },
-  att_status: { type: String },
-  att_date: { type: Date },
-  att_start_lat: { type: String },
-  att_start_long: { type: String },
-  att_start_time: { type: String },
 });
 userSchema.plugin(timestamps);
 

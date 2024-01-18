@@ -80,6 +80,24 @@ const errorResponse = (msg) => {
         Code: 400,
       };
       break;
+    case errorMsg.MOBILE_NUMBER_ALREADY_EXIST:
+      response = {
+        Message: errorMsg.MOBILE_NUMBER_ALREADY_EXIST,
+        Code: 400,
+      };
+      break;
+    case errorMsg.EMAIL_ALREADY_EXIST:
+      response = {
+        Message: errorMsg.EMAIL_ALREADY_EXIST,
+        Code: 400,
+      };
+      break;
+    case errorMsg.USER_NAME_ALREADY_EXIST:
+      response = {
+        Message: errorMsg.USER_NAME_ALREADY_EXIST,
+        Code: 400,
+      };
+      break;
   }
   return response;
 };

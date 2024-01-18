@@ -24,6 +24,9 @@ const errorMsg = {
   FAILED_TO_CREATE_SUB_LOCATION: "Failed To Create Sub Location",
   FILTER_TYPE_ALREADY_EXIST: "Filter Type Already Exist",
   REPORT_NOT_FOUND: "Report Not Found",
+  MOBILE_NUMBER_ALREADY_EXIST: "Mobile Number Already Exist",
+  USER_NAME_ALREADY_EXIST: "User Name Already Exist",
+  EMAIL_ALREADY_EXIST: "Email Already Exist",
 };
 
 const successMsg = {

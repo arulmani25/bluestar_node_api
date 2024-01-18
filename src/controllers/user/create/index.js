@@ -7,13 +7,6 @@ const createUser = async (req, res, next) => {
   try {
     const payload = req.body;
 
-    (payload.last_login_time = new Date().toLocaleString("en-US", {
-      timeZone: "Asia/Calcutta",
-    })),
-      (payload.last_logout_time = new Date().toLocaleString("en-US", {
-        timeZone: "Asia/Calcutta",
-      }));
-
     const password = await encryptPassword(payload.user_password);
 
     payload.user_password = password;

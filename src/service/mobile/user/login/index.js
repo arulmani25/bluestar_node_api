@@ -4,7 +4,7 @@ const { passwordValidation } = require("../../../../utils/index");
 
 const userMobileLogin = async (payload) => {
   const isExist = await model.userModel.findOne({
-    user_mobile_no: payload.user_mobile_no,
+    user_name: payload.user_name,
     delete_status: false,
   });
 
