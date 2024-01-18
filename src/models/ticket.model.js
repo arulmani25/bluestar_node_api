@@ -6,13 +6,14 @@ const { jobStatus, priority } = require("../utils/enum");
 const ticketSchema = new mongoose.Schema({
   equipment: { type: String },
   equipment_no: { type: String },
+  ticket_no: { type: String },
   location: { type: String },
   sub_location: { type: String },
   ticket_heading: { type: String },
   ticket_description: { type: String },
-  phase:{type:String},
-  type:{type:String},
-  fault_description:{type:String},
+  phase: { type: String },
+  type: { type: String },
+  fault_description: { type: String },
   status: {
     type: String,
     enum: [

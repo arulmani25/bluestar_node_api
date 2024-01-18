@@ -12,7 +12,7 @@ router.post("/create", ticketRaiseUsingMobile);
 router.get("/dropdown", ticketDropDown);
 router.get("/list", getTicketList);
 router.put("/update/:id", ticketStatusUpdate);
-router.get("/view/:id", ticketView);
+router.get("/view", ticketView);
 router.get("/count", ticketRaiseCount);
 
 module.exports = router;

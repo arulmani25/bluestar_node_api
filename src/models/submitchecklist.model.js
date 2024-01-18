@@ -4,6 +4,9 @@ const objectId = mongoose.Types.ObjectId;
 const submitChecklistSchema = new mongoose.Schema({
   user_mobile_no: { type: Number },
   activity_id: { type: objectId },
+  equipment_tag: { type: objectId },
+  start_time: { type: String },
+  end_time: { type: String },
   check_list_type: { type: String },
   description: [
     {
@@ -11,33 +14,19 @@ const submitChecklistSchema = new mongoose.Schema({
       status: { type: String },
     },
   ],
-  gauge_inlet: { type: String },
-  gauge_outlet: { type: String },
-  pressure_outlet: { type: String },
-  pressure_inlet: { type: String },
-  total_amps: {
-    r: { type: Number },
-    y: { type: Number },
-    b: { type: Number },
-  },
-  voltage: {
-    ry: { type: Number },
-    yb: { type: Number },
-    br: { type: Number },
-  },
-  ahu_cfm: { type: String },
-  ahu_operation_mode: { type: String },
-  supply_air_temp: { type: Number },
-  return_air_temp: { type: Number },
-  chw_inlet_temp: { type: Number },
-  maintenance_done_by: { type: objectId },
+  unit_parameters: [
+    {
+      parameter: { type: String },
+      value: { type: String || Number },
+    },
+  ],
   technicians_name: { type: Array },
   shift_supervisor_name: { type: objectId },
   shift_incharge_name: { type: objectId },
   supervisor_sign: { type: String },
   incharge_sign: { type: String },
   delete_status: { type: Boolean, default: false },
-  equipment_tag: { type: objectId },
+  maintenance_done_by: { type: objectId },
 });
 submitChecklistSchema.plugin(timestamps);
 mongoose.model("submitchecklist", submitChecklistSchema);

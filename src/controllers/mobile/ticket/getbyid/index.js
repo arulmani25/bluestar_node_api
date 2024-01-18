@@ -4,7 +4,7 @@ const { successMsg } = require("../../../../utils");
 const ticketView = async (req, res, next) => {
   try {
     const record = await mobileServiceController.ticket.viewTicket(
-      req.params.id
+      req.query.ticket_no
     );
     return res.json({
       Status: "Success",
