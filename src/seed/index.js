@@ -5,6 +5,8 @@ const { logoutReasonSeedData } = require("./logoutreason.seed");
 const { subLocationSeed } = require("./sublocation.seed");
 const { filterSeedData } = require("./filtertype.seed");
 const { fieldTypeSeed } = require("./fieldtype.seed");
+const { roleTypeSeed } = require("./role.seed");
+const { adminSeedData } = require("./admin.seed");
 
 module.exports = {
   equipmentsSeedData,
@@ -14,4 +16,6 @@ module.exports = {
   subLocationSeed,
   filterSeedData,
   fieldTypeSeed,
+  roleTypeSeed,
+  adminSeedData,
 };

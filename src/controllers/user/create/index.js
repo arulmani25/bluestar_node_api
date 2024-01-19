@@ -1,10 +1,15 @@
 const userServiceController = require("../../../service/user");
+const { roles } = require("../../../utils/enum");
 
 const { successMsg, errorMsg } = require("../../../utils/index");
 const { encryptPassword } = require("../../../utils/passwordencryption");
 
 const createUser = async (req, res, next) => {
   try {
+    if (req.loggedUser.role !== roles.admin) {
+      throw new Error(errorMsg.UNAUTHORIZED_USER);
+    }
+
     const payload = req.body;
 
     const password = await encryptPassword(payload.user_password);

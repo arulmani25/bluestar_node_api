@@ -17,6 +17,7 @@ const createAdmin = async (payload) => {
       access_location: payload.access_location,
       delete_status: payload.delete_status,
       last_login: new Date(),
+      role: "admin",
     });
     return createRecord;
   }

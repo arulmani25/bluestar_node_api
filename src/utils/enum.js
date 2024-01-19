@@ -32,4 +32,12 @@ const priority = {
   inProgress: "In Progress",
 };
 
-module.exports = { attd_status, filterByOption, jobStatus, priority };
+const roles = {
+  admin: "admin",
+  technician: "technician",
+  bial: "bial",
+  bluestar: "bluestar",
+  supervisor: "supervisor",
+};
+
+module.exports = { attd_status, filterByOption, jobStatus, priority, roles };

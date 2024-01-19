@@ -1,18 +1,12 @@
 const jwt = require("jsonwebtoken");
-const UserdetailsModel = require("../models/UserdetailsModel");
+const model = require("../models/index");
+const { roles } = require("./enum");
 
-const generateToken = async (user) => {
+const generateToken = async (payload) => {
   try {
-    const secretKey = "ahdgchadfusayyfscsasdwbdkwdhawsku";
+    const secretKey = "asdsadgjsahdyeadjhsjdgasyfdhgsadhgasdhgsacdhas";
 
-    const token = jwt.sign(
-      {
-        userId: user._id,
-        designation: user.designation,
-        email_id: user.email_id,
-      },
-      secretKey
-    );
+    const token = jwt.sign(payload, secretKey, { expiresIn: "2h" });
 
     return token;
   } catch (error) {
@@ -22,7 +16,7 @@ const generateToken = async (user) => {
 
 const verifyToken = async (req, res, next) => {
   try {
-    const secretKey = "ahdgchadfuafdwbdkwdhawsku";
+    const secretKey = "asdsadgjsahdyeadjhsjdgasyfdhgsadhgasdhgsacdhas";
 
     if (!req.headers.authorization)
       throw new Error("Provide a valid JWT Token");
@@ -34,12 +28,20 @@ const verifyToken = async (req, res, next) => {
         return res.json({ status: 401, message: "Invalid Token" });
       } else {
         let loggedUser = {
-          userId: decoded.userId,
-          designation: decoded.designation,
+          userId: decoded._id,
+          role: decoded.role,
         };
-        const userExist = await UserdetailsModel.findOne({
-          email_id: decoded.email_id,
-        });
+        let userExist;
+        if (decoded.role === roles.admin) {
+          userExist = await model.adminModel.findOne({
+            _id: loggedUser.userId,
+          });
+        } else {
+          userExist = await model.userModel.findOne({
+            _id: loggedUser.userId,
+          });
+        }
+
         if (!userExist) {
           return res.json({ status: 401, message: "UnAuthorized User" });
         }

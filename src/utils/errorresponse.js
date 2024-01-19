@@ -8,6 +8,12 @@ const errorResponse = (msg) => {
   };
 
   switch (msg) {
+    case errorMsg.UNAUTHORIZED_USER:
+      response = {
+        Message: errorMsg.UNAUTHORIZED_USER,
+        Code: 401,
+      };
+      break;
     case errorMsg.USER_NOT_FOUND:
       response = {
         Message: errorMsg.USER_NOT_FOUND,

@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { verifyToken } = require("../../../utils/jwt");
 
 const { createUser } = require("./create");
 const { userLoginUsingMobile } = require("./login");
@@ -12,15 +13,15 @@ const { updateLogoutTime } = require("./updatelogouttime");
 const { userAttendanceList } = require("./listattendance");
 const { userLogout } = require("./logout");
 
-router.post("/create", createUser);
+router.post("/create", verifyToken, createUser);
 router.post("/login", userLoginUsingMobile);
-router.get("/list", userList);
-router.get("/logoutreason", logoutReasonList);
-router.get("/attdlist", userAttendanceList);
-router.post("/loginstatus", userLoginStatusMobile);
-router.post("/attendance", createAttendance);
-router.post("/logout", userLogout);
-router.get("/:user_mobile_no", getUserById);
-router.put("/logoutupdate", updateLogoutTime);
+router.get("/list", verifyToken, userList);
+router.get("/logoutreason", verifyToken, logoutReasonList);
+router.get("/attdlist", verifyToken, userAttendanceList);
+router.post("/loginstatus", verifyToken, userLoginStatusMobile);
+router.post("/attendance", verifyToken, createAttendance);
+router.post("/logout", verifyToken, userLogout);
+router.get("/:user_mobile_no", verifyToken, getUserById);
+router.put("/logoutupdate", verifyToken, updateLogoutTime);
 
 module.exports = router;

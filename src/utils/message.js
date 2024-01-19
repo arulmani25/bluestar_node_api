@@ -27,6 +27,7 @@ const errorMsg = {
   MOBILE_NUMBER_ALREADY_EXIST: "Mobile Number Already Exist",
   USER_NAME_ALREADY_EXIST: "User Name Already Exist",
   EMAIL_ALREADY_EXIST: "Email Already Exist",
+  UNAUTHORIZED_USER: "UnAuthorized User",
 };
 
 const successMsg = {

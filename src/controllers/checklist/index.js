@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const router = Router();
+const { verifyToken } = require("../../utils/jwt");
 
 const { createCheckList } = require("./create");
 const { getCheckList } = require("./getlist");
@@ -11,14 +12,14 @@ const { deleteCheckList } = require("./delete");
 const { filterOptionList } = require("./filteroption");
 const { fieldTypeList } = require("./fieldtypes");
 
-router.post("/create", createCheckList);
-router.get("/list", getCheckList);
-router.get("/activitydropdown", activityDropDown);
-router.get("/subactivitydropdown/:id", subActivityDropDown);
-router.get("/filtertype", filterOptionList);
-router.get("/fieldtype", fieldTypeList);
-router.put("/update/:id", updateCheckList);
-router.put("/delete/:id", deleteCheckList);
-router.get("/:id", getCheckListById);
+router.post("/create", verifyToken, createCheckList);
+router.get("/list", verifyToken, getCheckList);
+router.get("/activitydropdown", verifyToken, activityDropDown);
+router.get("/subactivitydropdown/:id", verifyToken, subActivityDropDown);
+router.get("/filtertype", verifyToken, filterOptionList);
+router.get("/fieldtype", verifyToken, fieldTypeList);
+router.put("/update/:id", verifyToken, updateCheckList);
+router.put("/delete/:id", verifyToken, deleteCheckList);
+router.get("/:id", verifyToken, getCheckListById);
 
 module.exports = router;

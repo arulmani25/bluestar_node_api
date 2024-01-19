@@ -3,8 +3,9 @@ const router = express.Router();
 
 const { createRoleType } = require("./create");
 const { getRoleTypeList } = require("./list");
+const { verifyToken } = require("../../utils");
 
-router.post("/create", createRoleType);
-router.get("/list", getRoleTypeList);
+router.post("/create", verifyToken, createRoleType);
+router.get("/list", verifyToken, getRoleTypeList);
 
 module.exports = router;

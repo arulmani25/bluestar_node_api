@@ -6,11 +6,12 @@ const { getSubLocationList } = require("./list");
 const { deleteSubLocation } = require("./delete");
 const { getSubLocationById } = require("./getbyid");
 const { updateSubLocation } = require("./update");
+const { verifyToken } = require("../../utils");
 
-router.post("/create", createSubLocation);
-router.get("/list", getSubLocationList);
-router.get("/:id", getSubLocationById);
-router.put("/remove/:id", deleteSubLocation);
-router.put("/update/:id", updateSubLocation);
+router.post("/create", verifyToken, createSubLocation);
+router.get("/list", verifyToken, getSubLocationList);
+router.get("/:id", verifyToken, getSubLocationById);
+router.put("/remove/:id", verifyToken, deleteSubLocation);
+router.put("/update/:id", verifyToken, updateSubLocation);
 
 module.exports = router;
