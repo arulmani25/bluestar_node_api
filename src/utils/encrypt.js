@@ -1,6 +1,8 @@
 const crypto = require("crypto-js");
 
-const secretKey = process.env.ENCRYPT_SECRET_KEY;
+// const secretKey = process.env.ENCRYPT_SECRET_KEY;
+
+const secretKey = "ahgdashdfytsdgsdsbluehghsagdstar";
 
 const encryptText = (text) => {
   const encrypted = crypto.AES.encrypt(text, secretKey).toString();

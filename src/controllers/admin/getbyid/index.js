@@ -2,7 +2,9 @@ const { adminServiceController } = require("../../../service/index");
 
 const { errorMsg, successMsg } = require("../../../utils/index");
 
-const getAdminById = async (req, res) => {
+const { encryptText } = require("../../../utils/encrypt");
+
+const getAdminById = async (req, res, next) => {
   try {
     const id = req.params.id;
 
@@ -11,6 +13,13 @@ const getAdminById = async (req, res) => {
     const data = await adminServiceController.getById(id);
 
     if (!data) throw new Error(errorMsg.USER_NOT_FOUND);
+
+    const array = [];
+    array.push(data);
+    array.map((el) => {
+      (el.mobile_no = encryptText(el.mobile_no)),
+        (el.email_id = encryptText(el.email_id));
+    });
 
     return res.json({
       Status: "Success",

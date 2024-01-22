@@ -6,7 +6,7 @@ const generateToken = async (payload) => {
   try {
     const secretKey = "asdsadgjsahdyeadjhsjdgasyfdhgsadhgasdhgsacdhas";
 
-    const token = jwt.sign(payload, secretKey, { expiresIn: "2h" });
+    const token = jwt.sign(payload, secretKey);
 
     return token;
   } catch (error) {
