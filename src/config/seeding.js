@@ -11,6 +11,7 @@ const modelArray = [
   model.filedTypeModel,
   model.role,
   model.adminModel,
+  model.checkListValidation,
 ];
 
 const seedRecordToDB = async () => {
@@ -44,6 +45,9 @@ const seedRecordToDB = async () => {
           break;
         case "admins":
           await mod.insertMany(seedData.adminSeedData);
+          break;
+        case "checklistvalidations":
+          await mod.insertMany(seedData.checklistValidationSeed);
           break;
       }
 

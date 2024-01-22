@@ -7,6 +7,7 @@ const { filterSeedData } = require("./filtertype.seed");
 const { fieldTypeSeed } = require("./fieldtype.seed");
 const { roleTypeSeed } = require("./role.seed");
 const { adminSeedData } = require("./admin.seed");
+const { checklistValidationSeed } = require("./checklistvalidation.seed");
 
 module.exports = {
   equipmentsSeedData,
@@ -18,4 +19,5 @@ module.exports = {
   fieldTypeSeed,
   roleTypeSeed,
   adminSeedData,
+  checklistValidationSeed,
 };

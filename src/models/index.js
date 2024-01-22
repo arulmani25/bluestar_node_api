@@ -18,6 +18,7 @@ const filterModel = require("./filter.model");
 const submitchecklistModel = require("./submitchecklist.model");
 const ticketModel = require("./ticket.model");
 const filedTypeModel = require("./filedtype.model");
+const checkListValidation = require("./checklistvalidation.model");
 
 module.exports = {
   adminModel,
@@ -40,4 +41,5 @@ module.exports = {
   submitchecklistModel,
   ticketModel,
   filedTypeModel,
+  checkListValidation,
 };
