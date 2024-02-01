@@ -14,6 +14,7 @@ const ticketSchema = new mongoose.Schema({
   phase: { type: String },
   type: { type: String },
   fault_description: { type: String },
+  image: { type: Array },
   status: {
     type: String,
     enum: [
