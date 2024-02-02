@@ -47,7 +47,8 @@ const fileUpload = async (payload) => {
       isFilePathExist = fs.existsSync(filePath);
       if (!isFilePathExist) {
         fs.writeFileSync(filePath, element.data, "binary");
-        uploadedPath.push(`${baseUrl}${payload.ticket_no}/${element.name}`);
+        // uploadedPath.push(`${baseUrl}${payload.ticket_no}/${element.name}`);
+        uploadedPath.push(filePath);
       }
     });
   } else {
@@ -59,7 +60,8 @@ const fileUpload = async (payload) => {
 
     if (!isFilePathExist)
       fs.writeFileSync(filePath, payload.files.data, "binary");
-    uploadedPath.push(`${baseUrl}${payload.ticket_no}/${payload.files.name}`);
+    // uploadedPath.push(`${baseUrl}${payload.ticket_no}/${payload.files.name}`);
+    uploadedPath.push(filePath);
   }
 
   const data = await model.ticketModel.create({
