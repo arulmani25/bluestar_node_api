@@ -5,7 +5,7 @@ const {
 const {
   successMsg,
   errorMsg,
-  attd_status,
+  generateToken,
 } = require("../../../../utils/index");
 
 const userLoginUsingMobile = async (req, res, next) => {
@@ -14,6 +14,17 @@ const userLoginUsingMobile = async (req, res, next) => {
 
     const data = await mobileServiceController.user.userMobileLogin(payload);
 
+    const token = await generateToken({
+      _id: data[0]._id,
+      mobile_no: data[0].mobile_no,
+      role: data[0].role,
+    });
+
+    if (!data) throw new Error(errorMsg.USER_NOT_FOUND);
+
+    delete data[0].password;
+    delete data[0].confirm_password;
+    data[0].token = token;
     return res.json({
       Status: "Success",
       Message: successMsg.USER_LOGGEDIN_SUCCESSFULLY,
