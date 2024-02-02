@@ -4,6 +4,7 @@ const { ticketList } = require("./list");
 const { updateTicketStatusRecord } = require("./updatestatus");
 const { ticketCount } = require("./count");
 const { viewTicket } = require("./getbyid");
+const { fileUpload } = require("./fileupload");
 
 module.exports = {
   requestTicketMobile,
@@ -12,4 +13,5 @@ module.exports = {
   updateTicketStatusRecord,
   ticketCount,
   viewTicket,
+  fileUpload,
 };

@@ -7,11 +7,12 @@ const path = require("path");
 const viewFile = async (req, res, next) => {
   try {
     const payload = req.params.id;
-    // const splitPath = payload.split("-")
+
     const dir = path.join(__dirname, `../../../../upload/${payload}`);
 
     return res.sendFile(`${dir}/${req.query.fileName}`);
   } catch (error) {
+    console.log(error)
     next(error);
   }
 };
