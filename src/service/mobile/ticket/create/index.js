@@ -14,17 +14,19 @@ const requestTicketMobile = async (payload) => {
 
   let count;
 
-  if (!record.length) {
-    count = "1".padStart(3, "0");
-    payload.ticket_no = `BIAL-T2-HVAC-${currentDate.format(
-      "YY-MM-DD"
-    )}-${count}`;
-  } else {
-    const lastRecordCount = record[0].ticket_no.split("-").at(-1);
-    count = `${Number(lastRecordCount) + 1}`.padStart(3, "0");
-    payload.ticket_no = `BIAL-T2-HVAC-${currentDate.format(
-      "YY-MM-DD"
-    )}-${count}`;
+  if (!payload.ticket_no) {
+    if (!record.length) {
+      count = "1".padStart(3, "0");
+      payload.ticket_no = `BIAL-T2-HVAC-${currentDate.format(
+        "YY-MM-DD"
+      )}-${count}`;
+    } else {
+      const lastRecordCount = record[0].ticket_no.split("-").at(-1);
+      count = `${Number(lastRecordCount) + 1}`.padStart(3, "0");
+      payload.ticket_no = `BIAL-T2-HVAC-${currentDate.format(
+        "YY-MM-DD"
+      )}-${count}`;
+    }
   }
 
   const createRecord = await model.ticketModel.create({

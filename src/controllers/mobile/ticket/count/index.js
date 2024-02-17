@@ -16,21 +16,19 @@ const ticketRaiseCount = async (req, res, next) => {
       pending_count: 0,
     };
 
-   
-      record.forEach((el) => {
-        if (el.status === jobStatus.Open) {
-          obj.open_count = obj.open_count + 1;
-        } else if (el.status === jobStatus.closed) {
-          obj.close_count = obj.close_count + 1;
-        } else if (el.status === jobStatus.completed) {
-          obj.completed_count = obj.completed_count + 1;
-        } else if (el.status === jobStatus.inProgress) {
-          obj.inprogress_count = obj.inprogress_count + 1;
-        } else if (el.status === jobStatus.pending) {
-          obj.pending_count = obj.pending_count + 1;
-        }
-      });
-      
+    record.forEach((el) => {
+      if (el.status === jobStatus.Open) {
+        obj.open_count = obj.open_count + 1;
+      } else if (el.status === jobStatus.closed) {
+        obj.close_count = obj.close_count + 1;
+      } else if (el.status === jobStatus.completed) {
+        obj.completed_count = obj.completed_count + 1;
+      } else if (el.status === jobStatus.inProgress) {
+        obj.inprogress_count = obj.inprogress_count + 1;
+      } else if (el.status === jobStatus.pending) {
+        obj.pending_count = obj.pending_count + 1;
+      }
+    });
 
     return res.json({
       Status: "Success",
