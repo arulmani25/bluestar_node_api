@@ -16,7 +16,8 @@ const mobileRouter = require("./src/controllers/mobile");
 // Other required dependencies
 const connectToMongoDB = require("./src/config/mongodb");
 const { errorHandler } = require("./src/middlewares/errorhandler");
-
+const model = require("./src/models/index");
+const fs = require("fs");
 const app = express();
 
 // Database connectivity
@@ -64,8 +65,75 @@ app.use((req, res, next) => {
 app.use("/api", apiRouter);
 app.use("/api/mobile", mobileRouter);
 
+//delete uploaded file
+
+app.post("/deletefile", (req, res, next) => {
+  try {
+    const { filePath } = req.body;
+    if (!fs.existsSync(`${filePath}`)) {
+      return res.json({
+        message: "Path Not Exist",
+        status: "Failure",
+        code: 404,
+      });
+    }
+    fs.unlinkSync(`${filePath}`);
+    return res.json({
+      message: "File Deleted Successfully",
+      status: "Success",
+      code: 200,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
 //error handler
 app.use(errorHandler);
+
+//qrcode
+const Buffer = require("buffer").Buffer;
+
+app.post("/qr", async (req, res) => {
+  try {
+    const data = await model.newEquipmentTags.find({});
+
+    for (const iterator of data) {
+      if (iterator.qrcode) {
+        const imageBuffer = Buffer.from(
+          iterator.qrcode?.split("base64,")[1],
+          "base64"
+        );
+        fs.writeFileSync(
+          `M:/pradeep/qrcode/${iterator.equipment_tag}.png`,
+          imageBuffer,
+          (err) => {
+            if (err) {
+              console.error("Error:", err);
+            } else {
+              console.log("Image successfully saved.");
+            }
+          }
+        );
+      }
+    }
+    return res.json({ message: "convertion finished" });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.post("/qrupdate", async (req, res) => {
+  const record = await model.newEquipmentTags.find({});
+
+  for (const iterator of record) {
+    await model.equipmentsModel.findOneAndUpdate(
+      { equipment_tag: iterator.equipment_tag },
+      { $set: { qrcode: iterator.qrcode, cobie_tag: iterator.cobie_tag } }
+    );
+  }
+
+  return res.json({ message: "success" });
+});
 
 // 404 handler
 app.use((req, res) => {
