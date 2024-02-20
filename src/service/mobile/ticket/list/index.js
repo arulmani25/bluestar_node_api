@@ -9,7 +9,17 @@ const ticketList = async (payload) => {
 
   const recordList = await model.ticketModel.aggregate([
     {
-      $match: status ? { status: status } : {},
+      $group: {
+        _id: "$equipment_no",
+        record: {
+          $last: "$$ROOT",
+        },
+      },
+    },
+    {
+      $match: {
+        "record.status": status,
+      },
     },
     {
       $match: searchKey
@@ -17,6 +27,11 @@ const ticketList = async (payload) => {
             $or: [{}],
           }
         : {},
+    },
+    {
+      $project: {
+        _id: 0,
+      },
     },
     {
       $sort: sort,
@@ -28,6 +43,7 @@ const ticketList = async (payload) => {
       },
     },
   ]);
+
   return recordList;
 };
 
