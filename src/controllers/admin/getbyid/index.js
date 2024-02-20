@@ -14,12 +14,12 @@ const getAdminById = async (req, res, next) => {
 
     if (!data) throw new Error(errorMsg.USER_NOT_FOUND);
 
-    const array = [];
-    array.push(data);
-    array.map((el) => {
-      (el.mobile_no = encryptText(el.mobile_no)),
-        (el.email_id = encryptText(el.email_id));
-    });
+    // const array = [];
+    // array.push(data);
+    // array.map((el) => {
+    //   (el.mobile_no = encryptText(el.mobile_no)),
+    //     (el.email_id = encryptText(el.email_id));
+    // });
 
     return res.json({
       Status: "Success",

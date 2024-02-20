@@ -12,10 +12,10 @@ const equipmentList = async (req, res, next) => {
       req.query
     );
 
-    equipments[0].data.map((el) => {
-      el.equipment_tag = encryptText(el.equipment_tag);
-      el.qrcode = encryptText(el.qrcode);
-    });
+    // equipments[0].data.map((el) => {
+    //   el.equipment_tag = encryptText(el.equipment_tag);
+    //   el.qrcode = encryptText(el.qrcode);
+    // });
 
     return res.json({
       Status: "Success",

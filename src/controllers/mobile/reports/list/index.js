@@ -6,9 +6,9 @@ const reportList = async (req, res, next) => {
   try {
     const record = await mobileServiceController.report.reportList(req.query);
 
-    record[0].data.map((el) => {
-      el.equipment_tag_name = encryptText(el.equipment_tag_name);
-    });
+    // record[0].data.map((el) => {
+    //   el.equipment_tag_name = encryptText(el.equipment_tag_name);
+    // });
 
     return res.json({
       Status: "Success",

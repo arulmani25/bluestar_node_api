@@ -10,10 +10,10 @@ const getAdminList = async (req, res, next) => {
 
     const adminList = await adminServiceController.adminList(req.query);
 
-    adminList.map((el) => {
-      el.mobile_no = encryptText(el.mobile_no);
-      el.email_id = encryptText(el.email_id);
-    });
+    // adminList.map((el) => {
+    //   el.mobile_no = encryptText(el.mobile_no);
+    //   el.email_id = encryptText(el.email_id);
+    // });
 
     return res.json({
       Status: "Success",

@@ -8,7 +8,7 @@ const getReportById = async (req, res, next) => {
 
     const record = await mobileServiceController.report.getReportById(id);
 
-    record.equipment_tag_name = encryptText(record.equipment_tag_name);
+    // record.equipment_tag_name = encryptText(record.equipment_tag_name);
 
     return res.json({
       Status: "Success",

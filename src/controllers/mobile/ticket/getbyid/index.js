@@ -8,8 +8,8 @@ const ticketView = async (req, res, next) => {
       req.query.ticket_no
     );
 
-    record.equipment_no = encryptText(record.equipment_no);
-    record.equipment = encryptText(record.equipment);
+    // record.equipment_no = encryptText(record.equipment_no);
+    // record.equipment = encryptText(record.equipment);
 
     return res.json({
       Status: "Success",
