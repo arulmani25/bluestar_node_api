@@ -9,14 +9,27 @@ const fileUpload = async (payload) => {
     return res.status(400).send("No files were uploaded.");
   }
 
-  const { sampleFile } = payload.files;
+  const sampleFile = payload.files;
+  const filePath = [];
+  if (sampleFile.length > 1) {
+    sampleFile.forEach((element) => {
+      const time_details = moment().format("YYYYMMDDHHmmss");
+      var path = "upload/" + time_details + "_" + element.name;
+      element.mv(path, async function (err) {
+        if (err) return err;
+      });
+      filePath.push(path);
+    });
+  } else {
+    const time_details = moment().format("YYYYMMDDHHmmss");
+    var path = "upload/" + time_details + "_" + sampleFile.name;
+    sampleFile.mv(path, async function (err) {
+      if (err) return err;
+    });
+    filePath.push(path);
+  }
 
-  const time_details = moment().format("YYYYMMDDHHmmss");
-  var path = "upload/" + time_details + "_" + sampleFile.name;
-  sampleFile.mv(path, async function (err) {
-    if (err) return err;
-  });
-  return `${path}`;
+  return filePath;
 };
 
 module.exports = { fileUpload };
