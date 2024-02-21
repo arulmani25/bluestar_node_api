@@ -10,7 +10,7 @@ const ticketList = async (payload) => {
   const recordList = await model.ticketModel.aggregate([
     {
       $group: {
-        _id: "$equipment_no",
+        _id: "$ticket_no",
         record: {
           $last: "$$ROOT",
         },
@@ -39,7 +39,7 @@ const ticketList = async (payload) => {
     {
       $facet: {
         pagination: [{ $count: "totalCount" }],
-        data: [{ $skip: Number(skip) || 0 }, { $limit: Number(limit) || 10 }],
+        data: [{ $skip: Number(skip) || 0 }, { $limit: Number(limit) || 100 }],
       },
     },
   ]);
