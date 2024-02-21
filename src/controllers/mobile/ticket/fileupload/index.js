@@ -1,14 +1,11 @@
-const {mobileServiceController} = require("../../../../service/index");
+const { mobileServiceController } = require("../../../../service/index");
 
-const { successMsg} = require("../../../../utils/message")
+const { successMsg } = require("../../../../utils/message");
 
 const uploadFile = async (req, res, next) => {
   try {
-    const payload = req.body;
-
-    payload.files = req.files.files
-
-    const record = await mobileServiceController.ticket.fileUpload(payload)
+    const { files } = req;
+    const record = await mobileServiceController.ticket.fileUpload(files);
 
     return res.json({
       Status: "Success",
