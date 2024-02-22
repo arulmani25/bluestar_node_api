@@ -105,7 +105,7 @@ app.post("/qr", async (req, res) => {
           "base64"
         );
         fs.writeFileSync(
-          `M:/pradeep/qrcode/${iterator.equipment_tag}.png`,
+          `M:/pradeep/qrcode/${iterator.cobie_tag}.png`,
           imageBuffer,
           (err) => {
             if (err) {
@@ -130,6 +130,10 @@ app.post("/qrupdate", async (req, res) => {
     await model.equipmentsModel.findOneAndUpdate(
       { equipment_tag: iterator.equipment_tag },
       { $set: { qrcode: iterator.qrcode, cobie_tag: iterator.cobie_tag } }
+    );
+    await model.checkListValidation.findOneAndUpdate(
+      { equipment_tag: iterator.equipment_tag },
+      { $set: { cobie_tag: iterator.cobie_tag } }
     );
   }
 

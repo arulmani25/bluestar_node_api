@@ -6,15 +6,8 @@ const moment = require("moment");
 const { filterOption } = require("../filteroption");
 
 const getCheckList = async (query) => {
-  const {
-    searchKey,
-    skip,
-    limit,
-    sortkey,
-    sortOrder,
-    activityId,
-    equipmentTagId,
-  } = query;
+  const { searchKey, skip, limit, sortkey, sortOrder, activityId, cobie_tag } =
+    query;
 
   const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
 
@@ -37,7 +30,7 @@ const getCheckList = async (query) => {
     .split(" ")[1];
 
   let checkPreviousMonthChecklist = await model.checkListValidation.findOne({
-    equipment_tag: equipmentTagId,
+    cobie_tag: cobie_tag,
   });
 
   if (
@@ -81,7 +74,7 @@ const getCheckList = async (query) => {
     }
   }
   const getFilterTypeBasedOnValidation = await model.equipmentsModel.findOne({
-    equipment_tag: equipmentTagId,
+    cobie_tag: cobie_tag,
   });
 
   for (const iterator of checklistToShow.flat()) {
@@ -107,7 +100,7 @@ const getCheckList = async (query) => {
     let recordList = await model.checkListModel.aggregate([
       {
         $match: {
-          equipment_tag_name: equipmentTagId,
+          cobie_tag: cobie_tag,
           check_list_type: el,
         },
       },
@@ -130,8 +123,15 @@ const getCheckList = async (query) => {
     ]);
     records.push(recordList);
   }
+  const sepDatafromArray = records.flat(1);
+  const checklist = [];
+  for (const rec of sepDatafromArray) {
+    if (rec.data.length > 0) {
+      checklist.push(rec.data[0]);
+    }
+  }
 
-  return [records.flat(), monthAndFilter];
+  return { checklist, monthAndFilter };
 };
 
 module.exports = { getCheckList };

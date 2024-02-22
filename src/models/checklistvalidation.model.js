@@ -7,6 +7,7 @@ const checklistValidationSchema = new mongoose.Schema({
   sub_location: { type: String },
   is_active: { type: Boolean, default: true },
   qrcode: { type: String },
+  cobie_tag: { type: String },
   Jan: { type: String, default: "not checked" },
   Feb: { type: String, default: "not checked" },
   Mar: { type: String, default: "not checked" },
