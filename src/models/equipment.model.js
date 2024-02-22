@@ -7,6 +7,7 @@ const equipmentSchema = new mongoose.Schema({
   sub_location: { type: String },
   is_active: { type: Boolean, default: true },
   qrcode: { type: String },
+  cobie_tag: { type: String },
   Jan: { type: String },
   Feb: { type: String },
   Mar: { type: String },

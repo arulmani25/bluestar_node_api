@@ -24,6 +24,7 @@ const checkListSchema = new mongoose.Schema({
   activity_type: { type: objectId },
   equipment_tag: { type: objectId },
   equipment_tag_name: { type: String },
+  cobie_tag: { type: String },
   check_list_type: {
     type: String,
     enum: [
