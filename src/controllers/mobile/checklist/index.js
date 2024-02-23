@@ -10,6 +10,6 @@ const { checklistListUsingTag } = require("./listbytag");
 router.get("/list", verifyToken, activityListUsingMobile);
 router.post("/submit", verifyToken, submitCheckList);
 router.get("/view", verifyToken, submittedChecklistView);
-router.get("/listbytag", checklistListUsingTag);
+router.get("/listbytag", verifyToken, checklistListUsingTag);
 
 module.exports = router;
