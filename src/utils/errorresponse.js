@@ -14,6 +14,7 @@ const errorResponse = (msg) => {
         Code: 401,
       };
       break;
+
     case errorMsg.USER_NOT_FOUND:
       response = {
         Message: errorMsg.USER_NOT_FOUND,
@@ -101,6 +102,12 @@ const errorResponse = (msg) => {
     case errorMsg.USER_NAME_ALREADY_EXIST:
       response = {
         Message: errorMsg.USER_NAME_ALREADY_EXIST,
+        Code: 400,
+      };
+      break;
+    case "checklist validation failed: cobie_tag: Path `cobie_tag` is required":
+      response = {
+        Message: "cobie_tag is required",
         Code: 400,
       };
       break;

@@ -76,7 +76,9 @@ const getCheckList = async (query) => {
   const getFilterTypeBasedOnValidation = await model.equipmentsModel.findOne({
     cobie_tag: cobie_tag,
   });
-
+  if (checklistToShow.length === 0) {
+    return "checklist already checked";
+  }
   for (const iterator of checklistToShow.flat()) {
     filters.push(getFilterTypeBasedOnValidation[iterator]);
     monthAndFilter.push({
@@ -127,7 +129,9 @@ const getCheckList = async (query) => {
   const checklist = [];
   for (const rec of sepDatafromArray) {
     if (rec.data.length > 0) {
-      checklist.push(rec.data[0]);
+      for (const iterator of rec.data) {
+        checklist.push(iterator);
+      }
     }
   }
 

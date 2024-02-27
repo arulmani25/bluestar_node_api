@@ -3,6 +3,7 @@ const timestamps = require("mongoose-timestamp");
 const objectId = mongoose.Schema.ObjectId;
 const { filterByOption } = require("../utils/enum");
 const checkListSchema = new mongoose.Schema({
+  cobie_tag: { type: String, required: true },
   cat_id: { type: String },
   index: { type: Number },
   field_name: { type: String },
@@ -24,7 +25,6 @@ const checkListSchema = new mongoose.Schema({
   activity_type: { type: objectId },
   equipment_tag: { type: objectId },
   equipment_tag_name: { type: String },
-  cobie_tag: { type: String },
   check_list_type: {
     type: String,
     enum: [
@@ -33,6 +33,7 @@ const checkListSchema = new mongoose.Schema({
       filterByOption.quarterly,
       filterByOption.yearly,
     ],
+    required: true,
   },
 });
 checkListSchema.plugin(timestamps);
