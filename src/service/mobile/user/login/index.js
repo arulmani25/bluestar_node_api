@@ -33,12 +33,27 @@ const userMobileLogin = async (payload) => {
       },
     },
     {
+      $lookup: {
+        from: "roles",
+        localField: "emp_type",
+        foreignField: "_id",
+        as: "user_role",
+      },
+    },
+    {
+      $unwind: {
+        path: "$user_role",
+        preserveNullAndEmptyArrays: true,
+      },
+    },
+    {
       $project: {
         user_mobile_no: 1,
         user_name: 1,
         user_email: 1,
         emp_type: 1,
         user_type: "$usertype.user_type",
+        user_role:"$user_role.role_type"
       },
     },
   ]);

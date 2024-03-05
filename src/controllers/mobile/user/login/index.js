@@ -17,7 +17,8 @@ const userLoginUsingMobile = async (req, res, next) => {
     const token = await generateToken({
       _id: data[0]._id,
       mobile_no: data[0].mobile_no,
-      role: data[0].role,
+      role: data[0].user_role,
+      user_type: data[0].user_type
     });
 
     if (!data) throw new Error(errorMsg.USER_NOT_FOUND);

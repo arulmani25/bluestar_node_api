@@ -22,13 +22,15 @@ const submitChecklistSchema = new mongoose.Schema({
       value: { type: String || Number },
     },
   ],
-  technicians_name: { type: Array },
-  shift_supervisor_name: { type: objectId },
-  shift_incharge_name: { type: objectId },
-  supervisor_sign: { type: String },
-  incharge_sign: { type: String },
+  technicians_name: { type: Array,},
+  supervisor_name: { type: String, default: "" },
+  bial_user_name: { type: String, default: "" },
+  technician_sign: { type: String, default: "" },
+  supervisor_sign: { type: String, default: "" },
+  bial_sign: { type: String, default: "" },
   delete_status: { type: Boolean, default: false },
   maintenance_done_by: { type: objectId },
+  cobie_tag: { type: String },
 });
 submitChecklistSchema.plugin(timestamps);
 mongoose.model("submitchecklist", submitChecklistSchema);
