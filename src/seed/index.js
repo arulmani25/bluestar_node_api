@@ -9,6 +9,7 @@ const { roleTypeSeed } = require("./role.seed");
 const { adminSeedData } = require("./admin.seed");
 const { checklistValidationSeed } = require("./checklistvalidation.seed");
 const { newEquipmentTags } = require("./newequipmentstag.seed");
+const {activitiesSeedData} = require("./activities.seed")
 
 module.exports = {
   equipmentsSeedData,
@@ -22,4 +23,5 @@ module.exports = {
   adminSeedData,
   checklistValidationSeed,
   newEquipmentTags,
+  activitiesSeedData
 };

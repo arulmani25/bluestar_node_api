@@ -13,6 +13,7 @@ const modelArray = [
   model.adminModel,
   model.checkListValidation,
   model.newEquipmentTags,
+  model.activitiesModel,
 ];
 
 const seedRecordToDB = async () => {
@@ -52,6 +53,9 @@ const seedRecordToDB = async () => {
           break;
         case "new_equipments":
           await mod.insertMany(seedData.newEquipmentTags);
+          break;
+        case "activities":
+          await mod.insertMany(seedData.activitiesSeedData);
           break;
       }
 

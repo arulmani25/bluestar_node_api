@@ -20,6 +20,7 @@ const ticketModel = require("./ticket.model");
 const filedTypeModel = require("./filedtype.model");
 const checkListValidation = require("./checklistvalidation.model");
 const newEquipmentTags = require("./newequipmentstag.model");
+const spareModel = require("./spare.model");
 
 module.exports = {
   adminModel,
@@ -44,4 +45,5 @@ module.exports = {
   filedTypeModel,
   checkListValidation,
   newEquipmentTags,
+  spareModel,
 };

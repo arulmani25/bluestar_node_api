@@ -17,6 +17,7 @@ const locationController = require("./location");
 const subLocationController = require("./sublocation");
 const uploadController = require("./upload");
 const reportsController = require("./reports");
+const spareController = require("./spare");
 
 apiRouter.use("/admin", adminController);
 apiRouter.use("/user", userController);
@@ -33,5 +34,6 @@ apiRouter.use("/location", locationController);
 apiRouter.use("/sublocation", subLocationController);
 apiRouter.use("/upload", uploadController);
 apiRouter.use("/reports", reportsController);
+apiRouter.use("/spare", spareController);
 
 module.exports = apiRouter;

@@ -12,6 +12,7 @@ const jobServiceController = require("./job");
 const locationServiceController = require("./location");
 const subLocationServiceController = require("./sublocation");
 const reportsServiceController = require("./reports");
+const spareServiceController = require("./spare")
 
 module.exports = {
   adminServiceController,
@@ -28,4 +29,5 @@ module.exports = {
   locationServiceController,
   subLocationServiceController,
   reportsServiceController,
+  spareServiceController
 };

@@ -59,6 +59,7 @@ const successMsg = {
   TICKET_RAISED_SUCCESSFULLY: "Ticket Raised Successfully",
   FILE_UPLOAD_SUCCESS: "Successfully Uploaded File",
   REPORTS_VIEWED_SUCCESSFULLY: "Reports Viewed Successfully",
+  SPARE_CREATED_SUCCESSFULLY: "Spare Created Successfully",
 };
 
 module.exports = { errorMsg, successMsg };
