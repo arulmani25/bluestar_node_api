@@ -1,5 +1,6 @@
 const model = require("../models/index");
 const seedData = require("../seed/index");
+const { createLogForms } = require("../helpers/templog");
 
 const modelArray = [
   model.userType,
@@ -14,6 +15,8 @@ const modelArray = [
   model.checkListValidation,
   model.newEquipmentTags,
   model.activitiesModel,
+  model.temperaturelogsTitle,
+  model.temperaturelogForms,
 ];
 
 const seedRecordToDB = async () => {
@@ -56,6 +59,12 @@ const seedRecordToDB = async () => {
           break;
         case "activities":
           await mod.insertMany(seedData.activitiesSeedData);
+          break;
+        case "temperature_logs_titles":
+          await mod.insertMany(seedData.temperatureTitleLogsseed);
+          break;
+        case "temperature_log_forms":
+          await createLogForms();
           break;
       }
 

@@ -9,7 +9,14 @@ const { roleTypeSeed } = require("./role.seed");
 const { adminSeedData } = require("./admin.seed");
 const { checklistValidationSeed } = require("./checklistvalidation.seed");
 const { newEquipmentTags } = require("./newequipmentstag.seed");
-const {activitiesSeedData} = require("./activities.seed")
+const { activitiesSeedData } = require("./activities.seed");
+const { temperatureTitleLogsseed } = require("./temperaturelog.seed");
+const { logDomSeedData } = require("./log_dom.seed");
+const { logIntlSeedData } = require("./log_intl.seed");
+const { domesticTelecomRoomTempSeed } = require("./dom_tele_room_temp.seed");
+const { intlTeleRoomTempSeed } = require("./intl_tele_room_temp.seed");
+const { centriFugalChillersSeed } = require("./centriFugal_chiller.seed");
+const { dailyReportSeed } = require("./daily_report.seed");
 
 module.exports = {
   equipmentsSeedData,
@@ -23,5 +30,12 @@ module.exports = {
   adminSeedData,
   checklistValidationSeed,
   newEquipmentTags,
-  activitiesSeedData
+  activitiesSeedData,
+  temperatureTitleLogsseed,
+  logDomSeedData,
+  logIntlSeedData,
+  domesticTelecomRoomTempSeed,
+  intlTeleRoomTempSeed,
+  centriFugalChillersSeed,
+  dailyReportSeed,
 };

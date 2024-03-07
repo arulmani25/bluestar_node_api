@@ -60,6 +60,7 @@ const successMsg = {
   FILE_UPLOAD_SUCCESS: "Successfully Uploaded File",
   REPORTS_VIEWED_SUCCESSFULLY: "Reports Viewed Successfully",
   SPARE_CREATED_SUCCESSFULLY: "Spare Created Successfully",
+  FORM_SUBMITTED_SUCCESSFULLY: "Form Submitted Successfully",
 };
 
 module.exports = { errorMsg, successMsg };

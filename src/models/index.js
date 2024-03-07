@@ -21,6 +21,9 @@ const filedTypeModel = require("./filedtype.model");
 const checkListValidation = require("./checklistvalidation.model");
 const newEquipmentTags = require("./newequipmentstag.model");
 const spareModel = require("./spare.model");
+const temperaturelogsTitle = require("./temperaturelogstitle.model");
+const temperaturelogForms = require("./temperaturelogsForm.model");
+const submittedTemperatureLogForms = require("./submitTemperatureLogForm.model");
 
 module.exports = {
   adminModel,
@@ -46,4 +49,7 @@ module.exports = {
   checkListValidation,
   newEquipmentTags,
   spareModel,
+  temperaturelogsTitle,
+  temperaturelogForms,
+  submittedTemperatureLogForms,
 };

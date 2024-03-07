@@ -18,6 +18,7 @@ const subLocationController = require("./sublocation");
 const uploadController = require("./upload");
 const reportsController = require("./reports");
 const spareController = require("./spare");
+const temperatureFormController = require("./temperatureForm");
 
 apiRouter.use("/admin", adminController);
 apiRouter.use("/user", userController);
@@ -35,5 +36,6 @@ apiRouter.use("/sublocation", subLocationController);
 apiRouter.use("/upload", uploadController);
 apiRouter.use("/reports", reportsController);
 apiRouter.use("/spare", spareController);
+apiRouter.use("/temperatureform", temperatureFormController);
 
 module.exports = apiRouter;

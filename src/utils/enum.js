@@ -40,4 +40,25 @@ const roles = {
   supervisor: "supervisor",
 };
 
-module.exports = { attd_status, filterByOption, jobStatus, priority, roles };
+const temperatureLogsTitle = {
+  LOG_DOM: "PTB TEMPERATURE MONITORING LOG-DOM",
+
+  LOG_INTL: "PTB TEMPERATURE MONITORING LOG-INTL",
+
+  Domestic_Telecom: "Domestic Telecom Room Temperature",
+
+  International_Telecom: "International Telecom Room Temperature",
+
+  Daily_Chiller: "Daily Chiller Log Book - Centrifugal Chillers - 19XRA6/7",
+
+  Daily_Report: "CWP, CT, ATCS, CD, VD & PET Daily Report",
+};
+
+module.exports = {
+  attd_status,
+  filterByOption,
+  jobStatus,
+  priority,
+  roles,
+  temperatureLogsTitle,
+};
