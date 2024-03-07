@@ -2,7 +2,7 @@ const { tempCheckListController } = require("../../../service/index");
 
 const { errorMsg, successMsg } = require("../../../utils/index");
 
-const getTempCheckLIst = async (req, res) => {
+const getTempCheckLIst = async (req, res, next) => {
   try {
     const id = req.params.id;
 

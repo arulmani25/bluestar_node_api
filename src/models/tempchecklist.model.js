@@ -23,10 +23,10 @@ const temp_checklistSchema = new mongoose.Schema({
       sub_activity_id: { type: objectId },
       delete_status: { type: Boolean, default: false },
       field_required: { type: Boolean },
-      activity_type: { type: objectId }
+      activity_type: { type: objectId },
     },
   ],
-  equipment_tag: { type: objectId },
+  equipment_tag_name: { type: String },
 });
 temp_checklistSchema.plugin(timestamps);
 mongoose.model("temp_checklist", temp_checklistSchema);

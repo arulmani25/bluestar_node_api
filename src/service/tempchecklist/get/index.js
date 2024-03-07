@@ -3,11 +3,11 @@ const { errorMsg } = require("../../../utils");
 
 const getTempCheckListById = async (id) => {
   const isExist = await model.tempCheckListModel.findOne({
-    equipment_tag: id,
+    equipment_tag_name: id,
   });
   if (!isExist) throw new Error(errorMsg.CHECK_LIST_NOT_FOUND);
   const record = await model.tempCheckListModel.findOne({
-    equipment_tag: isExist.equipment_tag,
+    equipment_tag_name: isExist.equipment_tag_name,
   });
   return record;
 };
