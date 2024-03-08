@@ -14,6 +14,7 @@ const subLocationServiceController = require("./sublocation");
 const reportsServiceController = require("./reports");
 const spareServiceController = require("./spare");
 const temperatureFormServiceController = require("./temperatureForm");
+const activitiesServiceController = require("./activity")
 
 module.exports = {
   adminServiceController,
@@ -32,4 +33,5 @@ module.exports = {
   reportsServiceController,
   spareServiceController,
   temperatureFormServiceController,
+  activitiesServiceController
 };

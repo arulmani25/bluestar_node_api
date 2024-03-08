@@ -19,6 +19,7 @@ const uploadController = require("./upload");
 const reportsController = require("./reports");
 const spareController = require("./spare");
 const temperatureFormController = require("./temperatureForm");
+const activityController = require("./activity");
 
 apiRouter.use("/admin", adminController);
 apiRouter.use("/user", userController);
@@ -37,5 +38,6 @@ apiRouter.use("/upload", uploadController);
 apiRouter.use("/reports", reportsController);
 apiRouter.use("/spare", spareController);
 apiRouter.use("/temperatureform", temperatureFormController);
+apiRouter.use("/activity", activityController);
 
 module.exports = apiRouter;
