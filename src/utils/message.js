@@ -61,6 +61,7 @@ const successMsg = {
   REPORTS_VIEWED_SUCCESSFULLY: "Reports Viewed Successfully",
   SPARE_CREATED_SUCCESSFULLY: "Spare Created Successfully",
   FORM_SUBMITTED_SUCCESSFULLY: "Form Submitted Successfully",
+  ACTIVITY_CREATED_SUCCESSFULLY: "Activity Created Successfully",
 };
 
 module.exports = { errorMsg, successMsg };
