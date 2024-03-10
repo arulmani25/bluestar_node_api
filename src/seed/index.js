@@ -17,6 +17,7 @@ const { domesticTelecomRoomTempSeed } = require("./dom_tele_room_temp.seed");
 const { intlTeleRoomTempSeed } = require("./intl_tele_room_temp.seed");
 const { centriFugalChillersSeed } = require("./centriFugal_chiller.seed");
 const { dailyReportSeed } = require("./daily_report.seed");
+const { spareSeedData } = require("./spare.seed");
 
 module.exports = {
   equipmentsSeedData,
@@ -38,4 +39,5 @@ module.exports = {
   intlTeleRoomTempSeed,
   centriFugalChillersSeed,
   dailyReportSeed,
+  spareSeedData
 };

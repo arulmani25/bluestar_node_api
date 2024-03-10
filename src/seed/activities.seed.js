@@ -60,7 +60,7 @@ const activitiesSeedData = [
     activity_name: "DX Ductable AC",
   },
   {
-    activity_name: "Dual Coil\n(CHW+DX)-CSU",
+    activity_name: "Dual Coil(CHW+DX)-CSU",
   },
   {
     activity_name: "CHW-CSU",

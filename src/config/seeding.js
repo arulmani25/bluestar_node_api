@@ -1,6 +1,7 @@
 const model = require("../models/index");
 const seedData = require("../seed/index");
 const { createLogForms } = require("../helpers/templog");
+const { spareSeedFunction } = require("../helpers/spare");
 
 const modelArray = [
   model.userType,
@@ -17,6 +18,7 @@ const modelArray = [
   model.activitiesModel,
   model.temperaturelogsTitle,
   model.temperaturelogForms,
+  model.spareModel
 ];
 
 const seedRecordToDB = async () => {
@@ -65,6 +67,9 @@ const seedRecordToDB = async () => {
           break;
         case "temperature_log_forms":
           await createLogForms();
+          break;
+        case "spares":
+          await spareSeedFunction();
           break;
       }
 
