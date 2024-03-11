@@ -2,6 +2,7 @@ const model = require("../models/index");
 const seedData = require("../seed/index");
 const { createLogForms } = require("../helpers/templog");
 const { spareSeedFunction } = require("../helpers/spare");
+const { roleSeedFunction } = require("../helpers/role");
 
 const modelArray = [
   model.userType,
@@ -18,7 +19,7 @@ const modelArray = [
   model.activitiesModel,
   model.temperaturelogsTitle,
   model.temperaturelogForms,
-  model.spareModel
+  model.spareModel,
 ];
 
 const seedRecordToDB = async () => {
@@ -48,7 +49,7 @@ const seedRecordToDB = async () => {
           await mod.insertMany(seedData.fieldTypeSeed);
           break;
         case "roles":
-          await mod.insertMany(seedData.roleTypeSeed);
+          await roleSeedFunction();
           break;
         case "admins":
           await mod.insertMany(seedData.adminSeedData);

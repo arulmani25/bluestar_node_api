@@ -9,8 +9,8 @@ const mainActivitySchema = new mongoose.Schema({
   activity_name: { type: String },
   // activity_type: { type: objectId },
   description: { type: String },
-  delete_status: { type: Boolean, default: false },
   created_by: { type: objectId },
+  isActive: { type: Boolean, default: true },
 });
 
 mainActivitySchema.plugin(timestamps);

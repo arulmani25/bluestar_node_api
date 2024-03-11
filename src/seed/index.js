@@ -5,7 +5,7 @@ const { logoutReasonSeedData } = require("./logoutreason.seed");
 const { subLocationSeed } = require("./sublocation.seed");
 const { filterSeedData } = require("./filtertype.seed");
 const { fieldTypeSeed } = require("./fieldtype.seed");
-const { roleTypeSeed } = require("./role.seed");
+const { bialRoleSeed, blueStarRoleSeed } = require("./role.seed");
 const { adminSeedData } = require("./admin.seed");
 const { checklistValidationSeed } = require("./checklistvalidation.seed");
 const { newEquipmentTags } = require("./newequipmentstag.seed");
@@ -27,7 +27,8 @@ module.exports = {
   subLocationSeed,
   filterSeedData,
   fieldTypeSeed,
-  roleTypeSeed,
+  bialRoleSeed,
+  blueStarRoleSeed,
   adminSeedData,
   checklistValidationSeed,
   newEquipmentTags,
@@ -39,5 +40,5 @@ module.exports = {
   intlTeleRoomTempSeed,
   centriFugalChillersSeed,
   dailyReportSeed,
-  spareSeedData
+  spareSeedData,
 };
