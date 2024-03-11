@@ -5,6 +5,19 @@ const getCheckList = async (req, res, next) => {
   try {
     const rec = [];
     const record = await checkListServiceController.getCheckList(req.query);
+    const monthFilter = [];
+    record.monthAndFilter.forEach((element) => {
+      for (const key in element) {
+        if (element[key] === "M") {
+          monthFilter.push({ [key]: "monthly" });
+        } else if (element[key] === "Y") monthFilter.push({ [key]: "yearly" });
+        else if (element[key] === "Q") {
+          monthFilter.push({ [key]: "quarterly" });
+        }
+      }
+    });
+    
+    record.monthAndFilter = monthFilter;
 
     if (record === "checklist already checked") {
       return res.json({
