@@ -313,16 +313,16 @@ const subLocationSeed = [
     sub_location: "PHASE 2 EGRESS CORRIDOR (BT25-01)",
   },
   {
-    sub_location: " GH-1 (BT42-01)",
+    sub_location: "GH-1 (BT42-01)",
   },
   {
-    sub_location: " EGRESS CORRIDOR (BT43-13)",
+    sub_location: "EGRESS CORRIDOR (BT43-13)",
   },
   {
-    sub_location: " EGRESS CORRIDOR (BT43-10)",
+    sub_location: "EGRESS CORRIDOR (BT43-10)",
   },
   {
-    sub_location: " BMS PANEL RM (BT43-11)",
+    sub_location: "BMS PANEL RM (BT43-11)",
   },
   {
     sub_location: "EGRESS CORRIDOR- 1 (BT51-11-1)",
@@ -331,103 +331,103 @@ const subLocationSeed = [
     sub_location: "TRASH CHUTE RM (BT53-02)",
   },
   {
-    sub_location: " TRASH CHUTE RM (BT54-01)",
+    sub_location: "TRASH CHUTE RM (BT54-01)",
   },
   {
     sub_location: "CHUTE RM (BT54-02)",
   },
   {
-    sub_location: " CIP LOUNGE ARRIVAL (0T13-04)",
+    sub_location: "CIP LOUNGE ARRIVAL (0T13-04)",
   },
   {
-    sub_location: " SS3 BATTERY RM (0T35-11B)",
+    sub_location: "SS3 BATTERY RM (0T35-11B)",
   },
   {
-    sub_location: " SS1 BATTERY RM (0T41-02B)",
+    sub_location: "SS1 BATTERY RM (0T41-02B)",
   },
   {
-    sub_location: " TRASH RM (0T43-07)",
+    sub_location: "TRASH RM (0T43-07)",
   },
   {
     sub_location: "SS3A UPS ROOM",
   },
   {
-    sub_location: " SS4 BATTERY RM (0T45-03B)",
+    sub_location: "SS4 BATTERY RM (0T45-03B)",
   },
   {
-    sub_location: " DINING RM (0T45-21)",
+    sub_location: "DINING RM (0T45-21)",
   },
   {
-    sub_location: " DINING RM (0T52-16)",
+    sub_location: "DINING RM (0T52-16)",
   },
   {
-    sub_location: " BOI MCR BATTERY (0T53-59B)",
+    sub_location: "BOI MCR BATTERY (0T53-59B)",
   },
   {
-    sub_location: " MCR BATTERY RM B (0T53-25B)",
+    sub_location: "MCR BATTERY RM B (0T53-25B)",
   },
   {
-    sub_location: " BATTERY RM (0T54-02B)",
+    sub_location: "BATTERY RM (0T54-02B)",
   },
   {
-    sub_location: " TRASH CHUTE RM (0T54-38)",
+    sub_location: "TRASH CHUTE RM (0T54-38)",
   },
   {
-    sub_location: " CAFETERIA (0T54-24)",
+    sub_location: "CAFETERIA (0T54-24)",
   },
   {
-    sub_location: " DINING RM (0T55-01)",
+    sub_location: "DINING RM (0T55-01)",
   },
   {
-    sub_location: " ELECTRICAL STORAGE (0T53-53)",
+    sub_location: "ELECTRICAL STORAGE (0T53-53)",
   },
   {
-    sub_location: " SS2 BATTERY RM (0T61-01B)",
+    sub_location: "SS2 BATTERY RM (0T61-01B)",
   },
   {
-    sub_location: " SS5 BATTERY RM (0T75-09B)",
+    sub_location: "SS5 BATTERY RM (0T75-09B)",
   },
   {
-    sub_location: " MACHINE RM (0T75-16)",
+    sub_location: "MACHINE RM (0T75-16)",
   },
   {
-    sub_location: " TRASH CHUTE RM (1T53-06)",
+    sub_location: "TRASH CHUTE RM (1T53-06)",
   },
   {
-    sub_location: " MCR BATTERY RM A (1T63-10A)",
+    sub_location: "MCR BATTERY RM A (1T63-10A)",
   },
   {
-    sub_location: " BHS MAINT.LANDING (2T35-02)",
+    sub_location: "BHS MAINT.LANDING (2T35-02)",
   },
   {
-    sub_location: " EGRESS CORRIDOR-1(2T43-02-1)",
+    sub_location: "EGRESS CORRIDOR-1(2T43-02-1)",
   },
   {
-    sub_location: " EGRESS CORRIDOR (2T55-03)",
+    sub_location: "EGRESS CORRIDOR (2T55-03)",
   },
   {
-    sub_location: " EGRESS CORRIDOR (2T64-01)",
+    sub_location: "EGRESS CORRIDOR (2T64-01)",
   },
   {
-    sub_location: " TRSH CHUTE RM (3T44-08)",
+    sub_location: "TRSH CHUTE RM (3T44-08)",
   },
   {
-    sub_location: " TRSH CHUTE RM (3T54-20)",
+    sub_location: "TRSH CHUTE RM (3T54-20)",
   },
   {
-    sub_location: " TRSH CHUTE RM (3T54-22)",
+    sub_location: "TRSH CHUTE RM (3T54-22)",
   },
   {
-    sub_location: " BMS PANEL RM (3T65-05)",
+    sub_location: "BMS PANEL RM (3T65-05)",
   },
   {
-    sub_location: " TRSH CHUTE RM (4T53-04)",
+    sub_location: "TRSH CHUTE RM (4T53-04)",
   },
   {
-    sub_location: " TRSH CHUTE RM (4T54-02)",
+    sub_location: "TRSH CHUTE RM (4T54-02)",
   },
   {
-    sub_location: " TRSH CHUTE RM (4T54-06)",
+    sub_location: "TRSH CHUTE RM (4T54-06)",
   },
   {
     sub_location: "BMS PANEL ROOM (4T54-08)",
