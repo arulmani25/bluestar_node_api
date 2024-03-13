@@ -38,6 +38,7 @@ const roles = {
   bial: "bial",
   bluestar: "bluestar",
   supervisor: "Supervisor",
+  manager: "Manager",
 };
 
 const temperatureLogsTitle = {
