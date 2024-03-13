@@ -6,6 +6,7 @@ const { getSubmittedFormById } = require("./getSubmittedForm");
 const { updateForm } = require("./updateForm");
 const { addLogField } = require("./addLogField");
 const { listTemeperaturelogsField } = require("./listfield");
+const { listTemeperaturelogsFieldTime } = require("./listfieldtime");
 
 module.exports = {
   listTemeperaturelogsTitle,
@@ -16,4 +17,5 @@ module.exports = {
   updateForm,
   addLogField,
   listTemeperaturelogsField,
+  listTemeperaturelogsFieldTime,
 };

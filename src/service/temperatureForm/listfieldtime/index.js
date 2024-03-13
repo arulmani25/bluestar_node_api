@@ -2,7 +2,7 @@ const model = require("../../../models/index");
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const listTemeperaturelogsField = async (payload) => {
+const listTemeperaturelogsFieldTime = async (payload) => {
   const { searchKey, skip, limit, sortkey, sortOrder, titleId } = payload;
 
   const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
@@ -13,4 +13,4 @@ const listTemeperaturelogsField = async (payload) => {
   return list;
 };
 
-module.exports = { listTemeperaturelogsField };
+module.exports = { listTemeperaturelogsFieldTime };
