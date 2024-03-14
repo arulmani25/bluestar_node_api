@@ -7,7 +7,7 @@ const { updateForm } = require("./updateForm");
 const { addLogField } = require("./addLogField");
 const { listTemeperaturelogsField } = require("./listfield");
 const { listTemeperaturelogsFieldTime } = require("./listfieldtime");
-
+const { temperorySubmitLog } = require("./tempsubmitform");
 module.exports = {
   listTemeperaturelogsTitle,
   listForms,
@@ -18,4 +18,5 @@ module.exports = {
   addLogField,
   listTemeperaturelogsField,
   listTemeperaturelogsFieldTime,
+  temperorySubmitLog
 };

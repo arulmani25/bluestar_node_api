@@ -3,6 +3,7 @@ const timestamps = require("mongoose-timestamp");
 const submitTemperatureLogFormSchema = new mongoose.Schema({
   titleName: { type: String },
   titleId: { type: mongoose.Types.ObjectId },
+  time: { type: String },
   logs: { type: Array },
   DutyTechnicianName: { type: String, default: "" },
   DutyTechnicianSign: { type: String, default: "" },

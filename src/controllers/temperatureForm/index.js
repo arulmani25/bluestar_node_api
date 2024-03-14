@@ -11,8 +11,10 @@ const { updateForm } = require("./updateForm");
 const { addLogField } = require("./addLogField");
 const { tempLogFields } = require("./listfield");
 const { tempLogFieldTime } = require("./listfieldtime");
+const { tempsubmitForm } = require("./tempsubmitform");
 
 router.post("/submit", verifyToken, submitForm);
+router.post("/tempsubmit", tempsubmitForm);
 router.get("/titlelist", verifyToken, tempLogTitleList);
 router.get("/listforms", verifyToken, listForms);
 router.get("/form/:id", verifyToken, getForm);
