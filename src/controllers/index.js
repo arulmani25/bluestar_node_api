@@ -20,6 +20,7 @@ const reportsController = require("./reports");
 const spareController = require("./spare");
 const temperatureFormController = require("./temperatureForm");
 const activityController = require("./activity");
+const configChecklistController = require("./configChecklist");
 
 apiRouter.use("/admin", adminController);
 apiRouter.use("/user", userController);
