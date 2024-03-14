@@ -4,7 +4,7 @@ const { encryptText } = require("../../../../utils/encrypt");
 
 const checklistListUsingTag = async (req, res, next) => {
   try {
-    const record = await mobileServiceController.checklist.listByTag(req.query);
+    const record = await mobileServiceController.checklist.listByTag(req.query,req.loggedUser);
 
     return res.json({
       Status: "Success",
