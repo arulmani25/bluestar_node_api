@@ -1,6 +1,6 @@
 const centriFugalChillersSeed = [
   {
-    parameter: "CHW TEMP IN °C",
+    location: "CHW TEMP IN °C",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -16,7 +16,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "CHW TEMP OUT IN °C",
+    location: "CHW TEMP OUT IN °C",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -32,7 +32,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "CDW IN °C",
+    location: "CDW IN °C",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -48,7 +48,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "CDW OUT °C",
+    location: "CDW OUT °C",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -64,7 +64,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "EVAP APPROCH",
+    location: "EVAP APPROCH",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -80,7 +80,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "COND APPROACH",
+    location: "COND APPROACH",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -96,7 +96,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "GUIDE VANE POSITION",
+    location: "GUIDE VANE POSITION",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -112,7 +112,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "COMP RUN HOURS",
+    location: "COMP RUN HOURS",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -128,7 +128,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "OIL LEVEL",
+    location: "OIL LEVEL",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -144,7 +144,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "LOAD SET POINT",
+    location: "LOAD SET POINT",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -160,7 +160,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "COMP DIS TEMP °C",
+    location: "COMP DIS TEMP °C",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -176,7 +176,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "DISCHARGE SUPERHEAT",
+    location: "DISCHARGE SUPERHEAT",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -192,7 +192,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "MOTOR WINDING 1 TEMP",
+    location: "MOTOR WINDING 1 TEMP",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -208,7 +208,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "MOTOR WINDING 2 TEMP",
+    location: "MOTOR WINDING 2 TEMP",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -224,7 +224,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "MOTOR WINDING 3 TEMP",
+    location: "MOTOR WINDING 3 TEMP",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -240,7 +240,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "OIL SUMP TEMP °C",
+    location: "OIL SUMP TEMP °C",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -256,7 +256,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "EVAP PRESS KPA",
+    location: "EVAP PRESS KPA",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -272,7 +272,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "COND PRESS KPA",
+    location: "COND PRESS KPA",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -288,7 +288,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "ECONOMIZER PRESS KPA",
+    location: "ECONOMIZER PRESS KPA",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -304,7 +304,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "OIL SUPPLY PRESS KPA",
+    location: "OIL SUPPLY PRESS KPA",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -320,7 +320,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "LINE CURRENT PHASE-1",
+    location: "LINE CURRENT PHASE-1",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -336,7 +336,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "LINE CURRENT PHASE-2",
+    location: "LINE CURRENT PHASE-2",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -352,7 +352,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "LINE CURRENT PHASE-3",
+    location: "LINE CURRENT PHASE-3",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -368,7 +368,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "LINE VOLTAGE PHASE-1",
+    location: "LINE VOLTAGE PHASE-1",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -384,7 +384,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "LINE VOLTAGE PHASE-2",
+    location: "LINE VOLTAGE PHASE-2",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -400,7 +400,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "LINE VOLTAGE PHASE-3",
+    location: "LINE VOLTAGE PHASE-3",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -416,7 +416,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "LINE KILOWATTS HOURS KWH",
+    location: "LINE KILOWATTS HOURS KWH",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -432,7 +432,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "PRIM PUMP RUN #",
+    location: "PRIM PUMP RUN #",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -448,7 +448,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "SUC PRESS KG/CM²",
+    location: "SUC PRESS KG/CM²",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -464,7 +464,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "DIS PRESS KG/CM²",
+    location: "DIS PRESS KG/CM²",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -480,7 +480,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "GPM",
+    location: "GPM",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -496,7 +496,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "RPM",
+    location: "RPM",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -512,7 +512,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "AMPS",
+    location: "AMPS",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -528,7 +528,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "SECONDARY PUMP RUN #",
+    location: "SECONDARY PUMP RUN #",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -544,7 +544,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "SUC PRESS KG/CM²",
+    location: "SUC PRESS KG/CM²",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -560,7 +560,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "DIS PRESS KG/CM²",
+    location: "DIS PRESS KG/CM²",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -576,7 +576,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "GPM",
+    location: "GPM",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -592,7 +592,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "RPM",
+    location: "RPM",
     range: "",
     "07:00": "",
     "09:00": "",
@@ -608,7 +608,7 @@ const centriFugalChillersSeed = [
     "05:00": "",
   },
   {
-    parameter: "AMPS",
+    location: "AMPS",
     range: "",
     "07:00": "",
     "09:00": "",
