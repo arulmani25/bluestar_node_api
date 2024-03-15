@@ -12,6 +12,9 @@ const { addLogField } = require("./addLogField");
 const { tempLogFields } = require("./listfield");
 const { tempLogFieldTime } = require("./listfieldtime");
 const { tempsubmitForm } = require("./tempsubmitform");
+const { addTitle } = require("./addtitle");
+const { deleteTitle } = require("./deletetitle");
+const { editTitle } = require("./edittitle");
 
 router.post("/submit", verifyToken, submitForm);
 router.post("/tempsubmit", tempsubmitForm);
@@ -23,5 +26,8 @@ router.put("/updateform", verifyToken, updateForm);
 router.post("/addlogfield", verifyToken, addLogField);
 router.get("/listlogfield", tempLogFields);
 router.get("/listlogfieldtime", tempLogFieldTime);
+router.post("/addtitle", verifyToken, addTitle);
+router.put("/removetitle/:id", verifyToken, deleteTitle);
+router.put("/edittitle/:id", verifyToken, editTitle);
 
 module.exports = router;

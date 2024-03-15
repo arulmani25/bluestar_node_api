@@ -1,24 +1,28 @@
 const model = require("../../../models/index");
 
-const listTemeperaturelogsTitle = async (payload) => {
+const cobieList = async (payload) => {
   const { searchKey, skip, limit, sortkey, sortOrder } = payload;
 
   const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
 
   const searchRegex = new RegExp(["^.*", searchKey, ".*$"].join(""), "i");
 
-  const recordList = await model.temperaturelogsTitle.aggregate([
+  const recordList = await model.equipmentsModel.aggregate([
     {
-      $match: { isActive: true },
+      $match: {},
     },
     {
       $match: searchKey
         ? {
-            $or: [],
+            $or: [{}],
           }
         : {},
     },
-
+    {
+      $project: {
+        cobie_tag: 1,
+      },
+    },
     {
       $sort: sort,
     },
@@ -32,4 +36,4 @@ const listTemeperaturelogsTitle = async (payload) => {
   return recordList;
 };
 
-module.exports = { listTemeperaturelogsTitle };
+module.exports = { cobieList };

@@ -39,6 +39,7 @@ const roles = {
   bluestar: "bluestar",
   supervisor: "Supervisor",
   manager: "Manager",
+  site_incharge: "Site-Incharge",
 };
 
 const temperatureLogsTitle = {
