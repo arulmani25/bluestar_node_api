@@ -135,7 +135,15 @@ const getCheckList = async (query) => {
     }
   }
 
-  return { checklist, monthAndFilter };
+  const inputParameters = await model.checkListModel.find(
+    {
+      cobie_tag: cobie_tag,
+      check_list_type: "",
+    },
+    { delete_status: 0 }
+  );
+
+  return { checklist, monthAndFilter, inputParameters };
 };
 
 module.exports = { getCheckList };
