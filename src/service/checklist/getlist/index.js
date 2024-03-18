@@ -142,8 +142,11 @@ const getCheckList = async (query) => {
     },
     { delete_status: 0 }
   );
+  for (const iterator of inputParameters) {
+    checklist.push(iterator);
+  }
 
-  return { checklist, monthAndFilter, inputParameters };
+  return { checklist, monthAndFilter };
 };
 
 module.exports = { getCheckList };
