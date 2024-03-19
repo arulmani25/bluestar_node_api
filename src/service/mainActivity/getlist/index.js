@@ -8,7 +8,7 @@ const groupList = async (query) => {
   const searchRegex = new RegExp(["^.*", searchKey, ".*$"].join(""), "i");
 
   const recordList = await model.mainactivityModel.aggregate([
-    { $match: { delete_status: false } },
+    { $match: { isActive: true } },
     {
       $match: searchKey
         ? {
