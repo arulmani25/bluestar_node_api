@@ -111,6 +111,18 @@ const errorResponse = (msg) => {
         Code: 400,
       };
       break;
+    case "checklist Already Submitted":
+      response = {
+        Message: "checklist Already Submitted",
+        Code: 409,
+      };
+      break;
+    case errorMsg.ROLE_ALREADY_EXIST:
+      response = {
+        Message: errorMsg.ROLE_ALREADY_EXIST,
+        Code: 400,
+      };
+      break;
   }
   return response;
 };
