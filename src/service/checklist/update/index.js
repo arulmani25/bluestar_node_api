@@ -36,7 +36,7 @@ const updateCheckListRecord = async (id, payload, loggedUser) => {
     filter = {
       $set: {
         bial_sign: payload.bial_sign,
-        bial_name: payload.bial_name,
+        bial_user_name: payload.bial_user_name,
       },
     };
   }
