@@ -36,6 +36,7 @@ const roles = {
   admin: "admin",
   technician: "technician",
   bial: "bial",
+  bial1:"BIAL",
   bluestar: "bluestar",
   supervisor: "Supervisor",
   manager: "Manager",
