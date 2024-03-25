@@ -13,7 +13,8 @@ const listByTag = async (query, loggedUser) => {
   } else if (
     loggedUser.role === roles.manager ||
     loggedUser.role === roles.bial ||
-    loggedUser.role === roles.site_incharge
+    loggedUser.role === roles.site_incharge ||
+    loggedUser.user_type === roles.bial1
   ) {
     key = supervisor;
   }
@@ -23,6 +24,22 @@ const listByTag = async (query, loggedUser) => {
     { _id: 0, equipment_tag_name: 1 },
     { sort: { createdAt: -1 } }
   );
+
+  //! need to implement to filter list based on role
+
+  /*
+  const ids = await model.checkListConfig.findOne({ role: roles.supervisor });
+  const roleIds = [];
+  ids.submitted_by_role.forEach((element) => {
+    roleIds.push(element);
+  });
+
+  const record = await model.submitchecklistModel.find({
+    submitted_by_role: { $in: roleIds },
+  });
+
+  */
+
   return record;
 };
 
