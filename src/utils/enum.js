@@ -35,6 +35,7 @@ const priority = {
 const roles = {
   admin: "admin",
   technician: "technician",
+  ac_technician:"AC Technician",
   bial: "bial",
   bial1:"BIAL",
   bluestar: "bluestar",

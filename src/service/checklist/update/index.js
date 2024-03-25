@@ -18,7 +18,10 @@ const updateCheckListRecord = async (id, payload, loggedUser) => {
         supervisor_name: payload.supervisor_name,
       },
     };
-  } else if (loggedUser.role === roles.technician) {
+  } else if (
+    loggedUser.role === roles.technician ||
+    loggedUser.role === roles.ac_technician
+  ) {
     filter = {
       $set: {
         technician_sign: payload.technician_sign,
