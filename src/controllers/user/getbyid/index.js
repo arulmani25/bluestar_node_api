@@ -4,7 +4,7 @@ const { errorMsg, successMsg } = require("../../../utils/index");
 
 const getUserById = async (req, res, next) => {
   try {
-    const id = req.params.user_mobile_no;
+    const id = req.params.id;
 
     //** service call */
 
