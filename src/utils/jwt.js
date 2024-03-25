@@ -30,6 +30,7 @@ const verifyToken = async (req, res, next) => {
         let loggedUser = {
           userId: decoded._id,
           role: decoded.role,
+          user_type: decoded.user_type,
         };
         let userExist;
         if (decoded.role === roles.admin) {
