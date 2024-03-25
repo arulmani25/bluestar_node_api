@@ -1,7 +1,9 @@
+const mongoose = require("mongoose");
 const userModel = require("../../../models/user.Model");
+const ObjectId = mongoose.Types.ObjectId;
 
 const listUser = async (query) => {
-  const { searchKey, skip, limit, sortkey, sortOrder, role } = query;
+  const { searchKey, skip, limit, sortkey, sortOrder, user_type } = query;
 
   const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
 
@@ -9,7 +11,9 @@ const listUser = async (query) => {
 
   const recordList = await userModel.aggregate([
     {
-      $match: {},
+      $match: user_type
+        ? { user_type: new ObjectId(user_type), delete_status: false }
+        : { delete_status: false },
     },
     {
       $match: searchKey
