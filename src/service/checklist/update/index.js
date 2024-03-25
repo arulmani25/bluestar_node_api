@@ -28,7 +28,7 @@ const updateCheckListRecord = async (id, payload, loggedUser) => {
   } else if (
     loggedUser.role === roles.bial ||
     loggedUser.role === roles.manager ||
-    roles.bial1
+    loggedUser.user_type === roles.bial1
   ) {
     filter = {
       $set: {
