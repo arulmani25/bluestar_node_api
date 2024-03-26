@@ -7,6 +7,7 @@ const { deleteCheckList } = require("./delete");
 const { updateCheckListRecord } = require("./update");
 const { filterOption } = require("./filteroption");
 const { fieldTypes } = require("./fieldtypes");
+const {getSubmittedChecklist}=require("./getchecklisttoedit")
 
 module.exports = {
   createList,
@@ -18,4 +19,5 @@ module.exports = {
   updateCheckListRecord,
   filterOption,
   fieldTypes,
+  getSubmittedChecklist
 };
