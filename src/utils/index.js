@@ -3,6 +3,7 @@ const passwordValidation = require("./passwordencryption");
 const { attd_status, filterByOption } = require("./enum");
 const { qrcodeGenerator } = require("./qrcode");
 const { generateToken, verifyToken } = require("./jwt");
+const { temp } = require("./html_to_pdf");
 
 module.exports = {
   errorMsg,
@@ -13,4 +14,5 @@ module.exports = {
   filterByOption,
   generateToken,
   verifyToken,
+  temp,
 };
