@@ -19,6 +19,7 @@ const { errorHandler } = require("./src/middlewares/errorhandler");
 const model = require("./src/models/index");
 const fs = require("fs");
 const { temp } = require("./src/utils");
+const { collectChecklists } = require("./src/utils/collectChecklist");
 const app = express();
 
 // Database connectivity
@@ -64,6 +65,7 @@ app.use((req, res, next) => {
 
 // Routes setup (Add your routes here)
 app.use("/api", express.static(path.join(__dirname)));
+app.use("/src/assets", express.static(path.join(__dirname)));
 app.use("/api", apiRouter);
 app.use("/api/mobile", mobileRouter);
 
@@ -143,8 +145,20 @@ app.post("/qrupdate", async (req, res) => {
 
 app.post("/pdf", async (req, res) => {
   try {
-    const data = await temp();
-    return res.send("success");
+    const { month } = req.body;
+    const file_paths = [];
+    const checklistData = await collectChecklists(month);
+    for (const iterator of checklistData) {
+      const data = await temp(iterator["_doc"]);
+      file_paths.push(data);
+    }
+
+    return res.json({
+      Status: "Success",
+      Message: "File path",
+      Data: file_paths,
+      Code: 200,
+    });
   } catch (err) {
     console.log(err);
   }
