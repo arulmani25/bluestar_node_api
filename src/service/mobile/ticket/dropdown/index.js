@@ -31,14 +31,14 @@ const ticketDropdown = async (query) => {
     };
     project = {
       $project: {
-        equipment_tag: 1,
+        cobie_tag: 1,
       },
     };
   } else if (equipment && equipmentNo && !location) {
     filter = {
       $match: {
         type: equipment,
-        equipment_tag: equipmentNo,
+        cobie_tag: equipmentNo,
       },
     };
     project = {
@@ -50,7 +50,7 @@ const ticketDropdown = async (query) => {
     filter = {
       $match: {
         type: equipment,
-        equipment_tag: equipmentNo,
+        cobie_tag: equipmentNo,
         location: location,
       },
     };
