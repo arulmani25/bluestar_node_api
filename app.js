@@ -18,7 +18,7 @@ const connectToMongoDB = require("./src/config/mongodb");
 const { errorHandler } = require("./src/middlewares/errorhandler");
 const model = require("./src/models/index");
 const fs = require("fs");
-const { generatePDF } = require("./src/utils");
+const { temp } = require("./src/utils");
 const app = express();
 
 // Database connectivity
@@ -141,11 +141,9 @@ app.post("/qrupdate", async (req, res) => {
   return res.json({ message: "success" });
 });
 
-
 app.post("/pdf", async (req, res) => {
   try {
- 
-    const data = await generatePDF();
+    const data = await temp();
     return res.send("success");
   } catch (err) {
     console.log(err);
