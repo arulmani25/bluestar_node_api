@@ -65,7 +65,7 @@ app.use((req, res, next) => {
 
 // Routes setup (Add your routes here)
 app.use("/api", express.static(path.join(__dirname)));
-app.use("/src/assets", express.static(path.join(__dirname)));
+app.use("/api", express.static(path.join(__dirname, "src/assets")));
 app.use("/api", apiRouter);
 app.use("/api/mobile", mobileRouter);
 
