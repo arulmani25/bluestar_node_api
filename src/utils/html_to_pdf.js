@@ -8,7 +8,7 @@ const temp = async (checklist) => {
     headless: "new",
   });
   const page = await browser.newPage();
-  let additionalRowHTML;
+  let additionalRowHTML = "";
   if (Array.isArray(checklist.description)) {
     checklist.description.forEach((record, index) => {
       additionalRowHTML += `
@@ -48,6 +48,12 @@ const temp = async (checklist) => {
         background: #ccc;
         padding: 30px;
       }
+        th {
+            font-size:15px
+        }
+        td {
+            font-size:13px
+        }
       .container {
         width: 21cm;
         min-height: 29.7cm;
@@ -71,6 +77,12 @@ const temp = async (checklist) => {
         font-size: 1em;
         color: #C9CBCC;
       }
+        .text {
+            font-size:15px
+        }
+        .text-heading {
+             font-weight:500
+        }
       #theadrow {
         background-color: #0A46A4 !important;
         color: #E3F3FF !important;
@@ -82,17 +94,17 @@ const temp = async (checklist) => {
       <div class="invoice">
         <div class="row">
           <div class="col-3">
-          <img class='img-fluid' width='500px'src="http://18.237.108.95:3000/src/assets/Blue_Star.png" alt="Bluestar Logo">
+          <img class='img-fluid' width='150px'src="http://18.237.108.95:3000/api/Blue_Star.png" alt="BlueStar Logo">
           </div>
           <div class="col-6" style="text-align:center">
             <h6 style="font-size:20px">Kempegowda International Airport</h6>
             <p>Devanahalli, Bengaluru.</p>
             </div>
           <div class="col-3">
-         <img class='img-fluid' width='100px'src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="Bluestar Logo">
+         <img class='img-fluid' width='100px'src="http://18.237.108.95:3000/api/Bengaluru_Airport_Logo_d71fb85c36.png" alt="Kepegowda Logo">
           </div>
-          <div class="col-12" style="background-color:yellow;padding:10px; border:1px solid black">
-             <h6 style="font-size:18px;text-align:center">Maintenance Checklist -  Air Handling Unit (AHU)</h6> </mark>
+          <div class="col-12" style="background-color:#ffff1f;padding:10px; border:1px solid black ">
+             <h6 style="font-size:18px;text-align:center;margin-top:14px">Maintenance Checklist -  Air Handling Unit (AHU)</h6> </mark>
         </div>
         <br>
         <br>
@@ -101,45 +113,109 @@ const temp = async (checklist) => {
       <div class="row mt-1">
            <div class="col-4 ">
              <div class="d-flex ">
-             <p style="margin-right:12px">DATE:</p>
-             <p>${checklist.createdAt.toISOString().split("T")[0]}</p>
+             <p style="margin-right:12px" class='text-heading'>DATE:</p>
+             <p class='text'>${
+               checklist.createdAt.toISOString().split("T")[0]
+             }</p>
                   </div>
            </div>
            </div>
              <div class="row">
          <div class="col-8">
-          <span> EQUIPMENT TAG NO:   ${checklist.equipment_tag_name} </span>
+          <span class='text-heading'>EQUIPMENT TAG NO: ${
+            checklist.equipment_tag_name
+          }  </span>
            </div>
                  <div class="col-7">
            </div>
          </div>
       <div class="row mt-3">
-          <div class="col-4 ">
+           <div class="col-4 ">
              <div class="d-flex ">
-             <p style="margin-right:12px"> TYPE OF MAINTENANCE:</p>
-              </div>
-          </div>
-      <div class="col-8 ">
+             <p class='text-heading' style="margin-right:12px ;"> TYPE OF MAINTENANCE:</p>
+                  </div>
+           </div>
+           <div class="col-8 ">
             <div style="display: flex; justify-content: space-between;">
-            <div>${checklist.check_list_time[0] || ""}</div>
-<div>${checklist.check_list_time[1] || ""}</div>
-<div>${checklist.check_list_time[2] || ""}</div>
-            </div>
-          </div>
-      </div>
+    <div class='text'>${checklist.check_list_time[0] || ""}</div>
+<div class='text'>${checklist.check_list_time[1] || ""}</div>
+<div class='text'>${checklist.check_list_time[2] || ""}</div>
+</div>
+           </div>
+           </div>
+      <div>
         <table class="table table-bordered">
   <thead>
     <tr>
-      <th>S.No</th>
+      <th >S.No</th>
       <th>ACTIVITIES TO BE CARRIED OUT.</th>
-      <th>Status</th>
+      <th >Status</th>
     </tr>
   </thead>
   <tbody>
-  ${additionalRowHTML}
+   ${additionalRowHTML}
   </tbody>
 </table>
       </div>
+        <div class="row mt-1">
+           <div class="col-4 ">
+             <div class="d-flex ">
+             <p style="margin-right:12px" class='text-heading'>Technician's Name:</p>
+                  </div>
+           </div>
+           <div class="col-4 ">
+             <div class="d-flex ">
+             <p style="margin-right:12px" class='text-heading'> Shift Supervisor Name:</p>
+                  </div>
+           </div>
+           <div class="col-4 ">
+             <div class="d-flex ">
+             <p style="margin-right:12px" class='text-heading'>Shift Incharge Name:</p>
+                  </div>
+           </div>
+           </div>
+        <div class="row mt-1">
+           <div class="col-4 ">
+             <div class=" ">
+<!--              <p style="margin-right:12px" class='text-heading'>:</p> -->
+                 <br>
+                 <div class="text ">
+                 <ul style="list-style-type:number">
+  <li>${checklist.technicians_name[0] || ""}</li>
+  <li>${checklist.technicians_name[1] || ""}</li>
+  <li>${checklist.technicians_name[2] || ""}</li>
+  <li>${checklist.technicians_name[3] || ""}</li>
+</ul>
+             </div>
+                  </div>
+           </div>
+            <div class="col-4 ">  </div>
+            <div class="col-4 ">  </div>
+           <div class="col-4 ">
+             <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
+             <p style="margin-right:12px" class='text-heading'> Sign:</p>
+             <img class='img-fluid' width='100px'src=${
+               checklist.supervisor_sign
+             } alt="BlueStar Logo">
+                  </div>
+           </div>
+           <div class="col-4 ">
+             <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
+             <p style="margin-right:12px" class='text-heading'>Sign:</p>
+             <img class='img-fluid'  width="200px" src='${
+               checklist.supervisor_sign
+             }'>
+                  </div>
+           </div>
+           <div class="col-4 ">
+             <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
+             <p style="margin-right:12px" class='text-heading'>Sign:</p>
+             <img class='img-fluid' width='100px'src="${
+               checklist.supervisor_sign
+             }" alt="supervisor sign">
+                  </div>
+           </div>
+           </div>
       </div>
     </div>
   </body>
@@ -160,7 +236,7 @@ const temp = async (checklist) => {
       }
     }
   );
-  return `${filePath}/${checklist.equipment_tag_name}.pdf`;
+  return `http://18.237.108.95:3000/api/upload/${checklist.equipment_tag_name}.pdf`;
 };
 
 module.exports = { temp };
