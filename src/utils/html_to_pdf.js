@@ -49,10 +49,12 @@ const temp = async (checklist) => {
         padding: 30px;
       }
         th {
-            font-size:15px
+            font-size:15px;
+            text-align:center;
         }
         td {
-            font-size:13px
+            font-size:13px;
+             text-align:center;
         }
       .container {
         width: 21cm;
@@ -78,10 +80,11 @@ const temp = async (checklist) => {
         color: #C9CBCC;
       }
         .text {
-            font-size:15px
+            font-size:13px;
         }
         .text-heading {
-             font-weight:500
+            font-size:15px;
+             font-weight:500;
         }
       #theadrow {
         background-color: #0A46A4 !important;
@@ -110,7 +113,7 @@ const temp = async (checklist) => {
         <br>
         <br>
         </div>
-      <div class="row mt-1">
+      <div class="row mt-4">
            <div class="col-4 ">
              <div class="d-flex ">
              <p style="margin-right:12px" class='text-heading'>DATE:</p>
@@ -120,9 +123,9 @@ const temp = async (checklist) => {
                   </div>
            </div>
            </div>
-             <div class="row">
-         <div class="col-8">
-          <span class='text-heading'>EQUIPMENT TAG NO: ${
+             <div class="row mt-0">
+         <div class="col-12">
+          <span class='text-heading'>EQUIPMENT TAG NO: </span> <span class='text'> ${
             checklist.equipment_tag_name
           }  </span>
            </div>
@@ -149,7 +152,7 @@ const temp = async (checklist) => {
     <tr>
       <th >S.No</th>
       <th>ACTIVITIES TO BE CARRIED OUT.</th>
-      <th >Status</th>
+      <th >STATUS</th>
     </tr>
   </thead>
   <tbody>
