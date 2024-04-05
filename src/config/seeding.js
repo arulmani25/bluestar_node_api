@@ -20,6 +20,7 @@ const modelArray = [
   model.temperaturelogsTitle,
   model.temperaturelogForms,
   model.spareModel,
+  model.checkListPdfTitle,
 ];
 
 const seedRecordToDB = async () => {
@@ -71,6 +72,9 @@ const seedRecordToDB = async () => {
           break;
         case "spares":
           await spareSeedFunction();
+          break;
+        case "checklist_pdf_titles":
+          await mod.insertMany(seedData.checklistPdfTitleSeed);
           break;
       }
 

@@ -24,6 +24,7 @@ const spareModel = require("./spare.model");
 const temperaturelogsTitle = require("./temperaturelogstitle.model");
 const temperaturelogForms = require("./temperaturelogsForm.model");
 const submittedTemperatureLogForms = require("./submitTemperatureLogForm.model");
+const checkListPdfTitle = require("./checklistpdftitle.model");
 
 module.exports = {
   adminModel,
@@ -52,4 +53,5 @@ module.exports = {
   temperaturelogsTitle,
   temperaturelogForms,
   submittedTemperatureLogForms,
+  checkListPdfTitle,
 };

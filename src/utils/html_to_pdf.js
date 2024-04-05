@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
 
-const temp = async (checklist) => {
+const temp = async (checklist, title) => {
   console.log(checklist);
   const browser = await puppeteer.launch({
     headless: "new",
@@ -14,8 +14,8 @@ const temp = async (checklist) => {
       additionalRowHTML += `
                   <tr>
                       <td>${index + 1}.</td>
-                      <td class="text-right">${record.activites_to_check}</td>
-                      <td class="text-right">${record.status}</td>
+                      <td >${record.activites_to_check}</td>
+                      <td style="text-align:center">${record.status}</td>
                   </tr>
             `;
     });
@@ -24,20 +24,10 @@ const temp = async (checklist) => {
     return;
   }
 
-  // div for checklist month
-  let additionalPeriodRowHTML;
-  if (Array.isArray(checklist.check_list_time)) {
-    checklist.check_list_time.forEach((record, index) => {
-      additionalPeriodRowHTML += `<div>${record}</div>`;
-    });
-  } else {
-    console.error("Data is not an array");
-    return;
-  }
-
   // Your HTML content here
+  console.log("========innnnnnnnnnnnnnnnnnnn28============");
 
-  const table = `<!DOCTYPE html>
+  const table = `<!DOCTYPE html>       
   <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -54,7 +44,6 @@ const temp = async (checklist) => {
         }
         td {
             font-size:13px;
-             text-align:center;
         }
       .container {
         width: 21cm;
@@ -106,8 +95,8 @@ const temp = async (checklist) => {
           <div class="col-3">
          <img class='img-fluid' width='100px'src="http://18.237.108.95:3000/api/Bengaluru_Airport_Logo_d71fb85c36.png" alt="Kepegowda Logo">
           </div>
-          <div class="col-12" style="background-color:#ffff1f;padding:10px; border:1px solid black ">
-             <h6 style="font-size:18px;text-align:center;margin-top:14px">Maintenance Checklist -  Air Handling Unit (AHU)</h6> </mark>
+          <div class="col-12" style="background-color:#ffff1f !important;padding:10px; border:1px solid black; ">
+             <h6 style="font-size:18px;text-align:center;margin-top:14px;background-color:#ffff1f">${title}</h6> 
         </div>
         <br>
         <br>
@@ -135,11 +124,11 @@ const temp = async (checklist) => {
       <div class="row mt-3">
            <div class="col-4 ">
              <div class="d-flex ">
-             <p class='text-heading' style="margin-right:12px ;"> TYPE OF MAINTENANCE:</p>
+             <p class='text-heading' style=""> TYPE OF MAINTENANCE:</p>
                   </div>
            </div>
-           <div class="col-8 ">
-            <div style="display: flex; justify-content: space-between;">
+           <div class="col-8 m-0 p-0">
+            <div style="display: flex; justify-content: space-between; margin:0px padding:0px">
     <div class='text'>${checklist.check_list_time[0] || ""}</div>
 <div class='text'>${checklist.check_list_time[1] || ""}</div>
 <div class='text'>${checklist.check_list_time[2] || ""}</div>
@@ -151,7 +140,7 @@ const temp = async (checklist) => {
   <thead>
     <tr>
       <th >S.No</th>
-      <th>ACTIVITIES TO BE CARRIED OUT.</th>
+      <th>ACTIVITIES TO BE CARRIED OUT</th>
       <th >STATUS</th>
     </tr>
   </thead>
@@ -160,7 +149,7 @@ const temp = async (checklist) => {
   </tbody>
 </table>
       </div>
-        <div class="row mt-1">
+        <div class="row mt-4">
            <div class="col-4 ">
              <div class="d-flex ">
              <p style="margin-right:12px" class='text-heading'>Technician's Name:</p>
@@ -194,37 +183,50 @@ const temp = async (checklist) => {
            </div>
             <div class="col-4 ">  </div>
             <div class="col-4 ">  </div>
-           <div class="col-4 ">
-             <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
-             <p style="margin-right:12px" class='text-heading'> Sign:</p>
-             <img class='img-fluid' width='100px'src=${
-               checklist.supervisor_sign
-             } alt="BlueStar Logo">
-                  </div>
-           </div>
-           <div class="col-4 ">
-             <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
-             <p style="margin-right:12px" class='text-heading'>Sign:</p>
-             <img class='img-fluid'  width="200px" src='${
-               checklist.supervisor_sign
-             }'>
-                  </div>
-           </div>
-           <div class="col-4 ">
-             <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
-             <p style="margin-right:12px" class='text-heading'>Sign:</p>
-             <img class='img-fluid' width='100px'src="${
-               checklist.supervisor_sign
-             }" alt="supervisor sign">
-                  </div>
-           </div>
+          <div class="col-4 ">
+    <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
+    <img class='img-fluid' width='100px'src=${
+      checklist.supervisor_sign
+    } alt="BlueStar Logo">
+         </div>
+  </div>
+  <div class="col-4 ">
+    <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
+    <img class='img-fluid'  width="200px" src='${checklist.supervisor_sign}'>
+         </div>
+  </div>
+  <div class="col-4 ">
+    <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
+    <img class='img-fluid' width='100px'src="${
+      checklist.supervisor_sign
+    }" alt="supervisor sign">
+         </div>
+  </div>
+   <div class="col-4 ">
+    <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
+        <p style="margin-right:12px" class='text-heading'>Technician's Sign</p>
+         </div>
+  </div>
+  <div class="col-4 ">
+    <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
+    <p style="margin-right:12px" class='text-heading'>Shift Supervisor's Sign</p>
+         </div>
+  </div>
+  <div class="col-4 ">
+    <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
+    <p style="margin-right:12px" class='text-heading'>Shift Incharge Sign</p>
+         </div>
+  </div>
            </div>
       </div>
     </div>
   </body>
   </html>`;
 
+  console.log("========table============", table, "===========");
+
   await page.setContent(table);
+  console.log("========page============", page, "======pageee  =====");
   const pdf = await page.pdf();
   const filePath = path.join(__dirname, "../../upload");
   // if(!fs.existsSync(`${filePath}/${checklist.equipment_tag_name}.pdf`))

@@ -149,7 +149,17 @@ app.post("/pdf", async (req, res) => {
     const file_paths = [];
     const checklistData = await collectChecklists(month);
     for (const iterator of checklistData) {
-      const data = await temp(iterator["_doc"]);
+      const getTypeByCobieCode = await model.checkListValidation.findOne(
+        {
+          cobie_tag: iterator.equipment_tag_name,
+        },
+        {},
+        { type: 1 }
+      );
+      const getTitle = await model.checkListPdfTitle.findOne({
+        type: getTypeByCobieCode.type,
+      });
+      const data = await temp(iterator["_doc"], getTitle.title);
       file_paths.push(data);
     }
 
