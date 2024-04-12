@@ -86,14 +86,14 @@ const temp = async (checklist, title) => {
       <div class="invoice">
         <div class="row">
           <div class="col-3">
-          <img class='img-fluid' width='150px'src="http://18.237.108.95:3000/api/Blue_Star.png" alt="BlueStar Logo">
+          <img class='img-fluid' width='150px'src="http://34.212.35.112:3000/api/Blue_Star.png" alt="BlueStar Logo">
           </div>
           <div class="col-6" style="text-align:center">
             <h6 style="font-size:20px">Kempegowda International Airport</h6>
             <p>Devanahalli, Bengaluru.</p>
             </div>
           <div class="col-3">
-         <img class='img-fluid' width='100px'src="http://18.237.108.95:3000/api/Bengaluru_Airport_Logo_d71fb85c36.png" alt="Kepegowda Logo">
+         <img class='img-fluid' width='100px'src="http://34.212.35.112:3000/api/Bengaluru_Airport_Logo_d71fb85c36.png" alt="Kepegowda Logo">
           </div>
           <div class="col-12" style="background-color:#ffff1f !important;padding:10px; border:1px solid black; ">
              <h6 style="font-size:18px;text-align:center;margin-top:14px;background-color:#ffff1f">${title}</h6> 
@@ -114,7 +114,7 @@ const temp = async (checklist, title) => {
            </div>
              <div class="row mt-0">
          <div class="col-12">
-          <span class='text-heading'>EQUIPMENT TAG NO: </span> <span class='text'> ${
+          <span class='text-heading'>EQUIPMENT TAG NO: </span> <span class='text' style="margin-left:6px"> ${
             checklist.equipment_tag_name
           }  </span>
            </div>
@@ -241,7 +241,7 @@ const temp = async (checklist, title) => {
       }
     }
   );
-  return `http://18.237.108.95:3000/api/upload/${checklist.equipment_tag_name}.pdf`;
+  return `http://34.212.35.112:3000/api/upload/${checklist.equipment_tag_name}.pdf`;
 };
 
 module.exports = { temp };
