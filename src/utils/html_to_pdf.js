@@ -185,21 +185,26 @@ const temp = async (checklist, title) => {
             <div class="col-4 ">  </div>
           <div class="col-4 ">
     <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
-    <img class='img-fluid' width='100px'src=${
-      checklist.supervisor_sign
-    } alt="BlueStar Logo">
+    <img class='img-fluid' width='100px'src=${checklist.technician_sign.replace(
+      "18.237.108.95",
+      "34.212.35.112"
+    )} alt="BlueStar Logo">
          </div>
   </div>
   <div class="col-4 ">
     <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
-    <img class='img-fluid'  width="200px" src='${checklist.supervisor_sign}'>
+    <img class='img-fluid'  width="200px" src='${checklist.supervisor_sign.replace(
+      "18.237.108.95",
+      "34.212.35.112"
+    )}'>
          </div>
   </div>
   <div class="col-4 ">
     <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
-    <img class='img-fluid' width='100px'src="${
-      checklist.supervisor_sign
-    }" alt="supervisor sign">
+    <img class='img-fluid' width='100px'src="${checklist.bial_sign.replace(
+      "18.237.108.95",
+      "34.212.35.112"
+    )}" alt="supervisor sign">
          </div>
   </div>
    <div class="col-4 ">
