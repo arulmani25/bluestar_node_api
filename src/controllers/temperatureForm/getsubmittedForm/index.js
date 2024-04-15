@@ -4,7 +4,7 @@ const { successMsg } = require("../../../utils");
 const getSubmittedForm = async (req, res, next) => {
   try {
     const record = await temperatureFormServiceController.getSubmittedFormById(
-      req.params.id
+      req.query,
     );
 
     return res.json({
