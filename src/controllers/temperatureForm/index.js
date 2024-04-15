@@ -21,7 +21,7 @@ router.post("/tempsubmit", tempsubmitForm);
 router.get("/titlelist", verifyToken, tempLogTitleList);
 router.get("/listforms", verifyToken, listForms);
 router.get("/form/:id", verifyToken, getForm);
-router.get("/submittedform/:id", verifyToken, getSubmittedForm);
+router.get("/submittedform", verifyToken, getSubmittedForm);
 router.put("/updateform", verifyToken, updateForm);
 router.post("/addlogfield", verifyToken, addLogField);
 router.get("/listlogfield", tempLogFields);
