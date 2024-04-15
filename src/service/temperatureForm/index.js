@@ -11,6 +11,7 @@ const { temperorySubmitLog } = require("./tempsubmitform");
 const { addTitle } = require("./addtitle");
 const { deleteTitle } = require("./deletetitle");
 const { editTitle } = require("./edittitle");
+const { getSubmittedFormWeb } = require("./getSubmittedFormWeb");
 
 module.exports = {
   listTemeperaturelogsTitle,
@@ -26,4 +27,5 @@ module.exports = {
   addTitle,
   deleteTitle,
   editTitle,
+  getSubmittedFormWeb,
 };
