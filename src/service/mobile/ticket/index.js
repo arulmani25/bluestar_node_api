@@ -5,6 +5,8 @@ const { updateTicketStatusRecord } = require("./updatestatus");
 const { ticketCount } = require("./count");
 const { viewTicket } = require("./getbyid");
 const { fileUpload } = require("./fileupload");
+const { getUsedSpare } = require("./usedspare");
+const { ticketPdf } = require("./pdfgenerate");
 
 module.exports = {
   requestTicketMobile,
@@ -14,4 +16,6 @@ module.exports = {
   ticketCount,
   viewTicket,
   fileUpload,
+  getUsedSpare,
+  ticketPdf,
 };

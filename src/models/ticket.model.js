@@ -29,6 +29,9 @@ const ticketSchema = new mongoose.Schema({
     type: String,
     enum: [priority.critical, priority.high, priority.low, priority.medium],
   },
+  spare: { type: Array },
+  raised_by: { type: objectId, ref: "users" },
+  updated_by: { type: objectId, ref: "users" },
 });
 ticketSchema.plugin(timestamps);
 

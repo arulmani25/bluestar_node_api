@@ -22,7 +22,7 @@ const submitChecklistSchema = new mongoose.Schema({
       value: { type: String || Number },
     },
   ],
-  technicians_name: { type: Array,},
+  technicians_name: { type: Array },
   supervisor_name: { type: String, default: "" },
   bial_user_name: { type: String, default: "" },
   technician_sign: { type: String, default: "" },
@@ -31,6 +31,8 @@ const submitChecklistSchema = new mongoose.Schema({
   delete_status: { type: Boolean, default: false },
   maintenance_done_by: { type: objectId },
   cobie_tag: { type: String },
+  submitted_by_role: { type: objectId },
+  spare: { type: Array },
 });
 submitChecklistSchema.plugin(timestamps);
 mongoose.model("submitchecklist", submitChecklistSchema);
