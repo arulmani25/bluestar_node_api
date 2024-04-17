@@ -32,6 +32,8 @@ const ticketSchema = new mongoose.Schema({
   spare: { type: Array },
   raised_by: { type: objectId, ref: "users" },
   updated_by: { type: objectId, ref: "users" },
+  raised_by_name: { type: String },
+  updated_by_name: { type: String },
 });
 ticketSchema.plugin(timestamps);
 
