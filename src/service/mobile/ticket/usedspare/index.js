@@ -8,9 +8,9 @@ const getUsedSpare = async (query) => {
 
   const searchRegex = new RegExp(["^.*", searchKey, ".*$"].join(""), "i");
 
-  let fromDate = query.fromDate;
-  let toDate = query.toDate;
-  if (fromDate && toDate) {
+  let fromDate 
+  let toDate;
+  if (query.fromDate && query.toDate) {
     fromDate = moment(query.fromDate);
     toDate = moment(query.toDate);
   } else {
