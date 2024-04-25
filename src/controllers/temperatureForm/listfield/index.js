@@ -14,7 +14,7 @@ const tempLogFields = async (req, res, next) => {
     ) {
       for (const iterator of record.logs) {
         title.push({
-          parameter: iterator.parameter ? iterator.parameter : "",
+          location: iterator.location ? iterator.location : "",
           range: iterator.range ? iterator.range : "",
         });
       }
@@ -43,7 +43,7 @@ const tempLogFields = async (req, res, next) => {
     ) {
       for (const iterator of record.logs) {
         title.push({
-          parameter: iterator.parameter,
+          location: iterator.location,
         });
       }
     }

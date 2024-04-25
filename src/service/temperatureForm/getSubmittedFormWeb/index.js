@@ -22,7 +22,11 @@ const getSubmittedFormWeb = async (query) => {
   for (const iterator of data) {
     console.log();
     for (const logs of iterator.logs) {
-      finalData.push({ parameter: logs.location, [iterator.time]: logs.value });
+      finalData.push({
+        parameter: logs.location,
+        [iterator.time]: logs.value,
+        remark: logs.remark ? logs.remark : "",
+      });
     }
   }
   function groupRecordsByParameter(records) {
