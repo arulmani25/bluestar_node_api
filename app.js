@@ -176,16 +176,20 @@ app.post("/pdf", async (req, res) => {
 
 //check app version
 
-app.get("/getlatest_version", function (req, res) {
-  res.json({
-    Status: "Success",
-    Message: "Version",
-    Data: {
-      version: req.body.version,
-      apk_link: `${baseURL}/api/uploads/BLUE_STAR_${req.body.version}.apk`,
-    },
-    Code: 200,
-  });
+app.get("/getlatest_version", async function (req, res) {
+  try {
+    return res.json({
+      Status: "Success",
+      Message: "Version",
+      Data: {
+        version: "02-05-2024-01",
+        apk_link: `http://34.212.35.112:3000/api/uploads/BLUE_STAR_02-05-2024-01.apk`,
+      },
+      Code: 200,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 // 404 handler
 app.use((req, res) => {
