@@ -173,6 +173,20 @@ app.post("/pdf", async (req, res) => {
     console.log(err);
   }
 });
+
+//check app version
+
+app.get("/getlatest_version", function (req, res) {
+  res.json({
+    Status: "Success",
+    Message: "Version",
+    Data: {
+      version: req.body.version,
+      apk_link: `${baseURL}/api/uploads/BLUE_STAR_${req.body.version}.apk`,
+    },
+    Code: 200,
+  });
+});
 // 404 handler
 app.use((req, res) => {
   res.status(404).end("Page Not Found");
