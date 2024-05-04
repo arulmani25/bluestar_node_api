@@ -15,7 +15,6 @@ const reportsServiceController = require("./reports");
 const spareServiceController = require("./spare");
 const temperatureFormServiceController = require("./temperatureForm");
 const activitiesServiceController = require("./activity");
-const checklistConfigServiceController = require("./checkistConfig");
 
 module.exports = {
   adminServiceController,
@@ -34,6 +33,5 @@ module.exports = {
   reportsServiceController,
   spareServiceController,
   temperatureFormServiceController,
-  activitiesServiceController,
-  checklistConfigServiceController,
+  activitiesServiceController
 };

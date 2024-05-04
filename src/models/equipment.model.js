@@ -12,7 +12,7 @@ const equipmentSchema = new mongoose.Schema({
   Feb: { type: String },
   Mar: { type: String },
   Apr: { type: String },
-  Mar: { type: String },
+  May: { type: String },
   Jun: { type: String },
   Jul: { type: String },
   Aug: { type: String },
