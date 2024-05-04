@@ -20,7 +20,14 @@ const listByTag = async (query, loggedUser) => {
   }
 
   const record = await model.submitchecklistModel.find(
-    { $expr: { $gte: [{ $strLenCP: key }, 1] } },
+    {
+      $expr: {
+        $and: [
+          { $gte: [{ $strLenCP: key }, 1] },
+          { $not: { $gte: [{ $strLenCP: "$bial_sign" }, 1] } },
+        ],
+      },
+    },
     { _id: 0, equipment_tag_name: 1 },
     { sort: { createdAt: -1 } }
   );
