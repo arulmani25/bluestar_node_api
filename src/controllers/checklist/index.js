@@ -12,9 +12,11 @@ const { deleteCheckList } = require("./delete");
 const { filterOptionList } = require("./filteroption");
 const { fieldTypeList } = require("./fieldtypes");
 const { getCheckListToEdit } = require("./getchecklisttoedit");
+const { getPendingCheckList } = require("./pendingchecklist");
 
 router.post("/create", verifyToken, createCheckList);
 router.get("/list", verifyToken, getCheckList);
+router.get("/pendingchecklist", getPendingCheckList);
 router.get("/activitydropdown", verifyToken, activityDropDown);
 router.get("/subactivitydropdown/:id", verifyToken, subActivityDropDown);
 router.get("/filtertype", verifyToken, filterOptionList);

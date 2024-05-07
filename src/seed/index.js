@@ -18,7 +18,8 @@ const { intlTeleRoomTempSeed } = require("./intl_tele_room_temp.seed");
 const { centriFugalChillersSeed } = require("./centriFugal_chiller.seed");
 const { dailyReportSeed } = require("./daily_report.seed");
 const { spareSeedData } = require("./spare.seed");
-const  checklistPdfTitleSeed  = require("./checklist_pdf_title.seed");
+const checklistPdfTitleSeed = require("./checklist_pdf_title.seed");
+const { checklistTracker } = require("./checklist_tracker.seed");
 
 module.exports = {
   equipmentsSeedData,
@@ -43,4 +44,5 @@ module.exports = {
   dailyReportSeed,
   spareSeedData,
   checklistPdfTitleSeed,
+  checklistTracker,
 };
