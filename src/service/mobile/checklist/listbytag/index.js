@@ -8,8 +8,14 @@ const listByTag = async (query, loggedUser) => {
   const technician = "$technician_sign";
   const supervisor = "$supervisor_sign";
   let key;
+  let queryFilter;
   if (loggedUser.role === roles.supervisor) {
     key = technician;
+    queryFilter = [
+      { $gte: [{ $strLenCP: key }, 1] },
+      { $not: { $gte: [{ $strLenCP: "$bial_sign" }, 1] } },
+      { $not: { $gte: [{ $strLenCP: "$supervisor_sign" }, 1] } },
+    ];
   } else if (
     loggedUser.role === roles.manager ||
     loggedUser.role === roles.bial ||
@@ -17,16 +23,16 @@ const listByTag = async (query, loggedUser) => {
     loggedUser.user_type === roles.bial1
   ) {
     key = supervisor;
+    queryFilter = [
+      { $gte: [{ $strLenCP: key }, 1] },
+      { $not: { $gte: [{ $strLenCP: "$bial_sign" }, 1] } },
+    ];
   }
 
   const record = await model.submitchecklistModel.find(
     {
       $expr: {
-        $and: [
-          { $gte: [{ $strLenCP: key }, 1] },
-          { $not: { $gte: [{ $strLenCP: "$bial_sign" }, 1] } },
-          { $not: { $gte: [{ $strLenCP: "$supervisor_sign" }, 1] } },
-        ],
+        $and: queryFilter,
       },
     },
     { _id: 0, equipment_tag_name: 1 },
