@@ -25,6 +25,7 @@ const listByTag = async (query, loggedUser) => {
         $and: [
           { $gte: [{ $strLenCP: key }, 1] },
           { $not: { $gte: [{ $strLenCP: "$bial_sign" }, 1] } },
+          { $not: { $gte: [{ $strLenCP: "$supervisor_sign" }, 1] } },
         ],
       },
     },
