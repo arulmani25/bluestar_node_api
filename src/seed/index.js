@@ -16,6 +16,11 @@ const { logIntlSeedData } = require("./log_intl.seed");
 const { domesticTelecomRoomTempSeed } = require("./dom_tele_room_temp.seed");
 const { intlTeleRoomTempSeed } = require("./intl_tele_room_temp.seed");
 const { centriFugalChillersSeed } = require("./centriFugal_chiller.seed");
+const { centriFugalChillersSeedOne } = require("./centriFugal_chiller01.seed");
+const { centriFugalChillersSeedTwo } = require("./centriFugal_chiller02.seed");
+const {
+  centriFugalChillersSeedThree,
+} = require("./centriFugal_chiller03.seed");
 const { dailyReportSeed } = require("./daily_report.seed");
 const { spareSeedData } = require("./spare.seed");
 const checklistPdfTitleSeed = require("./checklist_pdf_title.seed");
@@ -41,6 +46,9 @@ module.exports = {
   domesticTelecomRoomTempSeed,
   intlTeleRoomTempSeed,
   centriFugalChillersSeed,
+  centriFugalChillersSeedOne,
+  centriFugalChillersSeedTwo,
+  centriFugalChillersSeedThree,
   dailyReportSeed,
   spareSeedData,
   checklistPdfTitleSeed,

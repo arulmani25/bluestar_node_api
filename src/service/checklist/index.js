@@ -9,6 +9,8 @@ const { filterOption } = require("./filteroption");
 const { fieldTypes } = require("./fieldtypes");
 const { getSubmittedChecklist } = require("./getchecklisttoedit");
 const { pendingChecklists } = require("./pendingchecklist");
+const { dashboardcount } = require("./dashboardcount");
+const {checkSubmission}=require("./validation")
 
 module.exports = {
   createList,
@@ -22,4 +24,6 @@ module.exports = {
   fieldTypes,
   getSubmittedChecklist,
   pendingChecklists,
+  dashboardcount,
+  checkSubmission
 };

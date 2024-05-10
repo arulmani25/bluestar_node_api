@@ -12,6 +12,7 @@ const { addTitle } = require("./addtitle");
 const { deleteTitle } = require("./deletetitle");
 const { editTitle } = require("./edittitle");
 const { getSubmittedFormWeb } = require("./getSubmittedFormWeb");
+const { checkSubmission } = require("./validation");
 
 module.exports = {
   listTemeperaturelogsTitle,
@@ -28,4 +29,5 @@ module.exports = {
   deleteTitle,
   editTitle,
   getSubmittedFormWeb,
+  checkSubmission,
 };

@@ -13,7 +13,11 @@ const { filterOptionList } = require("./filteroption");
 const { fieldTypeList } = require("./fieldtypes");
 const { getCheckListToEdit } = require("./getchecklisttoedit");
 const { getPendingCheckList } = require("./pendingchecklist");
+const { checklistCount } = require("./dashboardcount");
+const { checkSubmisson } = require("./validation");
 
+router.get("/count", checklistCount);
+router.get("/check/:id", checkSubmisson);
 router.post("/create", verifyToken, createCheckList);
 router.get("/list", verifyToken, getCheckList);
 router.get("/pendingchecklist", getPendingCheckList);

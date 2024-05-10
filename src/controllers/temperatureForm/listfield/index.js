@@ -10,7 +10,13 @@ const tempLogFields = async (req, res, next) => {
     const title = [];
     if (
       record.titleName ===
-      "Daily Chiller Log Book - Centrifugal Chillers - 19XRA6/7"
+        "Daily Chiller-1 Log Book - Centrifugal Chillers - 19XRA6/7" ||
+      record.titleName ===
+        "Daily Chiller-2 Log Book - Centrifugal Chillers - 19XRA6/7" ||
+      record.titleName ===
+        "Daily Chiller-3 Log Book - Centrifugal Chillers - 19XRA6/7" ||
+      record.titleName ===
+        "Daily Chiller-4 Log Book - Centrifugal Chillers - 19XRA6/7"
     ) {
       for (const iterator of record.logs) {
         title.push({

@@ -5,7 +5,7 @@ dotenv.config({
   path: path.resolve(__dirname, `.env.${process.env.NODE_ENV || "production"}`),
 });
 const express = require("express");
-
+const compression = require("compression");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
@@ -38,6 +38,7 @@ const corsOption = {
 app.use(fileUpload());
 app.use(responseMiddleware());
 app.use(cors(corsOption));
+app.use(compression());
 
 // View engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -145,24 +146,52 @@ app.post("/qrupdate", async (req, res) => {
 
 app.post("/pdf", async (req, res) => {
   try {
-    const { month } = req.body;
+    const { equipment_tag_name } = req.body;
     const file_paths = [];
-    const checklistData = await collectChecklists(month);
-    for (const iterator of checklistData) {
-      const getTypeByCobieCode = await model.checkListValidation.findOne(
-        {
-          cobie_tag: iterator.equipment_tag_name,
-        },
-        {},
-        { type: 1 }
-      );
-      const getTitle = await model.checkListPdfTitle.findOne({
-        type: getTypeByCobieCode.type,
-      });
-      const data = await temp(iterator["_doc"], getTitle.title);
-      file_paths.push(data);
-    }
 
+    const isAlreadyDownloaded = await model.documentModel.findOne({
+      tag_name: equipment_tag_name,
+    });
+    if (isAlreadyDownloaded) {
+      return res.json({
+        Status: "Success",
+        Message: "File Already Downloaded",
+        Data: [],
+        Code: 400,
+      });
+    }
+    const checklistData = await collectChecklists(equipment_tag_name);
+
+    // for (const iterator of checklistData) {
+    //   const getTypeByCobieCode = await model.checkListValidation.findOne(
+    //     {
+    //       cobie_tag: iterator.equipment_tag_name,
+    //     },
+    //     {},
+    //     { type: 1 }
+    //   );
+    //   const getTitle = await model.checkListPdfTitle.findOne({
+    //     type: getTypeByCobieCode.type,
+    //   });
+    //   const data = await temp(iterator["_doc"], getTitle.title);
+    //   file_paths.push(data);
+    // }
+    const getTypeByCobieCode = await model.checkListValidation.findOne(
+      {
+        cobie_tag: equipment_tag_name,
+      },
+      {},
+      { type: 1 }
+    );
+    const getTitle = await model.checkListPdfTitle.findOne({
+      type: getTypeByCobieCode.type,
+    });
+    const data = await temp(checklistData[0], getTitle.title);
+    file_paths.push(data);
+    await model.documentModel.create({
+      path: file_paths[0],
+      tag_name: file_paths[0].split("/upload/")[1].split(".")[0],
+    });
     return res.json({
       Status: "Success",
       Message: "File path",

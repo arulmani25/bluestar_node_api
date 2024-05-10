@@ -26,6 +26,7 @@ const temperaturelogForms = require("./temperaturelogsForm.model");
 const submittedTemperatureLogForms = require("./submitTemperatureLogForm.model");
 const checkListPdfTitle = require("./checklistpdftitle.model");
 const checklistTracker = require("./checklist_tracker.model");
+const documentModel = require("./document.model")
 
 module.exports = {
   adminModel,
@@ -56,4 +57,5 @@ module.exports = {
   submittedTemperatureLogForms,
   checkListPdfTitle,
   checklistTracker,
+  documentModel
 };

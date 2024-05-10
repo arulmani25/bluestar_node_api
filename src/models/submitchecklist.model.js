@@ -8,6 +8,7 @@ const submitChecklistSchema = new mongoose.Schema({
   equipment_tag_name: { type: String },
   start_time: { type: String },
   end_time: { type: String },
+  shift: { type: String },
   check_list_type: { type: Array },
   check_list_time: { type: Array },
   description: [

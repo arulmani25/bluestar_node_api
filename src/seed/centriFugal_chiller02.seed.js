@@ -1,4 +1,4 @@
-const centriFugalChillersSeed = [
+const centriFugalChillersSeedTwo = [
   {
     location: "CHW TEMP IN °C",
     range: "",
@@ -664,4 +664,4 @@ const centriFugalChillersSeed = [
   },
 ];
 
-module.exports = { centriFugalChillersSeed };
+module.exports = { centriFugalChillersSeedTwo };

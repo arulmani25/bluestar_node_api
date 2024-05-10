@@ -20,11 +20,7 @@ const tempLogFieldTime = async (req, res, next) => {
     return res.json({
       Status: "Success",
       Message: successMsg.DATA_RETRIVED_SUCCESSFULLY,
-      Data: {
-        "08:00": "",
-        "16:00": "",
-        "22:00": "",
-      },
+      Data: title[0],
       Code: 200,
     });
   } catch (error) {

@@ -35,9 +35,9 @@ const priority = {
 const roles = {
   admin: "admin",
   technician: "technician",
-  ac_technician:"AC Technician",
+  ac_technician: "AC Technician",
   bial: "bial",
-  bial1:"BIAL",
+  bial1: "BIAL",
   bluestar: "bluestar",
   supervisor: "Supervisor",
   manager: "Manager",
@@ -53,7 +53,10 @@ const temperatureLogsTitle = {
 
   International_Telecom: "International Telecom Room Temperature",
 
-  Daily_Chiller: "Daily Chiller Log Book - Centrifugal Chillers - 19XRA6/7",
+  Daily_Chiller1: "Daily Chiller-1 Log Book - Centrifugal Chillers - 19XRA6/7",
+  Daily_Chiller2: "Daily Chiller-2 Log Book - Centrifugal Chillers - 19XRA6/7",
+  Daily_Chiller3: "Daily Chiller-3 Log Book - Centrifugal Chillers - 19XRA6/7",
+  Daily_Chiller4: "Daily Chiller-4 Log Book - Centrifugal Chillers - 19XRA6/7",
 
   Daily_Report: "CWP, CT, ATCS, CD, VD & PET Daily Report",
 };

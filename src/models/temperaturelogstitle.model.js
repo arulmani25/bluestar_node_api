@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const timestamps = require("mongoose-timestamp");
 const temperatureLogsTitleSchema = new mongoose.Schema({
   title: { type: String },
-  isActive: { type: Boolean,default:true },
+  isActive: { type: Boolean, default: true },
 });
 temperatureLogsTitleSchema.plugin(timestamps);
 
