@@ -209,6 +209,24 @@ const logDomSeedData = [
     "16:00": "",
     "22:00": "",
   },
+  {
+    location: "Duty Technician",
+    "08:00": "",
+    "16:00": "",
+    "22:00": "",
+  },
+  {
+    location: "BSL Duty Engineer",
+    "08:00": "",
+    "16:00": "",
+    "22:00": "",
+  },
+  {
+    location: "BIAL Shift Engineer",
+    "08:00": "",
+    "16:00": "",
+    "22:00": "",
+  },
 ];
 
 module.exports = {logDomSeedData}

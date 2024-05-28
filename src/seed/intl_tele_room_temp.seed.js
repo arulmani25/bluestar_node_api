@@ -95,6 +95,30 @@ const intlTeleRoomTempSeed = [
     "22:00": "",
     remark: "",
   },
+  {
+    TR_NO: "",
+    location: "Duty Technician",
+    "08:00": "",
+    "16:00": "",
+    "22:00": "",
+    remark: "",
+  },
+  {
+    TR_NO: "",
+    location: "BSL Duty Engineer",
+    "08:00": "",
+    "16:00": "",
+    "22:00": "",
+    remark: "",
+  },
+  {
+    TR_NO: "",
+    location: "BIAL Shift Engineer",
+    "08:00": "",
+    "16:00": "",
+    "22:00": "",
+    remark: "",
+  },
 ];
 
 module.exports = { intlTeleRoomTempSeed };

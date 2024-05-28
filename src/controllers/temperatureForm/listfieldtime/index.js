@@ -14,6 +14,7 @@ const tempLogFieldTime = async (req, res, next) => {
       delete iterator.TR_NO;
       delete iterator.parameter;
       delete iterator.range;
+      delete iterator.remark;
       title.push({ ...iterator });
     }
 

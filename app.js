@@ -211,8 +211,8 @@ app.get("/getlatest_version", async function (req, res) {
       Status: "Success",
       Message: "Version",
       Data: {
-        version: "02-05-2024-01",
-        apk_link: `http://34.212.35.112:3000/api/uploads/BLUE_STAR_02-05-2024-01.apk`,
+        version: "27-05-24-01",
+        apk_link: `http://34.212.35.112:3000/api/upload/BLUE_STAR_27-05-24-01.apk`,
       },
       Code: 200,
     });

@@ -5,7 +5,10 @@ const objectId = mongoose.Types.ObjectId;
 const userListMobile = async (query) => {
   const { searchKey, skip, limit, sortkey, sortOrder, role } = query;
 
-  const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
+  const sort = {
+    [sortkey ? sortkey : "createdAt"]:
+      !sortOrder || sortOrder === "DESC" ? -1 : 1,
+  };
 
   const searchRegex = new RegExp(["^.*", searchKey, ".*$"].join(""), "i");
 

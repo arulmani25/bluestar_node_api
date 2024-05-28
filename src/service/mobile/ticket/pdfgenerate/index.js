@@ -2,15 +2,22 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
 const model = require("../../../../models/index");
+const mongoose = require("mongoose");
+const ObjectId = mongoose.Types.ObjectId;
 
 const ticketPdf = async (ticket_no) => {
   const browser = await puppeteer.launch({
     headless: "new",
   });
   const page = await browser.newPage();
-  const ticketRecord = await model.ticketModel.find({ ticket_no: ticket_no });
-  const getUserName = await model.userModel.findOne({
-    _id: ticketRecord.raised_by,
+  const ticketRecord = (
+    await model.ticketModel.find({ ticket_no: ticket_no })
+  );
+  const getRaisedUserName = await model.userModel.findOne({
+    _id: new ObjectId(ticketRecord.at(-1).raised_by),
+  });
+  const getUpdatedUserName = await model.userModel.findOne({
+    _id: new ObjectId(ticketRecord.at(-1).updated_by),
   });
 
   let additionalSpareRowHTML = "";
@@ -56,11 +63,11 @@ const ticketPdf = async (ticket_no) => {
                 <div class="col-8 mb-2">${additionalSpareRowHTML}</div>
                 <div class="col-4 mb-2"><span class='text-heading'>Raised By</span></div>
                 <div class="col-8 mb-2"><span class='text'>${
-                  getUserName?.user_name ? getUserName.user_name : ""
+                  getRaisedUserName?.user_name ? getRaisedUserName.user_name : ""
                 }</span></div>
                 <div class="col-4 mb-2"><span class='text-heading'>Updated By</span></div>
                 <div class="col-8 mb-2"><span class='text'>${
-                  getUserName?.user_name ? getUserName.user_name : ""
+                  getUpdatedUserName?.user_name ? getUpdatedUserName.user_name : ""
                 }</span></div>
               </div>
             </div>
@@ -178,9 +185,7 @@ const ticketPdf = async (ticket_no) => {
         </div>
              <div class="row mt-0">
          <div class="col-12">
-          <span class='text-heading'>TICKET NO: </span> <span class='text' style="margin-left:6px"> ${
-            ticket_no
-          }  </span>
+          <span class='text-heading'>TICKET NO: </span> <span class='text' style="margin-left:6px"> ${ticket_no}  </span>
            </div>
                  <div class="col-7">
            </div>

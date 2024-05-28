@@ -16,7 +16,7 @@ const pendingChecklists = async () => {
       equipment_tag: iterator.equipment_tag,
     });
     cobieTags.push({
-      cobie_tag: data["_doc"].cobie_tag,
+      cobie_tag: data ? data["_doc"].cobie_tag : "",
       date: `${
         iterator.day_of_month
       }-${new Date().getMonth()}-${new Date().getFullYear()}`,

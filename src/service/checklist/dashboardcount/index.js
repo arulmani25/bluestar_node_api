@@ -22,7 +22,7 @@ const dashboardcount = async () => {
     const data = await model.equipmentsModel.findOne({
       equipment_tag: iterator.equipment_tag,
     });
-    cobieTagsForCurrentDate.push(data["_doc"].cobie_tag);
+    cobieTagsForCurrentDate.push(data ? data["_doc"].cobie_tag : "");
   }
 
   const getTodaySubmittedTagList = await model.submitchecklistModel.find(
@@ -70,7 +70,7 @@ const dashboardcount = async () => {
     const data = await model.equipmentsModel.findOne({
       equipment_tag: iterator.equipment_tag,
     });
-    cobieTagsTopreviousDate.push(data["_doc"].cobie_tag);
+    cobieTagsTopreviousDate.push(data?data["_doc"].cobie_tag:"");
   }
 
   // get submitted tags until previous day signed by supervisor
