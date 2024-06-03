@@ -66,16 +66,16 @@ const createLogForms = async () => {
         titleId: record._id,
         logs: data,
       });
-    } else if (record.title === temperatureLogsTitle.Daily_Report) {
-      const data = [];
-      for (const iterator of seed.dailyReportSeed) {
-        data.push(iterator);
-      }
-      await model.temperaturelogForms.create({
-        titleName: record.title,
-        titleId: record._id,
-        logs: data,
-      });
+      // } else if (record.title === temperatureLogsTitle.Daily_Report) {
+      //   const data = [];
+      //   for (const iterator of seed.dailyReportSeed) {
+      //     data.push(iterator);
+      //   }
+      //   await model.temperaturelogForms.create({
+      //     titleName: record.title,
+      //     titleId: record._id,
+      //     logs: data,
+      //   });
     } else if (record.title === temperatureLogsTitle.Domestic_Telecom) {
       const data = [];
       for (const iterator of seed.domesticTelecomRoomTempSeed) {

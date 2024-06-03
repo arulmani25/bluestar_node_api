@@ -17,9 +17,9 @@ const pendingChecklists = async () => {
     });
     cobieTags.push({
       cobie_tag: data ? data["_doc"].cobie_tag : "",
-      date: `${
-        iterator.day_of_month
-      }-${new Date().getMonth()}-${new Date().getFullYear()}`,
+      date: `${iterator.day_of_month}-${
+        new Date().getMonth() + 1
+      }-${new Date().getFullYear()}`,
     });
   }
   const getSubmittedTagList = await model.submitchecklistModel.find(

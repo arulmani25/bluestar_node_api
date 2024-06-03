@@ -23,9 +23,6 @@ const temperatureTitleLogsseed = [
   {
     title: "Daily Chiller-4 Log Book - Centrifugal Chillers - 19XRA6/7",
   },
-  {
-    title: "CWP, CT, ATCS, CD, VD & PET Daily Report",
-  },
 ];
 
 module.exports = { temperatureTitleLogsseed };
