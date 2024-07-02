@@ -3,7 +3,7 @@ const { successMsg } = require("../../../utils");
 
 const checklistCount = async (req, res, next) => {
   try {
-    const record = await checkListServiceController.dashboardcount();
+    const record = await checkListServiceController.dashboardcount(req.query);
 
     return res.json({
       Status: "Success",

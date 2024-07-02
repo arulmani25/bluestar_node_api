@@ -4,15 +4,13 @@ const path = require("path");
 const model = require("../../../../models/index");
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
-
+const moment = require("moment-timezone");
 const ticketPdf = async (ticket_no) => {
   const browser = await puppeteer.launch({
     headless: "new",
   });
   const page = await browser.newPage();
-  const ticketRecord = (
-    await model.ticketModel.find({ ticket_no: ticket_no })
-  );
+  const ticketRecord = await model.ticketModel.find({ ticket_no: ticket_no });
   const getRaisedUserName = await model.userModel.findOne({
     _id: new ObjectId(ticketRecord.at(-1).raised_by),
   });
@@ -32,12 +30,18 @@ const ticketPdf = async (ticket_no) => {
       } else {
         additionalSpareRowHTML += `<span class='text'>${""}</span>`;
       }
+      console.log(record.createdAt, ">>>>>>>>>>>>>");
+      const localTime = moment.tz(record.createdAt, "Asia/Kolkata");
+
+      // Format the local time (optional)
+      const formattedLocalTime = localTime.format("YYYY-MM-DD HH:mm:ss");
+
       additionalRowHTML += `<div class="mt-3">
         <div class="row">
     <div class="col-12">
       <div class="card">
         <div class="card-header d-flex justify-content-between" style="background-color: blue;">
-          <div><h3 style="font-size:18px">${record.createdAt.toLocaleString()}</h3></div>
+          <div><h3 style="font-size:18px">${formattedLocalTime}</h3></div>
           <div><h3 style="font-size:18px">${record.status}</h3></div>
         </div>
         <div class="card-body">
@@ -63,11 +67,15 @@ const ticketPdf = async (ticket_no) => {
                 <div class="col-8 mb-2">${additionalSpareRowHTML}</div>
                 <div class="col-4 mb-2"><span class='text-heading'>Raised By</span></div>
                 <div class="col-8 mb-2"><span class='text'>${
-                  getRaisedUserName?.user_name ? getRaisedUserName.user_name : ""
+                  getRaisedUserName?.user_name
+                    ? getRaisedUserName.user_name
+                    : ""
                 }</span></div>
                 <div class="col-4 mb-2"><span class='text-heading'>Updated By</span></div>
                 <div class="col-8 mb-2"><span class='text'>${
-                  getUpdatedUserName?.user_name ? getUpdatedUserName.user_name : ""
+                  getUpdatedUserName?.user_name
+                    ? getUpdatedUserName.user_name
+                    : ""
                 }</span></div>
               </div>
             </div>

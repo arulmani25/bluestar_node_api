@@ -20,7 +20,10 @@ const checklistReportList = async (query, payload) => {
   const recordList = await model.documentModel.aggregate([
     {
       $match: {
-        createdAt: { $gte: new Date(startingDate), $lte: new Date(endingDate) },
+        checklist_date: {
+          $gte: new Date(startingDate),
+          $lte: new Date(endingDate),
+        },
       },
     },
     {

@@ -1,7 +1,7 @@
 const model = require("../../../models");
 const moment = require("moment");
 
-const dashboardcount = async () => {
+const dashboardcount = async (query) => {
   const momentDate = moment();
   const currentDate = new Date().getDate();
   const cobieTagsTopreviousDate = [];
@@ -75,9 +75,14 @@ const dashboardcount = async () => {
 
   // get submitted tags until previous day signed by supervisor
 
+  const startingDate = moment()
+    .month(Number(query.month) - 1)
+    .startOf("month");
+
   const getPreviousSubmittedTagList = await model.submitchecklistModel.find(
     {
       createdAt: {
+        $gte: new Date(startingDate), // added to get record for current month
         $lte: new Date(momentDate.subtract(1, "day").endOf("day")),
       },
       $expr: {
@@ -98,10 +103,11 @@ const dashboardcount = async () => {
   const getPreviousVerifiedTagList = await model.submitchecklistModel.find(
     {
       createdAt: {
-        $lte: new Date(momentDate.subtract(1, "day").endOf("day")),
+        $gte: new Date(startingDate), // added to get record for current month
+        // $lte: new Date(momentDate.subtract(1, "day").endOf("day")),
       },
       $expr: {
-        $gte: [{ $strLenCP: "$bial_sign" }, 1],
+        $gt: [{ $strLenCP: "$bial_sign" }, 0],
       },
     },
     { equipment_tag_name: 1 }
@@ -123,6 +129,23 @@ const dashboardcount = async () => {
   const previousSubmittedCount = Number(previousSubmittedFinalData.length);
   const previousVerifiedCount = Number(previousVerifiedFinalData.length);
 
+  // pdf list
+
+  const endingDate = moment()
+    .month(Number(query.month) - 1)
+    .endOf("month");
+
+  const recordList = await model.documentModel.aggregate([
+    {
+      $match: {
+        checklist_date: {
+          $gte: new Date(startingDate),
+          $lte: new Date(endingDate),
+        },
+      },
+    }
+  ]);
+
   return {
     previousPendingCount: previousPendingCount,
     previousPendingRecord: previousPendingFinalData,
@@ -134,6 +157,7 @@ const dashboardcount = async () => {
     todoRecord: pendingTodayData,
     todayCompletedCount: todaySubmittedCount,
     todayCompletedRecord: submittedTodayData,
+    pdfUrl: recordList,
   };
 };
 

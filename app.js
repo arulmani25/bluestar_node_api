@@ -12,6 +12,7 @@ const cors = require("cors");
 const responseMiddleware = require("./src/middlewares/response.middleware");
 const apiRouter = require("./src/controllers");
 const mobileRouter = require("./src/controllers/mobile");
+const { cronJob } = require("./src/helpers/cron");
 
 // Other required dependencies
 const connectToMongoDB = require("./src/config/mongodb");
@@ -69,6 +70,10 @@ app.use("/api", express.static(path.join(__dirname)));
 app.use("/api", express.static(path.join(__dirname, "src/assets")));
 app.use("/api", apiRouter);
 app.use("/api/mobile", mobileRouter);
+
+//run cron
+
+cronJob();
 
 //delete uploaded file
 
@@ -191,6 +196,7 @@ app.post("/pdf", async (req, res) => {
     await model.documentModel.create({
       path: file_paths[0],
       tag_name: file_paths[0].split("/upload/")[1].split(".")[0],
+      checklist_date: checklistData[0].createdAt,
     });
     return res.json({
       Status: "Success",

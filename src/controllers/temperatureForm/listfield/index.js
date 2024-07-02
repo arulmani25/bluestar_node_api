@@ -21,7 +21,7 @@ const tempLogFields = async (req, res, next) => {
       for (const iterator of record.logs) {
         title.push({
           location: iterator.location ? iterator.location : "",
-          range: iterator.range ? iterator.range : "",
+          // range: iterator.range ? iterator.range : "",
         });
       }
     } else if (
@@ -42,14 +42,6 @@ const tempLogFields = async (req, res, next) => {
           location: iterator.location,
           TR_NO: iterator.TR_NO,
           remark: iterator.remark,
-        });
-      }
-    } else if (
-      record.titleName === "CWP, CT, ATCS, CD, VD & PET Daily Report"
-    ) {
-      for (const iterator of record.logs) {
-        title.push({
-          location: iterator.location,
         });
       }
     }
