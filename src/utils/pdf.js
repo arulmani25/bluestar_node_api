@@ -1,10 +1,10 @@
-const fs = require("fs");
-const pdf = require("html-pdf");
-const path = require("path");
+const fs = require('fs');
+const pdf = require('html-pdf');
+const path = require('path');
 
 async function generatePDF() {
-  return new Promise((resolve, reject) => {
-    const template = `<!DOCTYPE html>
+    return new Promise((resolve, reject) => {
+        const template = `<!DOCTYPE html>
     <html>
     <head>
         <style>
@@ -32,24 +32,22 @@ async function generatePDF() {
             <caption>Guest Details</caption>
             <tr>
                 <th>Guest Name</th>
-                <td> ${""}</td>
+                <td> ${''}</td>
             </tr>
         </table>
     </body>
     </html>
     `;
-    const outputPath = path.join(__dirname, "../../upload");
-    pdf
-      .create(template, { format: "Letter" })
-      .toFile(outputPath + `/${Date.now()}.pdf`, (err, res) => {
-        console.log("=====err, res", err, res);
-        if (err) {
-          reject(err);
-        } else {
-          resolve(res);
-        }
-      });
-  });
+        const outputPath = path.join(__dirname, '../../upload');
+        pdf.create(template, { format: 'Letter' }).toFile(outputPath + `/${Date.now()}.pdf`, (err, res) => {
+            console.log('=====err, res', err, res);
+            if (err) {
+                reject(err);
+            } else {
+                resolve(res);
+            }
+        });
+    });
 }
 
 module.exports = { generatePDF };

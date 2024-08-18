@@ -1,4 +1,4 @@
-const { reportList } = require("./list");
-const { getReportById } = require("./getbyid");
+const { reportList } = require('./list');
+const { getReportById } = require('./getbyid');
 
 module.exports = { reportList, getReportById };

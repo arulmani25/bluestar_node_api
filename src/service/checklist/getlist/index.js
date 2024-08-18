@@ -1,67 +1,62 @@
-const mongoose = require("mongoose");
-const model = require("../../../models/index");
+const mongoose = require('mongoose');
+const model = require('../../../models/index');
 const objectId = mongoose.Types.ObjectId;
-const { filterByOption } = require("../../../utils");
-const moment = require("moment");
-const { filterOption } = require("../filteroption");
+const { filterByOption } = require('../../../utils');
+const moment = require('moment');
+const { filterOption } = require('../filteroption');
 
 const getCheckList = async (query) => {
-  const { searchKey, skip, limit, sortkey, sortOrder, activityId, cobie_tag } =
-    query;
+    const { searchKey, skip, limit, sortkey, sortOrder, activityId, cobie_tag } = query;
 
-  const sort = { [sortkey]: !sortOrder || sortOrder === "DESC" ? -1 : 1 };
+    const sort = { [sortkey]: !sortOrder || sortOrder === 'DESC' ? -1 : 1 };
 
-  const searchRegex = new RegExp(["^.*", searchKey, ".*$"].join(""), "i");
+    const searchRegex = new RegExp(['^.*', searchKey, '.*$'].join(''), 'i');
 
-  let filterType = [];
-  const checkedOrNot = [];
-  let checklistToShow = [];
-  const filters = [];
-  const records = [];
-  const monthAndFilter = [];
+    let filterType = [];
+    const checkedOrNot = [];
+    let checklistToShow = [];
+    const filters = [];
+    const records = [];
+    const monthAndFilter = [];
 
-  const currentDate = moment();
+    const currentDate = moment();
 
-  const month = currentDate.format("M");
+    const month = currentDate.format('M');
 
-  const currentMonth = currentDate
-    .month(month - 1)
-    .toString()
-    .split(" ")[1];
+    const currentMonth = currentDate
+        .month(month - 1)
+        .toString()
+        .split(' ')[1];
 
-  const getPreviousMonthFilter = await model.equipmentsModel.findOne(
-    { cobie_tag: cobie_tag },
-    { [currentMonth]: 1 }
-  );
+    const getPreviousMonthFilter = await model.equipmentsModel.findOne({ cobie_tag: cobie_tag }, { [currentMonth]: 1 });
 
-  let checklistValue;
+    let checklistValue;
 
-  const checklistPeriodForCurrentMonth =
-    getPreviousMonthFilter._doc[currentMonth];
+    const checklistPeriodForCurrentMonth = getPreviousMonthFilter._doc[currentMonth];
 
-  if (checklistPeriodForCurrentMonth === "M") {
-    monthAndFilter.push("monthly");
-    checklistValue = filterByOption.monthly;
-  } else if (checklistPeriodForCurrentMonth === "Q") {
-    monthAndFilter.push("monthly", "quarterly");
-    checklistValue = filterByOption.quarterly;
-  } else if (checklistPeriodForCurrentMonth === "H") {
-    monthAndFilter.push("monthly", "quarterly", "halfYearly");
-    checklistValue = filterByOption.halfYearly;
-  } else if (checklistPeriodForCurrentMonth === "Y") {
-    monthAndFilter.push("monthly", "quarterly", "halfYearly", "yearly");
-    checklistValue = filterByOption.yearly;
-  }
-  const checkListRecord = [];
+    if (checklistPeriodForCurrentMonth === 'M') {
+        monthAndFilter.push('monthly');
+        checklistValue = filterByOption.monthly;
+    } else if (checklistPeriodForCurrentMonth === 'Q') {
+        monthAndFilter.push('monthly', 'quarterly');
+        checklistValue = filterByOption.quarterly;
+    } else if (checklistPeriodForCurrentMonth === 'H') {
+        monthAndFilter.push('monthly', 'quarterly', 'halfYearly');
+        checklistValue = filterByOption.halfYearly;
+    } else if (checklistPeriodForCurrentMonth === 'Y') {
+        monthAndFilter.push('monthly', 'quarterly', 'halfYearly', 'yearly');
+        checklistValue = filterByOption.yearly;
+    }
+    const checkListRecord = [];
 
-  for (const iterator of monthAndFilter) {
-    const checkList = await model.checkListModel.find({
-      cobie_tag: cobie_tag,
-      check_list_type: iterator,
-    });
-    checkListRecord.push(checkList);
-  }
-  /*
+    for (const iterator of monthAndFilter) {
+        const checkList = await model.checkListModel.find({
+            cobie_tag: cobie_tag,
+            check_list_type: iterator
+        });
+        checkListRecord.push(checkList);
+    }
+    /*
 
   let checkPreviousMonthChecklist = await model.checkListValidation.findOne({
     cobie_tag: cobie_tag,
@@ -169,19 +164,18 @@ const getCheckList = async (query) => {
     }
   }
 */
-  const inputParameters = await model.checkListModel.find(
-    {
-      cobie_tag: cobie_tag,
-      check_list_type: "",
-    },
-    { delete_status: 0 }
-  );
-  for (const iterator of inputParameters) {
-    checkListRecord.push(iterator);
-  }
-  
+    const inputParameters = await model.checkListModel.find(
+        {
+            cobie_tag: cobie_tag,
+            check_list_type: ''
+        },
+        { delete_status: 0 }
+    );
+    for (const iterator of inputParameters) {
+        checkListRecord.push(iterator);
+    }
 
-  return [checkListRecord.flat(1), { [currentMonth]: checklistValue }];
+    return [checkListRecord.flat(1), { [currentMonth]: checklistValue }];
 };
 
 module.exports = { getCheckList };

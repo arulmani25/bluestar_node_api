@@ -1,25 +1,25 @@
-const { spareServiceController } = require("../../../service/index");
+const { spareServiceController } = require('../../../service/index');
 
-const { errorMsg, successMsg } = require("../../../utils/index");
+const { errorMsg, successMsg } = require('../../../utils/index');
 
 const deleteSpare = async (req, res, next) => {
-  try {
-    const { id } = req.params;
+    try {
+        const { id } = req.params;
 
-    //** service call */
+        //** service call */
 
-    const data = await spareServiceController.deleteSpare(id);
+        const data = await spareServiceController.deleteSpare(id);
 
-    if (!data) throw new Error(errorMsg.RECORD_NOT_FOUND_TO_DELETE);
+        if (!data) throw new Error(errorMsg.RECORD_NOT_FOUND_TO_DELETE);
 
-    return res.json({
-      Status: "Success",
-      Message: successMsg.RECORD_DELETED_SUCCESSFULLY,
-      Code: 200,
-    });
-  } catch (error) {
-    next(error);
-  }
+        return res.json({
+            Status: 'Success',
+            Message: successMsg.RECORD_DELETED_SUCCESSFULLY,
+            Code: 200
+        });
+    } catch (error) {
+        next(error);
+    }
 };
 
 module.exports = { deleteSpare };

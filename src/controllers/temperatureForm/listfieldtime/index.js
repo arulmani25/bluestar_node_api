@@ -1,32 +1,29 @@
-const { temperatureFormServiceController } = require("../../../service/index");
-const { successMsg } = require("../../../utils");
+const { temperatureFormServiceController } = require('../../../service/index');
+const { successMsg } = require('../../../utils');
 
 const tempLogFieldTime = async (req, res, next) => {
-  try {
-    const record =
-      await temperatureFormServiceController.listTemeperaturelogsField(
-        req.query
-      );
-    const title = [];
+    try {
+        const record = await temperatureFormServiceController.listTemeperaturelogsField(req.query);
+        const title = [];
 
-    for (const iterator of record.logs) {
-      delete iterator.location;
-      delete iterator.TR_NO;
-      delete iterator.parameter;
-      delete iterator.range;
-      delete iterator.remark;
-      title.push({ ...iterator });
+        for (const iterator of record.logs) {
+            delete iterator.location;
+            delete iterator.TR_NO;
+            delete iterator.parameter;
+            delete iterator.range;
+            delete iterator.remark;
+            title.push({ ...iterator });
+        }
+
+        return res.json({
+            Status: 'Success',
+            Message: successMsg.DATA_RETRIVED_SUCCESSFULLY,
+            Data: title[0],
+            Code: 200
+        });
+    } catch (error) {
+        next(error);
     }
-
-    return res.json({
-      Status: "Success",
-      Message: successMsg.DATA_RETRIVED_SUCCESSFULLY,
-      Data: title[0],
-      Code: 200,
-    });
-  } catch (error) {
-    next(error);
-  }
 };
 
 module.exports = { tempLogFieldTime };

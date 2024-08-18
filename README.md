@@ -1,1 +1,1 @@
-"# BlueStarNode" 
+"# BlueStarNode"

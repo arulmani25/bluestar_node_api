@@ -1,24 +1,24 @@
-const { tempCheckListController } = require("../../../service/index");
+const { tempCheckListController } = require('../../../service/index');
 
-const { errorMsg, successMsg } = require("../../../utils/index");
+const { errorMsg, successMsg } = require('../../../utils/index');
 
 const getTempCheckLIst = async (req, res, next) => {
-  try {
-    const id = req.params.id;
+    try {
+        const id = req.params.id;
 
-    //** service call */
+        //** service call */
 
-    const data = await tempCheckListController.getTempCheckListById(id);
+        const data = await tempCheckListController.getTempCheckListById(id);
 
-    return res.json({
-      Status: "Success",
-      Message: successMsg.DATA_RETRIVED_SUCCESSFULLY,
-      Data: data,
-      Code: 200,
-    });
-  } catch (error) {
-    next(error);
-  }
+        return res.json({
+            Status: 'Success',
+            Message: successMsg.DATA_RETRIVED_SUCCESSFULLY,
+            Data: data,
+            Code: 200
+        });
+    } catch (error) {
+        next(error);
+    }
 };
 
 module.exports = { getTempCheckLIst };

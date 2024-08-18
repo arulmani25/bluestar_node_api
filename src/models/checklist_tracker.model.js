@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
-const timestamps = require("mongoose-timestamp");
+const mongoose = require('mongoose');
+const timestamps = require('mongoose-timestamp');
 const checklistTrackerSchema = new mongoose.Schema({
-  equipment_tag: { type: String },
-  day_of_month: { type: Number },
+    checklist_tracker: { type: String },
+    equipment_tag: { type: String },
+    day_of_month: { type: Number }
 });
 checklistTrackerSchema.plugin(timestamps);
 
-mongoose.model("checklist_tracker", checklistTrackerSchema);
+mongoose.model('checklist_tracker', checklistTrackerSchema);
 
-module.exports = mongoose.model("checklist_tracker");
+module.exports = mongoose.model('checklist_tracker');

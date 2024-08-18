@@ -1,33 +1,33 @@
-const puppeteer = require("puppeteer");
-const fs = require("fs");
-const path = require("path");
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const path = require('path');
 
 const temp = async (checklist, title) => {
-  console.log(checklist);
-  const browser = await puppeteer.launch({
-    headless: "new",
-  });
-  const page = await browser.newPage();
-  let additionalRowHTML = "";
-  if (Array.isArray(checklist.description)) {
-    checklist.description.forEach((record, index) => {
-      additionalRowHTML += `
+    console.log(checklist);
+    const browser = await puppeteer.launch({
+        headless: 'new'
+    });
+    const page = await browser.newPage();
+    let additionalRowHTML = '';
+    if (Array.isArray(checklist.description)) {
+        checklist.description.forEach((record, index) => {
+            additionalRowHTML += `
                   <tr>
                       <td>${index + 1}.</td>
                       <td >${record.activites_to_check}</td>
                       <td style="text-align:center">${record.status}</td>
                   </tr>
             `;
-    });
-  } else {
-    console.error("Data is not an array");
-    return;
-  }
+        });
+    } else {
+        console.error('Data is not an array');
+        return;
+    }
 
-  // Your HTML content here
-  console.log("========innnnnnnnnnnnnnnnnnnn28============");
+    // Your HTML content here
+    console.log('========innnnnnnnnnnnnnnnnnnn28============');
 
-  const table = `<!DOCTYPE html>       
+    const table = `<!DOCTYPE html>       
   <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -106,16 +106,14 @@ const temp = async (checklist, title) => {
            <div class="col-4 ">
              <div class="d-flex ">
              <p style="margin-right:12px" class='text-heading'>DATE:</p>
-             <p class='text'>${
-               checklist.createdAt.toISOString().split("T")[0]
-             }</p>
+             <p class='text'>${checklist.createdAt.toISOString().split('T')[0]}</p>
                   </div>
            </div>
            </div>
              <div class="row mt-0">
          <div class="col-12">
           <span class='text-heading'>EQUIPMENT TAG NO: </span> <span class='text' style="margin-left:6px"> ${
-            checklist.equipment_tag_name
+              checklist.equipment_tag_name
           }  </span>
            </div>
                  <div class="col-7">
@@ -129,9 +127,9 @@ const temp = async (checklist, title) => {
            </div>
            <div class="col-8 m-0 p-0">
             <div style="display: flex; justify-content: space-between; margin:0px padding:0px">
-    <div class='text'>${checklist.check_list_time[0] || ""}</div>
-<div class='text'>${checklist.check_list_time[1] || ""}</div>
-<div class='text'>${checklist.check_list_time[2] || ""}</div>
+    <div class='text'>${checklist.check_list_time[0] || ''}</div>
+<div class='text'>${checklist.check_list_time[1] || ''}</div>
+<div class='text'>${checklist.check_list_time[2] || ''}</div>
 </div>
            </div>
            </div>
@@ -173,10 +171,10 @@ const temp = async (checklist, title) => {
                  <br>
                  <div class="text ">
                  <ul style="list-style-type:number">
-  <li>${checklist.technicians_name[0] || ""}</li>
-  <li>${checklist.technicians_name[1] || ""}</li>
-  <li>${checklist.technicians_name[2] || ""}</li>
-  <li>${checklist.technicians_name[3] || ""}</li>
+  <li>${checklist.technicians_name[0] || ''}</li>
+  <li>${checklist.technicians_name[1] || ''}</li>
+  <li>${checklist.technicians_name[2] || ''}</li>
+  <li>${checklist.technicians_name[3] || ''}</li>
 </ul>
              </div>
                   </div>
@@ -186,24 +184,21 @@ const temp = async (checklist, title) => {
           <div class="col-4 ">
     <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
     <img class='img-fluid' width='100px'src=${checklist.technician_sign.replace(
-      "18.237.108.95",
-      "34.212.35.112"
+        '18.237.108.95',
+        '34.212.35.112'
     )} alt="BlueStar Logo">
          </div>
   </div>
   <div class="col-4 ">
     <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
-    <img class='img-fluid'  width="200px" src='${checklist.supervisor_sign.replace(
-      "18.237.108.95",
-      "34.212.35.112"
-    )}'>
+    <img class='img-fluid'  width="200px" src='${checklist.supervisor_sign.replace('18.237.108.95', '34.212.35.112')}'>
          </div>
   </div>
   <div class="col-4 ">
     <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
     <img class='img-fluid' width='100px'src="${checklist.bial_sign.replace(
-      "18.237.108.95",
-      "34.212.35.112"
+        '18.237.108.95',
+        '34.212.35.112'
     )}" alt="supervisor sign">
          </div>
   </div>
@@ -228,25 +223,21 @@ const temp = async (checklist, title) => {
   </body>
   </html>`;
 
-  console.log("========table============", table, "===========");
+    console.log('========table============', table, '===========');
 
-  await page.setContent(table);
-  console.log("========page============", page, "======pageee  =====");
-  const pdf = await page.pdf();
-  const filePath = path.join(__dirname, "../../upload");
-  // if(!fs.existsSync(`${filePath}/${checklist.equipment_tag_name}.pdf`))
-  fs.writeFile(
-    `${filePath}/${checklist.equipment_tag_name}.pdf`,
-    pdf,
-    (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("upload success");
-      }
-    }
-  );
-  return `http://34.212.35.112:3000/api/upload/${checklist.equipment_tag_name}.pdf`;
+    await page.setContent(table);
+    console.log('========page============', page, '======pageee  =====');
+    const pdf = await page.pdf();
+    const filePath = path.join(__dirname, '../../upload');
+    // if(!fs.existsSync(`${filePath}/${checklist.equipment_tag_name}.pdf`))
+    fs.writeFile(`${filePath}/${checklist.equipment_tag_name}.pdf`, pdf, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('upload success');
+        }
+    });
+    return `http://13.126.65.131:3000/api/upload/${checklist.equipment_tag_name}.pdf`;
 };
 
 module.exports = { temp };

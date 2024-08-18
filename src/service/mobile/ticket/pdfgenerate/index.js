@@ -1,42 +1,42 @@
-const puppeteer = require("puppeteer");
-const fs = require("fs");
-const path = require("path");
-const model = require("../../../../models/index");
-const mongoose = require("mongoose");
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const path = require('path');
+const model = require('../../../../models/index');
+const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
-const moment = require("moment-timezone");
+const moment = require('moment-timezone');
 const ticketPdf = async (ticket_no) => {
-  const browser = await puppeteer.launch({
-    headless: "new",
-  });
-  const page = await browser.newPage();
-  const ticketRecord = await model.ticketModel.find({ ticket_no: ticket_no });
-  const getRaisedUserName = await model.userModel.findOne({
-    _id: new ObjectId(ticketRecord.at(-1).raised_by),
-  });
-  const getUpdatedUserName = await model.userModel.findOne({
-    _id: new ObjectId(ticketRecord.at(-1).updated_by),
-  });
+    const browser = await puppeteer.launch({
+        headless: 'new'
+    });
+    const page = await browser.newPage();
+    const ticketRecord = await model.ticketModel.find({ ticket_no: ticket_no });
+    const getRaisedUserName = await model.userModel.findOne({
+        _id: new ObjectId(ticketRecord.at(-1).raised_by)
+    });
+    const getUpdatedUserName = await model.userModel.findOne({
+        _id: new ObjectId(ticketRecord.at(-1).updated_by)
+    });
 
-  let additionalSpareRowHTML = "";
+    let additionalSpareRowHTML = '';
 
-  let additionalRowHTML = "";
-  if (Array.isArray(ticketRecord)) {
-    ticketRecord.forEach((record, index) => {
-      if (record.spare.length) {
-        record.spare.forEach((str, index) => {
-          additionalSpareRowHTML += `<span class='text'>${str}, </span>`;
-        });
-      } else {
-        additionalSpareRowHTML += `<span class='text'>${""}</span>`;
-      }
-      console.log(record.createdAt, ">>>>>>>>>>>>>");
-      const localTime = moment.tz(record.createdAt, "Asia/Kolkata");
+    let additionalRowHTML = '';
+    if (Array.isArray(ticketRecord)) {
+        ticketRecord.forEach((record, index) => {
+            if (record.spare.length) {
+                record.spare.forEach((str, index) => {
+                    additionalSpareRowHTML += `<span class='text'>${str}, </span>`;
+                });
+            } else {
+                additionalSpareRowHTML += `<span class='text'>${''}</span>`;
+            }
+            console.log(record.createdAt, '>>>>>>>>>>>>>');
+            const localTime = moment.tz(record.createdAt, 'Asia/Kolkata');
 
-      // Format the local time (optional)
-      const formattedLocalTime = localTime.format("YYYY-MM-DD HH:mm:ss");
+            // Format the local time (optional)
+            const formattedLocalTime = localTime.format('YYYY-MM-DD HH:mm:ss');
 
-      additionalRowHTML += `<div class="mt-3">
+            additionalRowHTML += `<div class="mt-3">
         <div class="row">
     <div class="col-12">
       <div class="card">
@@ -52,30 +52,20 @@ const ticketPdf = async (ticket_no) => {
             <div class="col-8 ">
               <div class="row">
                 <div class="col-4 mb-2"><span class='text-heading'>Equipment</span></div>
-                <div class="col-8 mb-2"><span class='text' >${
-                  record.equipment
-                }</span></div>
+                <div class="col-8 mb-2"><span class='text' >${record.equipment}</span></div>
                 <div class="col-4 mb-2"><span class='text-heading'>Location</span></div>
-                <div class="col-8 mb-2"><span class='text'>${
-                  record.location
-                }</span></div>
+                <div class="col-8 mb-2"><span class='text'>${record.location}</span></div>
                 <div class="col-4 mb-2"><span class='text-heading'>Sub Location</span></div>
-                <div class="col-8 mb-2"><span class='text'>${
-                  record.sub_location
-                }</span></div>
+                <div class="col-8 mb-2"><span class='text'>${record.sub_location}</span></div>
                 <div class="col-4 mb-2"><span class='text-heading'>Spare</span></div>
                 <div class="col-8 mb-2">${additionalSpareRowHTML}</div>
                 <div class="col-4 mb-2"><span class='text-heading'>Raised By</span></div>
                 <div class="col-8 mb-2"><span class='text'>${
-                  getRaisedUserName?.user_name
-                    ? getRaisedUserName.user_name
-                    : ""
+                    getRaisedUserName?.user_name ? getRaisedUserName.user_name : ''
                 }</span></div>
                 <div class="col-4 mb-2"><span class='text-heading'>Updated By</span></div>
                 <div class="col-8 mb-2"><span class='text'>${
-                  getUpdatedUserName?.user_name
-                    ? getUpdatedUserName.user_name
-                    : ""
+                    getUpdatedUserName?.user_name ? getUpdatedUserName.user_name : ''
                 }</span></div>
               </div>
             </div>
@@ -87,9 +77,7 @@ const ticketPdf = async (ticket_no) => {
             <div class="col-6">
               <div class="row">
                 <div class="col-4 mb-2"><span class='text-heading' style="margin-right: 5px;">Comments</span></div>
-                <div class="col-8 mb-2"><span class='text'>${
-                  record.ticket_description
-                }</span></div>
+                <div class="col-8 mb-2"><span class='text'>${record.ticket_description}</span></div>
           </div>
               </div>
             </div>
@@ -98,16 +86,16 @@ const ticketPdf = async (ticket_no) => {
     </div>
   </div>
       </div>`;
-    });
-  } else {
-    console.error("Data is not an array");
-    return;
-  }
+        });
+    } else {
+        console.error('Data is not an array');
+        return;
+    }
 
-  // Your HTML content here
-  console.log("========innnnnnnnnnnnnnnnnnnn28============");
+    // Your HTML content here
+    console.log('========innnnnnnnnnnnnnnnnnnn28============');
 
-  const table = `<!DOCTYPE html>
+    const table = `<!DOCTYPE html>
   <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -185,7 +173,7 @@ const ticketPdf = async (ticket_no) => {
         <div class="row mt-3">
         <div class="col-12">
          <span class='text-heading'>DATE: </span> <span class='text' style="margin-left:6px"> ${
-           new Date().toISOString().split("T")[0]
+             new Date().toISOString().split('T')[0]
          }  </span>
           </div>
                 <div class="col-7">
@@ -200,7 +188,7 @@ const ticketPdf = async (ticket_no) => {
          </div>
           <div class="row mt-0">
          <div class="col-12">
-          <span class='text-heading'>RAISED BY: </span> <span class='text' style="margin-left:6px"> ${""}  </span>
+          <span class='text-heading'>RAISED BY: </span> <span class='text' style="margin-left:6px"> ${''}  </span>
            </div>
                  <div class="col-7">
            </div>
@@ -211,20 +199,20 @@ const ticketPdf = async (ticket_no) => {
   </body>
   </html>`;
 
-  console.log("========table============", table, "===========");
+    console.log('========table============', table, '===========');
 
-  await page.setContent(table);
-  console.log("========page============", page, "======pageee  =====");
-  const pdf = await page.pdf();
-  const filePath = path.join(__dirname, "../../../../../upload");
-  fs.writeFile(`${filePath}/${ticket_no}.pdf`, pdf, (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("upload success");
-    }
-  });
-  return `http://34.212.35.112:3000/api/upload/${ticket_no}.pdf`;
+    await page.setContent(table);
+    console.log('========page============', page, '======pageee  =====');
+    const pdf = await page.pdf();
+    const filePath = path.join(__dirname, '../../../../../upload');
+    fs.writeFile(`${filePath}/${ticket_no}.pdf`, pdf, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('upload success');
+        }
+    });
+    return `http://13.126.65.131:3000/api/upload/${ticket_no}.pdf`;
 };
 
 module.exports = { ticketPdf };
