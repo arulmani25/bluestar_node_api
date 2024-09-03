@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 const mongoose = require('mongoose');
 const timestamps = require('mongoose-timestamp');
 const ObjectId = mongoose.Types.ObjectId;

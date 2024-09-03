@@ -1,14 +1,34 @@
+/* eslint-disable no-unused-vars */
 const model = require('../../../models');
 const moment = require('moment');
 
 const dashboardcount = async (query) => {
     const momentDate = moment();
     const currentDate = new Date().getDate();
+    const startDayOfMonth = moment().startOf('month').date(); // This will be day 1  in current month
+    const endDayOfMonth = moment().endOf('month').date(); // This will be day 31  in current month
     const cobieTagsTopreviousDate = [];
     const cobieTagsForCurrentDate = [];
     const previousSubmittedCobieTags = [];
     const todaySubmittedCobieTags = [];
-    const previousVerifiedCobieTags = [];
+    // const previousVerifiedCobieTags = [];
+    const currentMonthEquipmentTage = [];
+    const currentMonthSubmittedCobieTags = [];
+    const MonthlyVerifiedCobieTags = [];
+    const testequipmentag = [];
+
+    const startingDate = moment()
+        .month(Number(query.month) - 1)
+        .startOf('month');
+
+    const endingDate = moment()
+        .month(Number(query.month) - 1)
+        .endOf('month');
+
+    const inputDate = moment();
+    const year = inputDate.year();
+    const month = inputDate.month() + 1;
+    const day = inputDate.date();
 
     //** Count based on Today Date */
 
@@ -20,49 +40,118 @@ const dashboardcount = async (query) => {
         const data = await model.equipmentsModel.findOne({
             equipment_tag: iterator.equipment_tag
         });
-        cobieTagsForCurrentDate.push(data ? data['_doc'].cobie_tag : '');
+        if (data) cobieTagsForCurrentDate.push(data['_doc'].cobie_tag);
     }
-
-    // Login record CompletedRecord
-    let submitCheckList = await model.submitchecklistModel.find(
+    // ------------------------------------------------------//
+    let getTodaySubmittedTagList = await model.submitchecklistModel.find(
         {
-            createdAt: {
-                $gte: new Date(momentDate.startOf('day')),
-                $lte: new Date(momentDate.endOf('day'))
-            }
-        },
-        { user_mobile_no: 1, equipment_tag_name: 1 }
-    );
-    const mobileData = {};
-
-    // Loop through the checklist
-    submitCheckList.forEach((item) => {
-        const mobileNo = item.user_mobile_no;
-
-        // Initialize the object for this mobile number if it does not exist
-        if (!mobileData[mobileNo]) {
-            mobileData[mobileNo] = {
-                count: 0,
-                equipmentTags: []
-            };
-        }
-
-        // Increment the count
-        mobileData[mobileNo].count++;
-
-        // Add the equipment tag name
-        mobileData[mobileNo].equipmentTags.push(item.equipment_tag_name);
-    });
-
-    const getTodaySubmittedTagList = await model.submitchecklistModel.find(
-        {
-            createdAt: {
-                $gte: new Date(momentDate.startOf('day')),
-                $lte: new Date(momentDate.endOf('day'))
+            $expr: {
+                $and: [
+                    { $eq: [{ $year: '$createdAt' }, year] },
+                    { $eq: [{ $month: '$createdAt' }, month] },
+                    { $eq: [{ $dayOfMonth: '$createdAt' }, day] }
+                ]
             }
         },
         { equipment_tag_name: 1 }
     );
+    // ------------------------------------------------------//
+
+    // let getTodaySubmittedTagList = await model.submitchecklistModel.find(
+    //     {
+    //         createdAt: {
+    //             $gte: new Date(startingDate),
+    //             $lte: new Date(endingDate)
+    //         }
+    //     },
+    //     { equipment_tag_name: 1 }
+    // );
+    // console.log('getTodaySubmittedTagList', getTodaySubmittedTagList);
+    // -----------------------------------------------------------------------------------------------//
+    const currentmonthEquipemtTags = await model.checklistTracker.find({
+        day_of_month: {
+            $gte: startDayOfMonth,
+            $lte: endDayOfMonth
+        }
+    });
+
+    for (const iterator of currentmonthEquipemtTags) {
+        const data = await model.equipmentsModel.findOne({
+            equipment_tag: iterator.equipment_tag
+        });
+        if (data) {
+            currentMonthEquipmentTage.push(data['_doc'].cobie_tag);
+        } else {
+            testequipmentag.push(iterator.equipment_tag);
+        }
+    }
+    const getMonthlySubmittedTagList = await model.submitchecklistModel.find(
+        {
+            createdAt: {
+                $gte: startingDate,
+                $lte: endingDate
+            }
+        },
+        { equipment_tag_name: 1 }
+    );
+
+    if (getMonthlySubmittedTagList.length > 0) {
+        for (const iterator of getMonthlySubmittedTagList) {
+            currentMonthSubmittedCobieTags.push(iterator['_doc'].equipment_tag_name);
+        }
+    }
+    const filteredMonthlyPendingTags = currentMonthEquipmentTage.filter(
+        (item) => !currentMonthSubmittedCobieTags.includes(item)
+    );
+
+    const pendingcurrentMonthData = filteredMonthlyPendingTags.filter((e) => {
+        return String(e).trim();
+    });
+    // const SubmittedCurrentMonthData = currentMonthSubmittedCobieTags.filter((e) => {
+    //     return String(e).trim();
+    // });
+
+    const currentMonthPendingCount = Number(pendingcurrentMonthData.length);
+
+    const currentMonthSubmittedTagList = await model.submitchecklistModel.find(
+        {
+            createdAt: {
+                $gte: new Date(startingDate),
+                $lte: new Date(endingDate)
+            },
+            $expr: {
+                $gte: [{ $strLenCP: '$supervisor_sign' }, 1] // Ensure supervisor_sign is not empty
+            }
+        },
+        { equipment_tag_name: 1 }
+    );
+
+    for (const iterator of currentMonthSubmittedTagList) {
+        previousSubmittedCobieTags.push(iterator['_doc'].equipment_tag_name);
+    }
+
+    const getcurrentMonthVerifiedTagList = await model.submitchecklistModel.find(
+        {
+            createdAt: {
+                $gte: new Date(startingDate), // added to get record for current month
+                $lte: new Date(endingDate)
+            },
+            $expr: {
+                $gt: [{ $strLenCP: '$bial_sign' }, 0]
+            }
+        },
+        { equipment_tag_name: 1 }
+    );
+
+    for (const iterator of getcurrentMonthVerifiedTagList) {
+        MonthlyVerifiedCobieTags.push(iterator['_doc'].equipment_tag_name);
+    }
+
+    const currentMonthVerifiedFinalData = MonthlyVerifiedCobieTags.filter((e) => {
+        return String(e).trim();
+    });
+    const currentMonthVerifiedCount = Number(currentMonthVerifiedFinalData.length);
+    // --------------------------------------------------------------------------------------------------//
 
     //push the cobie tag of submitted checklist
     if (getTodaySubmittedTagList.length > 0) {
@@ -99,66 +188,56 @@ const dashboardcount = async (query) => {
     }
 
     // get submitted tags until previous day signed by supervisor
+    // const getPreviousSubmittedTagList = await model.submitchecklistModel.find(
+    //     {
+    //         createdAt: {
+    //             $gte: new Date(startingDate), // added to get record for current month
+    //             $lte: new Date(momentDate.subtract(1, 'day').endOf('day'))
+    //         },
+    //         $expr: {
+    //             $gte: [{ $strLenCP: '$supervisor_sign' }, 1]
+    //         }
+    //     },
+    //     { equipment_tag_name: 1 }
+    // );
 
-    const startingDate = moment()
-        .month(Number(query.month) - 1)
-        .startOf('month');
-
-    const getPreviousSubmittedTagList = await model.submitchecklistModel.find(
-        {
-            createdAt: {
-                $gte: new Date(startingDate), // added to get record for current month
-                $lte: new Date(momentDate.subtract(1, 'day').endOf('day'))
-            },
-            $expr: {
-                $gte: [{ $strLenCP: '$supervisor_sign' }, 1]
-            }
-        },
-        { equipment_tag_name: 1 }
-    );
-
-    for (const iterator of getPreviousSubmittedTagList) {
-        previousSubmittedCobieTags.push(iterator['_doc'].equipment_tag_name);
-    }
-    const filteredPendingTags = cobieTagsTopreviousDate.filter((item) => !previousSubmittedCobieTags.includes(item));
+    // for (const iterator of getPreviousSubmittedTagList) {
+    //     previousSubmittedCobieTags.push(iterator['_doc'].equipment_tag_name);
+    // }
+    // const filteredPendingTags = cobieTagsTopreviousDate.filter((item) => !previousSubmittedCobieTags.includes(item));
 
     // get verified tags until previous day signed by bial
 
-    const getPreviousVerifiedTagList = await model.submitchecklistModel.find(
-        {
-            createdAt: {
-                $gte: new Date(startingDate) // added to get record for current month
-                // $lte: new Date(momentDate.subtract(1, "day").endOf("day")),
-            },
-            $expr: {
-                $gt: [{ $strLenCP: '$bial_sign' }, 0]
-            }
-        },
-        { equipment_tag_name: 1 }
-    );
-    for (const iterator of getPreviousVerifiedTagList) {
-        previousVerifiedCobieTags.push(iterator['_doc'].equipment_tag_name);
-    }
+    // const getPreviousVerifiedTagList = await model.submitchecklistModel.find(
+    //     {
+    //         createdAt: {
+    //             $gte: new Date(startingDate) // added to get record for current month
+    //             // $lte: new Date(momentDate.subtract(1, "day").endOf("day")),
+    //         },
+    //         $expr: {
+    //             $gt: [{ $strLenCP: '$bial_sign' }, 0]
+    //         }
+    //     },
+    //     { equipment_tag_name: 1 }
+    // );
+    // for (const iterator of getPreviousVerifiedTagList) {
+    //     previousVerifiedCobieTags.push(iterator['_doc'].equipment_tag_name);
+    // }
 
-    const previousPendingFinalData = filteredPendingTags.filter((e) => {
-        return String(e).trim();
-    });
-    const previousSubmittedFinalData = previousSubmittedCobieTags.filter((e) => {
-        return String(e).trim();
-    });
-    const previousVerifiedFinalData = previousVerifiedCobieTags.filter((e) => {
-        return String(e).trim();
-    });
-    const previousPendingCount = Number(previousPendingFinalData.length);
-    const previousSubmittedCount = Number(previousSubmittedFinalData.length);
-    const previousVerifiedCount = Number(previousVerifiedFinalData.length);
+    // const previousPendingFinalData = filteredPendingTags.filter((e) => {
+    //     return String(e).trim();
+    // });
+    // const previousSubmittedFinalData = previousSubmittedCobieTags.filter((e) => {
+    //     return String(e).trim();
+    // });
+    // const previousVerifiedFinalData = previousVerifiedCobieTags.filter((e) => {
+    //     return String(e).trim();
+    // });
+    // const previousPendingCount = Number(previousPendingFinalData.length);
+    // const previousSubmittedCount = Number(previousSubmittedFinalData.length);
+    // const previousVerifiedCount = Number(previousVerifiedFinalData.length);
 
     // pdf list
-
-    const endingDate = moment()
-        .month(Number(query.month) - 1)
-        .endOf('month');
-
     const recordList = await model.documentModel.aggregate([
         {
             $match: {
@@ -171,18 +250,20 @@ const dashboardcount = async (query) => {
     ]);
 
     return {
-        previousPendingCount: previousPendingCount,
-        previousPendingRecord: previousPendingFinalData,
-        totalCompletedCount: previousSubmittedCount,
-        totalCompletedRecord: previousSubmittedFinalData,
-        loginCompletedRecord: mobileData,
-        previousVerifiedCount: previousVerifiedCount,
-        previousVerifiedFinalData: previousVerifiedFinalData,
+        previousPendingCount: currentMonthPendingCount,
+        previousPendingRecord: pendingcurrentMonthData,
+        previousCompletedCount: previousSubmittedCobieTags.length,
+        previousCompletedRecord: previousSubmittedCobieTags,
+        previousVerifiedCount: currentMonthVerifiedCount,
+        previousVerifiedFinalData: currentMonthVerifiedFinalData,
         toDoCount: pendingTodayCount,
         todoRecord: pendingTodayData,
+
         todayCompletedCount: todaySubmittedCount,
         todayCompletedRecord: submittedTodayData,
-        pdfUrl: recordList
+        pdfUrl: recordList,
+
+        TotalEquipmentTage: currentMonthEquipmentTage.length
     };
 };
 

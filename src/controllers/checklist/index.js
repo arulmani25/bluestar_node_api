@@ -17,7 +17,7 @@ const { checklistCount } = require('./dashboardcount');
 const { checkSubmisson } = require('./validation');
 
 router.get('/count', checklistCount);
-router.get('/check/:id', checkSubmisson);
+router.get('/check/:id', checkSubmisson); // test duplicate url in submitted check list.
 router.post('/create', verifyToken, createCheckList);
 router.get('/list', verifyToken, getCheckList);
 router.get('/pendingchecklist', getPendingCheckList);

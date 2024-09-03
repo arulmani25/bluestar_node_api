@@ -9,18 +9,18 @@ const equipmentSchema = new mongoose.Schema({
     is_active: { type: Boolean, default: true },
     qrcode: { type: String },
     cobie_tag: { type: String },
-    Jan: { type: String },
-    Feb: { type: String },
-    Mar: { type: String },
-    Apr: { type: String },
-    May: { type: String },
-    Jun: { type: String },
-    Jul: { type: String },
-    Aug: { type: String },
-    Sep: { type: String },
-    Oct: { type: String },
-    Nov: { type: String },
-    Dec: { type: String }
+    Jan: { type: String, default: '' },
+    Feb: { type: String, default: '' },
+    Mar: { type: String, default: '' },
+    Apr: { type: String, default: '' },
+    May: { type: String, default: '' },
+    Jun: { type: String, default: '' },
+    Jul: { type: String, default: '' },
+    Aug: { type: String, default: '' },
+    Sep: { type: String, default: '' },
+    Oct: { type: String, default: '' },
+    Nov: { type: String, default: '' },
+    Dec: { type: String, default: '' }
 });
 equipmentSchema.plugin(timestamps);
 mongoose.model('equipments', equipmentSchema);

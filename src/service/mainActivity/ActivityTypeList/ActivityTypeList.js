@@ -1,7 +1,6 @@
 const model = require('../../../models/index');
 
 const getActivityTypes = async () => {
-    console.log(1234)
     const getActivityType = await model.mainactivityModel.aggregate([
         {
             $project: {
@@ -11,18 +10,18 @@ const getActivityTypes = async () => {
         },
         {
             $group: {
-                _id: "$activity_name" // Group by activity_name to get unique values
+                _id: '$activity_name'
             }
         },
         {
             $project: {
                 _id: 0,
-                activity_name: "$_id" // Rename _id to activity_name
+                activity_name: '$_id'
             }
         }
     ]);
 
     return getActivityType;
-}
+};
 
-module.exports = { getActivityTypes }
+module.exports = { getActivityTypes };

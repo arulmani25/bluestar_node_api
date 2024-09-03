@@ -1,12 +1,13 @@
+// eslint-disable-next-line no-unused-vars
 const { mobileServiceController, userServiceController } = require('../../../../service/index');
 const { successMsg, errorMsg, generateToken } = require('../../../../utils/index');
 
 const userLoginUsingMobile = async (req, res, next) => {
     try {
-        const payload = req.body;
-
+        const payload = req?.body;
+        console.log('payload', payload);
         const data = await mobileServiceController.user.userMobileLogin(payload);
-
+        console.log('data', data);
         const token = await generateToken({
             _id: data[0]._id,
             mobile_no: data[0].mobile_no,

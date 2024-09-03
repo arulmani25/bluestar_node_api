@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
@@ -7,6 +9,7 @@ const ObjectId = mongoose.Types.ObjectId;
 const moment = require('moment-timezone');
 const ticketPdf = async (ticket_no) => {
     const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
         headless: 'new'
     });
     const page = await browser.newPage();
@@ -19,10 +22,11 @@ const ticketPdf = async (ticket_no) => {
     });
 
     let additionalSpareRowHTML = '';
-
+    let raisedByName = '';
     let additionalRowHTML = '';
     if (Array.isArray(ticketRecord)) {
         ticketRecord.forEach((record, index) => {
+            raisedByName = record;
             if (record.spare.length) {
                 record.spare.forEach((str, index) => {
                     additionalSpareRowHTML += `<span class='text'>${str}, </span>`;
@@ -154,14 +158,14 @@ const ticketPdf = async (ticket_no) => {
       <div class="invoice">
         <div class="row">
           <div class="col-3">
-          <img class='img-fluid' width='150px'src="http://34.212.35.112:3000/api/Blue_Star.png" alt="BlueStar Logo">
+          <img class='img-fluid' width='150px'src="http://13.232.135.160/api/Blue_Star.png" alt="BlueStar Logo">
           </div>
           <div class="col-6" style="text-align:center">
             <h6 style="font-size:20px">Kempegowda International Airport</h6>
             <p>Devanahalli, Bengaluru.</p>
             </div>
           <div class="col-3">
-         <img class='img-fluid' width='100px'src="http://34.212.35.112:3000/api/Bengaluru_Airport_Logo_d71fb85c36.png" alt="Kepegowda Logo">
+         <img class='img-fluid' width='100px'src="http://13.232.135.160/api/bial.png" alt="Kepegowda Logo">
           </div>
           <div class="col-12" style="background-color:#ffff1f !important;padding:10px; border:1px solid black; ">
              <h6 style="font-size:18px;text-align:center;margin-top:14px;background-color:#ffff1f">COMPLAINT SUMMARY</h6>
@@ -188,7 +192,7 @@ const ticketPdf = async (ticket_no) => {
          </div>
           <div class="row mt-0">
          <div class="col-12">
-          <span class='text-heading'>RAISED BY: </span> <span class='text' style="margin-left:6px"> ${''}  </span>
+          <span class='text-heading'>RAISED BY: </span> <span class='text' style="margin-left:6px"> ${raisedByName.raised_by_name}  </span>
            </div>
                  <div class="col-7">
            </div>
@@ -212,7 +216,7 @@ const ticketPdf = async (ticket_no) => {
             console.log('upload success');
         }
     });
-    return `http://13.126.65.131:3000/api/upload/${ticket_no}.pdf`;
+    return `http://13.232.135.160/api/upload/${ticket_no}.pdf`;
 };
 
 module.exports = { ticketPdf };

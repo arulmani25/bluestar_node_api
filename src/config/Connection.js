@@ -5,8 +5,8 @@ const logger = winston.createLogger({
 
 const Conection = {
     expressIgniter: (Express) => {
-        Express.listen(3000, () => {
-            logger.info('server is started on http://localhost:3000');
+        Express.listen(3030, () => {
+            logger.info('server is started on http://localhost:3030');
         });
     }
 };

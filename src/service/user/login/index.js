@@ -7,12 +7,11 @@ const userLogin = async (payload) => {
         user_email: payload.user_email,
         delete_status: false
     });
-
     if (!isExist) throw new Error(errorMsg.USER_NOT_FOUND);
 
-    const isValidPassword = await passwordValidation.encryptPassword(payload.user_password);
+    const isValidPassword = await passwordValidation.checkPassword(payload.user_password, isExist.user_password);
     if (!isValidPassword) throw new Error(errorMsg.INCORRECT_PASSWORD);
-    if (isValidPassword === isExist.user_password) {
+    if (isValidPassword) {
         const data = await model.userModel.aggregate([
             { $match: { _id: isExist._id } },
             {
@@ -39,8 +38,9 @@ const userLogin = async (payload) => {
                 }
             }
         ]);
-
         return data;
+    } else {
+        throw new Error(errorMsg.INCORRECT_PASSWORD);
     }
 };
 

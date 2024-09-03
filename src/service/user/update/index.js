@@ -24,7 +24,7 @@ const updateUserPassword = async (requestData, response) => {
         //     getUser?.user_password
         // );
         let getEncryptValue = await passwordValidation.encryptPassword(requestData?.new_password);
-        console.log('getEncryptValue');
+        console.log('getEncryptValue', getEncryptValue);
         if (getEncryptValue) {
             getUser.user_password = getEncryptValue;
             getUser.markModified('getUser');

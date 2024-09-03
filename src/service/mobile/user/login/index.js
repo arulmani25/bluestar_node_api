@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 const model = require('../../../../models/index');
 const { errorMsg } = require('../../../../utils');
 const { passwordValidation } = require('../../../../utils/index');
@@ -7,12 +8,11 @@ const userMobileLogin = async (payload) => {
         user_name: payload.user_name,
         delete_status: false
     });
-
     if (!isExist) throw new Error(errorMsg.USER_NOT_FOUND);
 
-    const isValidPassword = await passwordValidation.encryptPassword(payload.user_password);
+    const isValidPassword = await passwordValidation.checkPassword(payload.user_password, isExist.user_password);
     if (!isValidPassword) throw new Error(errorMsg.INCORRECT_PASSWORD);
-    if (isExist.user_password === isValidPassword) {
+    if (isValidPassword) {
         const data = await model.userModel.aggregate([
             { $match: { _id: isExist._id } },
             {
@@ -57,6 +57,8 @@ const userMobileLogin = async (payload) => {
 
         return data;
     } else {
+        // If the password is incorrect, throw an error
+        throw new Error(errorMsg.INCORRECT_PASSWORD);
     }
 };
 

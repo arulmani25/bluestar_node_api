@@ -1,10 +1,11 @@
+/* eslint-disable no-undef */
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
 
 const temp = async (checklist, title) => {
-    console.log(checklist);
     const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
         headless: 'new'
     });
     const page = await browser.newPage();
@@ -86,14 +87,14 @@ const temp = async (checklist, title) => {
       <div class="invoice">
         <div class="row">
           <div class="col-3">
-          <img class='img-fluid' width='150px'src="http://34.212.35.112:3000/api/Blue_Star.png" alt="BlueStar Logo">
+          <img class='img-fluid' width='150px'src="http://13.232.135.160/api/Blue_Star.png" alt="BlueStar Logo">
           </div>
           <div class="col-6" style="text-align:center">
             <h6 style="font-size:20px">Kempegowda International Airport</h6>
             <p>Devanahalli, Bengaluru.</p>
             </div>
           <div class="col-3">
-         <img class='img-fluid' width='100px'src="http://34.212.35.112:3000/api/Bengaluru_Airport_Logo_d71fb85c36.png" alt="Kepegowda Logo">
+         <img class='img-fluid' width='100px'src="http://13.232.135.160/api/bial.png" alt="Kepegowda Logo">
           </div>
           <div class="col-12" style="background-color:#ffff1f !important;padding:10px; border:1px solid black; ">
              <h6 style="font-size:18px;text-align:center;margin-top:14px;background-color:#ffff1f">${title}</h6> 
@@ -106,7 +107,7 @@ const temp = async (checklist, title) => {
            <div class="col-4 ">
              <div class="d-flex ">
              <p style="margin-right:12px" class='text-heading'>DATE:</p>
-             <p class='text'>${checklist.createdAt.toISOString().split('T')[0]}</p>
+             <p class='text'>${checklist.technician_submitted_date}</p>
                   </div>
            </div>
            </div>
@@ -143,7 +144,7 @@ const temp = async (checklist, title) => {
     </tr>
   </thead>
   <tbody>
-   ${additionalRowHTML}
+  ${additionalRowHTML}
   </tbody>
 </table>
       </div>
@@ -156,11 +157,13 @@ const temp = async (checklist, title) => {
            <div class="col-4 ">
              <div class="d-flex ">
              <p style="margin-right:12px" class='text-heading'> Shift Supervisor Name:</p>
+             
                   </div>
            </div>
            <div class="col-4 ">
              <div class="d-flex ">
              <p style="margin-right:12px" class='text-heading'>Shift Incharge Name:</p>
+             
                   </div>
            </div>
            </div>
@@ -169,36 +172,44 @@ const temp = async (checklist, title) => {
              <div class=" ">
 <!--              <p style="margin-right:12px" class='text-heading'>:</p> -->
                  <br>
-                 <div class="text ">
-                 <ul style="list-style-type:number">
-  <li>${checklist.technicians_name[0] || ''}</li>
-  <li>${checklist.technicians_name[1] || ''}</li>
-  <li>${checklist.technicians_name[2] || ''}</li>
-  <li>${checklist.technicians_name[3] || ''}</li>
-</ul>
-             </div>
-                  </div>
+                    <div class="text ">
+                        <ul style="list-style-type:number">
+                          <li>${checklist.technicians_name[0] || ''}</li>
+                          <li>${checklist.technicians_name[1] || ''}</li>
+                          <li>${checklist.technicians_name[2] || ''}</li>
+                          <li>${checklist.technicians_name[3] || ''}</li>
+                        </ul>
+                      </div>
+                </div>
            </div>
-            <div class="col-4 ">  </div>
-            <div class="col-4 ">  </div>
+            <div class="col-4 "> 
+                <div class="text">
+                ${checklist.supervisor_name}
+                </div>
+            </div>
+            <div class="col-4 ">  
+                <div class="text">
+                ${checklist.bial_user_name}
+                </div>
+            </div>
           <div class="col-4 ">
     <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
     <img class='img-fluid' width='100px'src=${checklist.technician_sign.replace(
         '18.237.108.95',
-        '34.212.35.112'
+        '13.232.135.160'
     )} alt="BlueStar Logo">
          </div>
   </div>
   <div class="col-4 ">
     <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
-    <img class='img-fluid'  width="200px" src='${checklist.supervisor_sign.replace('18.237.108.95', '34.212.35.112')}'>
+    <img class='img-fluid'  width="200px" src='${checklist.supervisor_sign.replace('18.237.108.95', '13.232.135.160')}'>
          </div>
   </div>
   <div class="col-4 ">
     <div class="d-flex align-items-center justify-content-center" style='min-height:100px'>
     <img class='img-fluid' width='100px'src="${checklist.bial_sign.replace(
         '18.237.108.95',
-        '34.212.35.112'
+        '13.232.135.160'
     )}" alt="supervisor sign">
          </div>
   </div>
@@ -223,10 +234,8 @@ const temp = async (checklist, title) => {
   </body>
   </html>`;
 
-    console.log('========table============', table, '===========');
-
     await page.setContent(table);
-    console.log('========page============', page, '======pageee  =====');
+
     const pdf = await page.pdf();
     const filePath = path.join(__dirname, '../../upload');
     // if(!fs.existsSync(`${filePath}/${checklist.equipment_tag_name}.pdf`))
@@ -237,7 +246,7 @@ const temp = async (checklist, title) => {
             console.log('upload success');
         }
     });
-    return `http://13.126.65.131:3000/api/upload/${checklist.equipment_tag_name}.pdf`;
+    return `http://13.232.135.160/api/upload/${checklist.equipment_tag_name}.pdf`;
 };
 
 module.exports = { temp };

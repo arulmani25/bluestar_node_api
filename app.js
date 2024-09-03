@@ -61,16 +61,14 @@ console.log(process.env.NODE_ENV);
 console.log('BASE_URL', process.env.BASE_URL);
 console.log('DataBase URL', process.env.MONGO_CONNECTION_STRING);
 
+const filePaths = path.join(__dirname, '../../../../../upload');
+console.log('__dirname', filePaths);
+
 // Routes setup (Add your routes here)
 app.use('/api', express.static(path.join(__dirname)));
 app.use('/api', express.static(path.join(__dirname, 'src/assets')));
 app.use('/api', apiRouter);
 app.use('/api/mobile', mobileRouter);
-
-/**--------------------------------------------------------------------------- */
-const { CronTemperatureLogForm } = require('./src/helpers/TemperatureLogFormCron');
-CronTemperatureLogForm();
-/**------------------------------------------------------------------------------ */
 
 //run cron
 
@@ -209,21 +207,21 @@ app.post('/pdf', async (req, res) => {
 
 //check app version
 
-app.get('/getlatest_version', async function (req, res) {
-    try {
-        return res.json({
-            Status: 'Success',
-            Message: 'Version',
-            Data: {
-                version: '27-05-24-01',
-                apk_link: `http://34.212.35.112:3000/api/upload/BLUE_STAR_27-05-24-01.apk`
-            },
-            Code: 200
-        });
-    } catch (error) {
-        console.log(error);
-    }
-});
+// app.get('/getlatest_version', async function (req, res) {
+//     try {
+//         return res.json({
+//             Status: 'Success',
+//             Message: 'Version',
+//             Data: {
+//                 version: '27-05-24-01',
+//                 apk_link: `http://34.212.35.112:3000/api/upload/BLUE_STAR_27-05-24-01.apk`
+//             },
+//             Code: 200
+//         });
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
 // 404 handler
 app.use((req, res) => {
     res.status(404).end('Page Not Found');

@@ -16,7 +16,7 @@ const createUser = async (payload) => {
     if (isUserNameExist) throw new Error(errorMsg.USER_NAME_ALREADY_EXIST);
 
     if (isEmailExist) throw new Error(errorMsg.EMAIL_ALREADY_EXIST);
-
+    console.log('payload', payload);
     if (!isMobileExist && !isUserNameExist && !isEmailExist) {
         const createUser = await model.userModel.create({ ...payload });
 

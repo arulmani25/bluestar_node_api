@@ -1,8 +1,12 @@
 const model = require('../../../models/index');
 const { errorMsg } = require('../../../utils');
 const { roles } = require('../../../utils/enum');
+const currentDate = new Date().toLocaleDateString();
 
 const updateCheckListRecord = async (id, payload, loggedUser) => {
+    console.log('currentDate', typeof currentDate);
+    console.log('currentDate', currentDate);
+    console.log('loggedUser.role === roles.technician ', loggedUser.role === roles.technician);
     const isExist = await model.submitchecklistModel.findOne({
         _id: id,
         delete_status: false
@@ -10,6 +14,7 @@ const updateCheckListRecord = async (id, payload, loggedUser) => {
 
     if (!isExist) throw new Error(errorMsg.RECORD_NOT_FOUND_TO_UPDATE);
     let filter;
+    console.log('isExist', isExist);
 
     if (loggedUser.role === roles.supervisor) {
         filter = {
@@ -38,8 +43,9 @@ const updateCheckListRecord = async (id, payload, loggedUser) => {
         };
     }
 
+    console.log('filter', filter);
     const record = await model.submitchecklistModel.updateOne({ _id: isExist._id }, filter);
-
+    console.log(1, record);
     return record;
 };
 

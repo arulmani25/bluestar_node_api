@@ -28,8 +28,8 @@ const checkListSchema = new mongoose.Schema({
     equipment_tag_name: { type: String },
     check_list_type: {
         type: String,
-        enum: [filterByOption.halfYearly, filterByOption.monthly, filterByOption.quarterly, filterByOption.yearly],
-        required: true
+        enum: [filterByOption.halfYearly, filterByOption.monthly, filterByOption.quarterly, filterByOption.yearly]
+        // required: true
     }
 });
 checkListSchema.plugin(timestamps);

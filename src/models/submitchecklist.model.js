@@ -28,6 +28,7 @@ const submitChecklistSchema = new mongoose.Schema({
     supervisor_name: { type: String, default: '' },
     bial_user_name: { type: String, default: '' },
     technician_sign: { type: String, default: '' },
+    technician_submitted_date: { type: String, default: '' },
     supervisor_sign: { type: String, default: '' },
     bial_sign: { type: String, default: '' },
     delete_status: { type: Boolean, default: false },

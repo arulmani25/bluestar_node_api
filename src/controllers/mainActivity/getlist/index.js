@@ -15,5 +15,4 @@ const getGroupList = async (req, res, next) => {
     }
 };
 
-
 module.exports = { getGroupList };

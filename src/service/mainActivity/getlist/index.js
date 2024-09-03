@@ -34,4 +34,4 @@ const groupList = async (query) => {
     return recordList;
 };
 
-module.exports = { groupList};
+module.exports = { groupList };

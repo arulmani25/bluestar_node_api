@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const mongoose = require('mongoose');
 const model = require('../../../models/index');
 const objectId = mongoose.Types.ObjectId;

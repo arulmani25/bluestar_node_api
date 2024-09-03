@@ -39,6 +39,9 @@ apiRouter.use('/reports', reportsController);
 apiRouter.use('/spare', spareController);
 apiRouter.use('/temperatureform', temperatureFormController);
 apiRouter.use('/activity', activityController);
-apiRouter.use('/newequipmentstag', require('../controllers/NewEquipmentsTag/NewEquipmentsTagRouter'));
+apiRouter.use('/equipmentstag', require('./equipments/EquipmentsTagRouter'));
+apiRouter.use('/check_submittedchecklist', require('../controllers/SubmittedChecklist/SubmittedChecklistRouter'));
+apiRouter.use('/mainactivity_type_name', require('../controllers/mainActivity/ActivityTypeList/ActivityRouters'));
+apiRouter.use('/login_submitted', require('./SubmittedChecklist/SubmittedChecklistRouter'));
 
 module.exports = apiRouter;

@@ -16,7 +16,7 @@ const createUser = async (req, res, next) => {
         const password = await encryptPassword(payload.user_password);
 
         payload.user_password = password;
-        payload.user_id = getNanoId;
+        payload.user_id = getNanoId();
 
         //** service call */
 

@@ -1,7 +1,6 @@
 const model = require('../../../models/index');
 
 const cobieList = async (payload) => {
-    console.log(1, payload);
     const { searchKey, skip, limit, sortkey, sortOrder } = payload;
 
     const sort = { [sortkey]: !sortOrder || sortOrder === 'DESC' ? -1 : 1 };

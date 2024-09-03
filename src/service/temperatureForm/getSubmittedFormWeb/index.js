@@ -14,13 +14,12 @@ const getSubmittedFormWeb = async (query) => {
     }
     const startDate = fromDate.startOf('day').toDate();
     const endDate = toDate.endOf('day').toDate();
-    const data = await model.temperaturelogForms.find({
+    const data = await model.submittedTemperatureLogForms.find({
         titleId: query.id,
         createdAt: { $gte: startDate, $lte: endDate }
     });
     const finalData = [];
     for (const iterator of data) {
-        console.log();
         for (const logs of iterator.logs) {
             finalData.push({
                 parameter: logs.location,

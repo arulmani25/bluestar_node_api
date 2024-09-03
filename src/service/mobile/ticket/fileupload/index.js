@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 const model = require('../../../../models/index');
 const moment = require('moment');
 const fs = require('fs');
 const path = require('path');
 
 const fileUpload = async (payload) => {
-    const baseUrl = `http://18.237.108.95:3000/`;
+    const baseUrl = `http://18.237.108.95:3030/`;
     if (Object.keys(payload.files).length == 0) {
         return res.status(400).send('No files were uploaded.');
     }
