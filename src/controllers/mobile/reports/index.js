@@ -1,9 +1,11 @@
-const { Router } = require("express");
+const { Router } = require('express');
 const router = Router();
-const { reportList } = require("./list");
-const { getReportById } = require("./getbyid");
+const { verifyToken } = require('../../../utils/jwt');
 
-router.get("/list", reportList);
-router.get("/:id", getReportById);
+const { reportList } = require('./list');
+const { getReportById } = require('./getbyid');
+
+router.get('/list', verifyToken, reportList);
+router.get('/:id', verifyToken, getReportById);
 
 module.exports = router;

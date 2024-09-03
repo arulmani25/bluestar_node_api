@@ -1,11 +1,12 @@
-const { Router } = require("express");
+const { Router } = require('express');
 
 const router = Router();
 
-const { createTempCheckList } = require("./create");
-const { getTempCheckLIst } = require("./get");
+const { createTempCheckList } = require('./create');
+const { getTempCheckLIst } = require('./get');
+const { verifyToken } = require('../../utils');
 
-router.post("/createtemp", createTempCheckList);
-router.get("/:id", getTempCheckLIst);
+router.post('/createtemp', verifyToken, createTempCheckList);
+router.get('/:id', verifyToken, getTempCheckLIst);
 
 module.exports = router;

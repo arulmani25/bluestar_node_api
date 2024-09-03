@@ -1,8 +1,9 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const { verifyToken } = require('../../../utils/jwt');
 
-const { getActivityList } = require("./list");
+const { getActivityList } = require('./list');
 
-router.get("/list", getActivityList);
+router.get('/list', verifyToken, getActivityList);
 
 module.exports = router;

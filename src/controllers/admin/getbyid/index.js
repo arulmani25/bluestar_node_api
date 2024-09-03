@@ -1,26 +1,35 @@
-const { adminServiceController } = require("../../../service/index");
+const { adminServiceController } = require('../../../service/index');
 
-const { errorMsg, successMsg } = require("../../../utils/index");
+const { errorMsg, successMsg } = require('../../../utils/index');
 
-const getAdminById = async (req, res) => {
-  try {
-    const id = req.params.id;
+const { encryptText } = require('../../../utils/encrypt');
 
-    //** service call */
+const getAdminById = async (req, res, next) => {
+    try {
+        const id = req.params.id;
 
-    const data = await adminServiceController.getById(id);
+        //** service call */
 
-    if (!data) throw new Error(errorMsg.USER_NOT_FOUND);
+        const data = await adminServiceController.getById(id);
 
-    return res.json({
-      Status: "Success",
-      Message: successMsg.DATA_RETRIVED_SUCCESSFULLY,
-      Data: data,
-      Code: 200,
-    });
-  } catch (error) {
-    next(error);
-  }
+        if (!data) throw new Error(errorMsg.USER_NOT_FOUND);
+
+        // const array = [];
+        // array.push(data);
+        // array.map((el) => {
+        //   (el.mobile_no = encryptText(el.mobile_no)),
+        //     (el.email_id = encryptText(el.email_id));
+        // });
+
+        return res.json({
+            Status: 'Success',
+            Message: successMsg.DATA_RETRIVED_SUCCESSFULLY,
+            Data: data,
+            Code: 200
+        });
+    } catch (error) {
+        next(error);
+    }
 };
 
 module.exports = { getAdminById };
